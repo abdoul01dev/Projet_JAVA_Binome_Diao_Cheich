@@ -33,7 +33,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TabPane layoutY="7.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #7B7D7D;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TabPane layoutY="7.0" prefHeight="200.0" prefWidth="200.0" side="LEFT" style="-fx-background-color: #7B7D7D;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <tabs>
                             <Tab text="Sorties">
                               <content>
@@ -64,7 +64,7 @@
                                           </TableView>
                                           <AnchorPane prefHeight="302.0" prefWidth="99.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
-                                                <Button fx:id="btnNewColisS" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onAction="#newColisS" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: green;" text="Nouveau" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                                                <Button fx:id="btnNewColisS" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onAction="#newColisS" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: darkgreen;" text="Nouveau" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="35.0" />
                                                 <Button fx:id="btnModifColisS" layoutX="24.0" layoutY="59.0" mnemonicParsing="false" onAction="#modifColisS" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: #2a3a4a;" text="Modifier" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="85.0" />
                                                 <Button fx:id="btnSupColisS" layoutX="24.0" layoutY="101.0" mnemonicParsing="false" onAction="#supColisS" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: #a82400;" text="Supprimer" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
                                              </children>
@@ -136,11 +136,11 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Couriers">
+          <Tab style="fx-background-color: #a82400;" text="Couriers">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TabPane layoutX="6.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TabPane layoutX="6.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <tabs>
                             <Tab text="Sorties">
                               <content>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="675.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ColisEFormeController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="675.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="10.0" layoutY="186.0" prefHeight="149.0" prefWidth="617.0" style="-fx-border-color: green; -fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+               <children>
+                  <TextField fx:id="telDest" layoutX="429.0" layoutY="49.0" prefWidth="180.0" promptText="téléphone de destinataire" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="45.0" />
+                  <TextField fx:id="prenomDest" layoutX="238.0" layoutY="45.0" prefWidth="180.0" promptText="prénom de destinataire" AnchorPane.topAnchor="45.0" />
+                  <TextField fx:id="nomDes" layoutX="24.0" layoutY="47.0" prefWidth="180.0" promptText="nom de destinataire" AnchorPane.leftAnchor="15.0" />
+                  <ComboBox fx:id="comboProvenance" layoutX="238.0" layoutY="101.0" prefWidth="180.0" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="101.0" />
+                  <Label layoutX="2.0" text="Destination" textFill="#a82400">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="16.0" layoutY="27.0" text="Nom du destinataire :" textFill="#2a3a4a">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="241.0" layoutY="24.0" text="Prénom du destinataire :" textFill="#2a3a4a">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="503.0" layoutY="27.0" text="Tel du destinataire :" textFill="#2a3a4a">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="240.0" layoutY="82.0" text="Provenance:" textFill="#2a3a4a">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="14.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="163.0" prefWidth="597.0" style="-fx-border-color: green; -fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+               <children>
+                  <TextField fx:id="nomExp" layoutX="429.0" layoutY="49.0" prefWidth="180.0" promptText="nom de l'expéditeur" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="45.0" />
+                  <TextField fx:id="PrenomExp" layoutX="238.0" layoutY="51.0" prefWidth="180.0" promptText="prénom de l'expéditeur" AnchorPane.topAnchor="51.0" />
+                  <DatePicker fx:id="dateRecep" layoutX="7.0" layoutY="103.0" prefWidth="180.0" promptText="date de réception" AnchorPane.leftAnchor="15.0" />
+                  <TextField fx:id="destination" layoutX="238.0" layoutY="108.0" prefWidth="180.0" promptText="description du colis" AnchorPane.topAnchor="108.0" />
+                  <TextField fx:id="valeur" layoutX="421.0" layoutY="103.0" prefWidth="180.0" promptText="valeur du colis" AnchorPane.rightAnchor="15.0" />
+                  <TextField fx:id="TelExp" prefHeight="25.0" prefWidth="180.0" promptText="téléphone de l'expéditeur" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="45.0" />
+                  <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="99.0" text="Expédition" textAlignment="CENTER" textFill="#a82400">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="22.0" layoutY="27.0" text="Nom de l'expéditeur :" textFill="#2a3a4a">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="16.0" layoutY="87.0" text="Date de reception :" textFill="#2a3a4a">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="503.0" layoutY="27.0" text="Tel de l'expéditeur :" textFill="#2a3a4a">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="240.0" layoutY="31.0" text="Prénom de l'expéditeur :" textFill="#2a3a4a">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="503.0" layoutY="87.0" text="Valeur :" textFill="#2a3a4a">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="238.0" layoutY="91.0" text="Description :" textFill="#2a3a4a">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <HBox alignment="CENTER" layoutX="84.0" layoutY="350.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Button fx:id="btnAnnuler" mnemonicParsing="false" onAction="#annuler" prefHeight="32.0" prefWidth="68.0" style="-fx-background-color: #a82400;" text="Annuler" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnAnnulerFermer" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#annulerFermer" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #a82;" text="Valider et Fermer" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnValider" alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" onAction="#valider" prefHeight="33.0" prefWidth="72.0" style="-fx-background-color: darkgreen;" text="Valider" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="32.0" prefWidth="517.0" spacing="15.0" style="-fx-background-color: #2a3a4a; -fx-background-radius: 25;" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Code :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="codeColis" layoutX="10.0" layoutY="10.0" text="Label" textFill="#a82400">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets left="50.0" right="50.0" top="15.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+</BorderPane>

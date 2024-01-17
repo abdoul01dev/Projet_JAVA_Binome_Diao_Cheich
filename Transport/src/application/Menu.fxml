@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -13,13 +14,19 @@
                <font>
                   <Font name="Trebuchet MS Bold" size="20.0" />
                </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="HOME" />
+               </graphic>
             </Button>
             <Button fx:id="btnBil" cache="true" cacheHint="SPEED" layoutX="-37.0" layoutY="96.0" mnemonicParsing="false" onAction="#biellet" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Billeterie" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="84.0">
                <font>
                   <Font name="Trebuchet MS Bold" size="20.0" />
                </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="TICKET" />
+               </graphic>
             </Button>
-            <Button fx:id="btnColis" layoutX="-40.0" layoutY="160.0" mnemonicParsing="false" onAction="#colis" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Colis" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="134.0">
+            <Button fx:id="btnColis" layoutX="-40.0" layoutY="160.0" mnemonicParsing="false" onAction="#colis" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Colis/Couriers" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="134.0">
                <font>
                   <Font name="Trebuchet MS Bold" size="20.0" />
                </font>
@@ -34,20 +41,26 @@
                   <Font name="Trebuchet MS Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="btnUsers" layoutX="-42.0" layoutY="288.0" mnemonicParsing="false" onAction="#stat" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Utilisateurs" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="284.0">
+            <Button fx:id="btnUsers" layoutX="-42.0" layoutY="288.0" mnemonicParsing="false" onAction="#user" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Utilisateurs" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="284.0">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="USERS" />
+               </graphic>
+            </Button>
+            <Button fx:id="btnProg" layoutX="-30.0" layoutY="361.0" mnemonicParsing="false" onAction="#program" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Programmes" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="184.0">
                <font>
                   <Font name="Trebuchet MS Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="btnQuit1" layoutX="-30.0" layoutY="361.0" mnemonicParsing="false" onAction="#quitter" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Lignes" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="184.0">
+            <Button fx:id="btnParam" layoutX="-30.0" layoutY="419.0" mnemonicParsing="false" onAction="#param" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Paramètres" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="334.0">
                <font>
                   <Font name="Trebuchet MS Bold" size="20.0" />
                </font>
-            </Button>
-            <Button fx:id="btnQuit11" layoutX="-30.0" layoutY="419.0" mnemonicParsing="false" onAction="#quitter" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Paramètres" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="334.0">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="20.0" />
-               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="GEARS" />
+               </graphic>
             </Button>
          </children>
       </AnchorPane>

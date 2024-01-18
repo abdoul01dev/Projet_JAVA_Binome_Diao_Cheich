@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GroupeController">
+   <center>
+      <VBox prefHeight="264.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="360.0" spacing="15.0" style="-fx-background-radius: 25; -fx-background-color: #2a3a4a;">
+               <children>
+                  <Label text="IDENTIFIANT DU GROUPE :" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="IdLabel" text="Label" textFill="#a82400">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="100.0" right="100.0" top="20.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="600.0" spacing="15.0">
+               <children>
+                  <TextField fx:id="NomGroupe" prefHeight="29.0" prefWidth="270.0" promptText="Nom">
+                     <font>
+                        <Font name="Trebuchet MS" size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="DescriptionGroupe" prefHeight="29.0" prefWidth="268.0" promptText="Description">
+                     <font>
+                        <Font name="Trebuchet MS" size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <JFXButton fx:id="btnAnnulerG" onAction="#AnnulerG" style="-fx-background-color: #a82400; -fx-background-radius: 10;" text="Annuler" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="REMOVE" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnVF" layoutX="212.0" layoutY="45.0" onAction="#ValidF" style="-fx-background-color: #a82; -fx-background-radius: 10;" text="Valider et Fermer" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnValid" layoutX="222.0" layoutY="45.0" onAction="#Valide" style="-fx-background-color: darkgreen; -fx-background-radius: 10;" text="Valider" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="CHECK" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -10,58 +10,70 @@
    <left>
       <AnchorPane prefHeight="512.0" prefWidth="181.0" style="-fx-background-color: #2a3a4a;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="brnAc" layoutX="-36.0" layoutY="34.0" mnemonicParsing="false" onAction="#accueil" prefHeight="49.0" prefWidth="226.0" style="-fx-background-radius: 30; -fx-background-color: #3a4a;" text="Accueil" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="34.0">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="20.0" />
-               </font>
+            <JFXButton fx:id="brnAc" alignment="BASELINE_LEFT" buttonType="RAISED" layoutY="65.0" onAction="#accueil" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: #2a3a4a;" stylesheets="@application.css" text="Tableau de Bord" textFill="WHITE">
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" glyphName="HOME" />
+                  <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" text="" />
                </graphic>
-            </Button>
-            <Button fx:id="btnBil" cache="true" cacheHint="SPEED" layoutX="-37.0" layoutY="96.0" mnemonicParsing="false" onAction="#biellet" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Billeterie" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="84.0">
                <font>
-                  <Font name="Trebuchet MS Bold" size="20.0" />
+                  <Font name="System Bold" size="21.0" />
                </font>
+            </JFXButton>
+            <JFXButton fx:id="btnBil" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="1.0" layoutY="127.0" onAction="#biellet" prefHeight="44.0" prefWidth="218.0" style="-fx-background-color: #2a3a4a;" stylesheets="@application.css" text="Billeterie" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="TICKET" />
                </graphic>
-            </Button>
-            <Button fx:id="btnColis" layoutX="-40.0" layoutY="160.0" mnemonicParsing="false" onAction="#colis" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Colis/Couriers" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="134.0">
                <font>
-                  <Font name="Trebuchet MS Bold" size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
-            </Button>
-            <Button fx:id="btnStat" layoutX="-42.0" layoutY="223.0" mnemonicParsing="false" onAction="#stat" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Statistiques" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="234.0">
+            </JFXButton>
+            <JFXButton fx:id="btnStat" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="1.0" layoutY="307.0" onAction="#stat" prefHeight="44.0" prefWidth="219.0" style="-fx-background-color: #2a3a4a;" stylesheets="@application.css" text="Comptabilité" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="MONEY" />
+               </graphic>
                <font>
-                  <Font name="Trebuchet MS Bold" size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
-            </Button>
-            <Button fx:id="btnQuit" layoutX="-40.0" layoutY="351.0" mnemonicParsing="false" onAction="#quitter" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Quitter" textFill="#a82400" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="384.0">
+            </JFXButton>
+            <JFXButton fx:id="btnColis" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="2.0" layoutY="190.0" onAction="#colis" prefHeight="44.0" prefWidth="216.0" style="-fx-background-color: #2a3a4a;" stylesheets="@application.css" text="Colis/Courrier" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="ENVELOPE" />
+               </graphic>
                <font>
-                  <Font name="Trebuchet MS Bold" size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
-            </Button>
-            <Button fx:id="btnUsers" layoutX="-42.0" layoutY="288.0" mnemonicParsing="false" onAction="#user" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Utilisateurs" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="284.0">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="20.0" />
-               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnUsers" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="3.0" layoutY="360.0" onAction="#user" prefHeight="44.0" prefWidth="216.0" style="-fx-background-color: #2a3a4a;" stylesheets="@application.css" text="Utilisateurs" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="USERS" />
                </graphic>
-            </Button>
-            <Button fx:id="btnProg" layoutX="-30.0" layoutY="361.0" mnemonicParsing="false" onAction="#program" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Programmes" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="184.0">
                <font>
-                  <Font name="Trebuchet MS Bold" size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
-            </Button>
-            <Button fx:id="btnParam" layoutX="-30.0" layoutY="419.0" mnemonicParsing="false" onAction="#param" prefHeight="49.0" prefWidth="237.0" style="-fx-background-radius: 30; -fx-background-color: #2a3a4a;" text="Paramètres" textFill="WHITE" AnchorPane.leftAnchor="-36.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="334.0">
+            </JFXButton>
+            <JFXButton fx:id="btnProg" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="2.0" layoutY="252.0" onAction="#program" prefHeight="45.0" prefWidth="217.0" style="-fx-background-color: #2a3a4a;" stylesheets="@application.css" text="Programmes" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="LIST" />
+               </graphic>
                <font>
-                  <Font name="Trebuchet MS Bold" size="20.0" />
+                  <Font name="System Bold" size="21.0" />
                </font>
+            </JFXButton>
+            <JFXButton fx:id="btnParam" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="3.0" layoutY="412.0" onAction="#param" prefHeight="44.0" prefWidth="216.0" style="-fx-background-color: #2a3a4a;" stylesheets="@application.css" text="Parametres" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="GEARS" />
                </graphic>
-            </Button>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnQuit" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="1.0" layoutY="466.0" onAction="#quitter" prefHeight="44.0" prefWidth="216.0" style="-fx-background-color: #2a3a4a;" stylesheets="@application.css" text="Déconnexion" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" />
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
    </left>

@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public class ConnexionControler extends BaseController{
 
@@ -24,7 +26,8 @@ public class ConnexionControler extends BaseController{
 
 	    @FXML
 	    private TextField user;
-
+	    @FXML
+	    private Text dialog;
 		
 
 	    @FXML
@@ -35,7 +38,15 @@ public class ConnexionControler extends BaseController{
 
 	    @FXML
 	    void Connecter(ActionEvent event) {
-	    	getMainApp().afficherPage("Menu.fxml", "Menu",1);
+	    	if(user.getText().equals("Amin")&& pwd.getText().equals("admin"))
+	    		getMainApp().afficherPage("Menu.fxml", "Menu");
+	    	else {
+	    		dialog.setText("Nom d'utilisateur ou mot de passe incorrect");
+	    		dialog.setFill(Color.RED);
+	    	}
+	    		
+	    	
+	    	
            
 	    }
 

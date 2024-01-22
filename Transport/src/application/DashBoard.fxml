@@ -8,68 +8,26 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderpane" prefHeight="486.0" prefWidth="1037.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ColisController">
+<BorderPane fx:id="borderpane" prefHeight="531.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ColisController">
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane layoutY="-3.0" prefHeight="492.0" prefWidth="1037.0">
+            <AnchorPane prefHeight="492.0" prefWidth="1029.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Pane layoutX="24.0" layoutY="65.0" prefHeight="140.0" prefWidth="265.0" style="-fx-background-color: indigo; -fx-border-radius: 15; -fx-border-color: blue; -fx-background-radius: 15;">
-                     <children>
-                        <Label layoutX="16.0" layoutY="108.0" text="Total reservation" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="25.0" prefHeight="17.0" prefWidth="124.0" text="0" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <FontAwesomeIcon fill="WHITE" glyphName="LIST" layoutX="24.0" layoutY="98.0" size="20" />
-                     </children>
-                  </Pane>
-                  <TextField layoutX="399.0" layoutY="18.0" />
-                  <Label layoutX="548.0" layoutY="20.0" text="Recherche">
+                  <TextField layoutX="426.0" layoutY="72.0" />
+                  <Label layoutX="575.0" layoutY="74.0" text="Recherche">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
+                     <graphic>
+                        <FontAwesomeIcon glyphName="SEARCH" size="16" />
+                     </graphic>
                   </Label>
-                  <FontAwesomeIcon glyphName="SEARCH" layoutX="527.0" layoutY="36.0" size="16" />
-                  <Pane layoutX="410.0" layoutY="64.0" prefHeight="140.0" prefWidth="265.0" style="-fx-background-color: indigo; -fx-border-radius: 15; -fx-border-color: blue; -fx-background-radius: 15;">
-                     <children>
-                        <Label layoutX="16.0" layoutY="108.0" prefHeight="27.0" prefWidth="149.0" text="Total Colis" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="25.0" prefHeight="17.0" prefWidth="124.0" text="0" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <FontAwesomeIcon fill="WHITE" glyphName="SEND" layoutX="24.0" layoutY="98.0" size="20" />
-                     </children>
-                  </Pane>
-                  <Pane layoutX="755.0" layoutY="62.0" prefHeight="140.0" prefWidth="265.0" style="-fx-background-color: indigo; -fx-border-radius: 15; -fx-border-color: blue; -fx-background-radius: 15;">
-                     <children>
-                        <Label layoutX="16.0" layoutY="108.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="149.0" text="Total Courriers" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="25.0" prefHeight="17.0" prefWidth="124.0" text="0" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <FontAwesomeIcon fill="WHITE" glyphName="ENVELOPE" layoutX="24.0" layoutY="98.0" size="20" />
-                     </children>
-                  </Pane>
-                  <BarChart layoutX="60.0" layoutY="277.0" prefHeight="267.0" prefWidth="1053.0" title="Evolution des voyages" titleSide="BOTTOM">
+                  <BarChart layoutX="60.0" layoutY="283.0" prefHeight="248.0" prefWidth="1035.0" title="Evolution des voyages" titleSide="BOTTOM" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="300.0">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -77,9 +35,61 @@
                         <NumberAxis side="LEFT" />
                      </yAxis>
                   </BarChart>
+                  <HBox alignment="CENTER" layoutX="20.0" layoutY="70.0" prefHeight="138.0" prefWidth="730.0" spacing="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="120.0">
+                     <children>
+                        <Pane prefHeight="140.0" prefWidth="265.0" style="-fx-background-color: indigo; -fx-border-radius: 15; -fx-border-color: blue; -fx-background-radius: 15;">
+                           <children>
+                              <Label layoutX="16.0" layoutY="108.0" text="Total reservation" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="25.0" prefHeight="17.0" prefWidth="124.0" text="0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIcon fill="WHITE" glyphName="LIST" layoutX="24.0" layoutY="98.0" size="20" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="140.0" prefWidth="265.0" style="-fx-background-color: indigo; -fx-border-radius: 15; -fx-border-color: blue; -fx-background-radius: 15;">
+                           <children>
+                              <Label layoutX="16.0" layoutY="108.0" prefHeight="27.0" prefWidth="149.0" text="Total Colis" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="25.0" prefHeight="17.0" prefWidth="124.0" text="0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIcon fill="WHITE" glyphName="SEND" layoutX="24.0" layoutY="98.0" size="20" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="140.0" prefWidth="265.0" style="-fx-background-color: indigo; -fx-border-radius: 15; -fx-border-color: blue; -fx-background-radius: 15;">
+                           <children>
+                              <Label layoutX="16.0" layoutY="108.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="149.0" text="Total Courriers" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="25.0" prefHeight="17.0" prefWidth="124.0" text="0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIcon fill="WHITE" glyphName="ENVELOPE" layoutX="24.0" layoutY="98.0" size="20" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
          </children>
-      </Pane>
+      </AnchorPane>
    </center>
+   <top>
+      <AnchorPane prefHeight="40.0" prefWidth="1035.0" style="-fx-background-color: #2a3a4a;" BorderPane.alignment="CENTER" />
+   </top>
 </BorderPane>

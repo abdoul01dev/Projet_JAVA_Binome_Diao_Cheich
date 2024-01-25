@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UtilisateurController">
+<BorderPane fx:id="root" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UtilisateursController">
    <center>
       <TabPane prefHeight="400.0" prefWidth="704.0" style="-fx-background-color: #7B7D7D;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
@@ -27,11 +27,11 @@
                      <children>
                         <BorderPane layoutX="7.0" layoutY="2.0" prefHeight="364.0" prefWidth="707.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <center>
-                              <TableView prefHeight="296.0" prefWidth="489.0" BorderPane.alignment="CENTER">
+                              <TableView fx:id="TableGUtilisateur" prefHeight="296.0" prefWidth="489.0" BorderPane.alignment="CENTER">
                                 <columns>
-                                  <TableColumn fx:id="col_id" prefWidth="75.0" text="ID" />
-                                  <TableColumn fx:id="col_nom" prefWidth="213.0" text="Nom" />
-                                    <TableColumn fx:id="col_prenom" prefWidth="200.0" text="Description" />
+                                  <TableColumn fx:id="col_idGUt" prefWidth="75.0" text="ID" />
+                                  <TableColumn fx:id="col_nomGU" prefWidth="213.0" text="Nom" />
+                                    <TableColumn fx:id="col_DescGU" prefWidth="200.0" text="Description" />
                                 </columns>
                                  <BorderPane.margin>
                                     <Insets bottom="20.0" left="5.0" right="20.0" />
@@ -95,7 +95,7 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </JFXButton>
-                                    <JFXButton layoutX="1.0" layoutY="53.0" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: #2a3a4a;" text="Modifier" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="55.0">
+                                    <JFXButton fx:id="btnModifUt" layoutX="1.0" layoutY="53.0" onAction="#modifUtilisateur" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: #2a3a4a;" text="Modifier" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="55.0">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -109,13 +109,14 @@
                               </AnchorPane>
                            </right>
                            <center>
-                              <TableView prefHeight="311.0" prefWidth="472.0" BorderPane.alignment="CENTER">
+                              <TableView fx:id="TableUtilisateur" prefHeight="311.0" prefWidth="472.0" BorderPane.alignment="CENTER">
                                  <columns>
-                                    <TableColumn fx:id="col_id1" prefWidth="75.0" text="ID" />
-                                    <TableColumn fx:id="col_nom1" prefWidth="111.0" text="Nom d'utilisateurs" />
-                                    <TableColumn fx:id="col_prenom1" prefWidth="58.0" text="Mail" />
-                                    <TableColumn fx:id="col_tel1" prefWidth="117.0" text="Mot de passe" />
-                                    <TableColumn fx:id="col_type1" prefWidth="127.0" text="Groupe utilisateur" />
+                                    <TableColumn fx:id="col_idUt" prefWidth="75.0" text="ID" />
+                                    <TableColumn fx:id="col_nomUt" prefWidth="150" text="Nom d'utilisateur" />
+                                    <TableColumn fx:id="col_MailUt" prefWidth="250" text="Mail" />
+                                    <TableColumn fx:id="col_MotPass" prefWidth="120" text="Mot de passe" />
+                                    <TableColumn fx:id="col_GUt" prefWidth="150" text="Groupe utilisateur" />
+                                    <TableColumn fx:id="col_Statut" prefWidth="150" text="Statut" />
                                  </columns>
                                  <BorderPane.margin>
                                     <Insets bottom="20.0" left="5.0" right="20.0" />

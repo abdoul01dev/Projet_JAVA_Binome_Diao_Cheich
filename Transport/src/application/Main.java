@@ -2,14 +2,15 @@ package application;
 	
 import com.jfoenix.controls.JFXButton;
 
+import DataBase.UtilisateurDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import metiers.Utilisateur;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
 
 
 public class Main extends Application {
@@ -21,6 +22,12 @@ public class Main extends Application {
 		this.primaryStage=primaryStage;
 		this.menu=new MenuController<JFXButton>();
 		afficherPage("Connexion.fxml", "Connexion");
+		//Utilisateur user= new Utilisateur("ComptableAbd","diao@gmail.com","comptable");
+		//UtilisateurDAO userDAO=new UtilisateurDAO();
+		//userDAO.create(user);
+		//user=userDAO.find((long) 5);
+		//System.out.println(user.getMail());
+		
 	}
 	
 	//Affichage des pages

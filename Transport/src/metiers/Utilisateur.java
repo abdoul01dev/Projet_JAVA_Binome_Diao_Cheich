@@ -1,21 +1,27 @@
 package metiers;
 
+import java.sql.Date;
+
 public class Utilisateur {
 	private Long id;
 	private String mail;
 	private String nomUt;
 	private String motdepasse;
+	private Long idgroupeUt=1l;
 	private String groupeUt;
-	private String statut;
+	private String statut="innactif";
+	private Date dteCreation;
 	public Utilisateur() {
 	}
-	public Utilisateur(Long id,String mail, String nomUt,String motdepasse,String group,String statut) {
+	public Utilisateur(Long id,String mail, String nomUt,String motdepasse,Long idgroup,String statut ,Date dtCreation) {
 		super();
+		this.id = id;
 		this.mail = mail;
 		this.nomUt=nomUt;
 		this.motdepasse=motdepasse;
-		this.groupeUt=group;
+		this.setIdgroupeUt(idgroup);
 		this.setStatut(statut);
+		this.setDteCreation(dtCreation);
 	}
 	public Utilisateur(Long id, String mail, String nomUt,String motdepasse) {
 		super();
@@ -53,17 +59,29 @@ public class Utilisateur {
 		return "Utilisateur [id=" + id + ", mail=" + mail + ", nom=" + nomUt + ", motdepasse="
 				+ motdepasse + "]";
 	}
-	public String getGroupeUt() {
-		return groupeUt;
-	}
-	public void setGroupeUt(String groupeUt) {
-		this.groupeUt = groupeUt;
-	}
 	public String getStatut() {
 		return statut;
 	}
 	public void setStatut(String statut) {
 		this.statut = statut;
+	}
+	public Date getDteCreation() {
+		return dteCreation;
+	}
+	public void setDteCreation(Date dteCreation) {
+		this.dteCreation = dteCreation;
+	}
+	public Long getIdgroupeUt() {
+		return idgroupeUt;
+	}
+	public void setIdgroupeUt(Long idgroupeUt) {
+		this.idgroupeUt = idgroupeUt;
+	}
+	public String getGroupeUt() {
+		return groupeUt;
+	}
+	public void setGroupeUt(String groupeUt) {
+		this.groupeUt = groupeUt;
 	}
 	
 }

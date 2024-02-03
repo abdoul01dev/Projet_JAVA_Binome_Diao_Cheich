@@ -19,12 +19,14 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 			Statement statement= this.connection.createStatement();
 			
 			
-			 PreparedStatement prepare=connection.prepareStatement("INSERT INTO utilisateurs(Nom_Ut,Mail_Ut,MotPass_Ut) "
-			 		+ "values(?,?,?);");
+			 PreparedStatement prepare=connection.prepareStatement("INSERT INTO utilisateurs(Nom_Ut,Mail_Ut,MotPass_Ut,statut,Date_Creer,ID_GU) "
+			 		+ "values(?,?,?,?,?,?);");
 			 prepare.setString(1, object.getNomUt());
 			 prepare.setString(2, object.getMail());
 			 prepare.setString(3, object.getMotdepasse());
 			 prepare.setString(4, object.getStatut());
+			 prepare.setDate(5, object.getDteCreation());
+			 prepare.setLong(6, object.getIdgroupeUt());
 			 prepare.executeUpdate();
 			 ResultSet result = statement.executeQuery("SELECT ID_Ut FROM utilisateurs ORDER BY ID_Ut DESC LIMIT 1;");
 			 if(result.next()) {
@@ -44,10 +46,11 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 		Utilisateur user=null;
 		try {
 			Statement statement=this.connection.createStatement();
-			ResultSet result=statement.executeQuery("SELECT * FROM utilisateurs WHERE ID_Ut="+id);
+			ResultSet result=statement.executeQuery("SELECT * FROM utilisateurs as U RIGHT JOIN grouputilisateurs as GU ON U.ID_GU=GU.ID_GU  WHERE ID_Ut="+id);
 			if(result.next()) {
 				user=new Utilisateur(id, result.getString("Nom_Ut"), result.getString("Mail_Ut"),
-				result.getString("MotPass_Ut"), null,result.getString("statut"));
+				result.getString("MotPass_Ut"), result.getLong("ID_GU"),result.getString("statut"),result.getDate("Date_Creer"));
+				user.setGroupeUt(result.getString("Role_GU"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -94,7 +97,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 		ResultSet Rs=null;
 		try {
 			Statement statement=this.connection.createStatement();
-			Rs=statement.executeQuery("SELECT * FROM utilisateurs;");
+			Rs=statement.executeQuery("SELECT * FROM utilisateurs as U RIGHT JOIN grouputilisateurs as GU ON U.ID_GU=GU.ID_GU ");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

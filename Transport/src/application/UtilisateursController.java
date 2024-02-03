@@ -1,4 +1,5 @@
 package application;
+import metiers.GpUtilisateur;
 import metiers.Utilisateur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,12 +10,14 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
+import DataBase.DAOfactory;
 import DataBase.UtilisateurDAO;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -33,16 +36,18 @@ import javafx.scene.control.TableColumn;
 
 public class UtilisateursController implements Initializable{
 	public static ObservableList<Utilisateur>ListeUtilisateur=FXCollections.observableArrayList();
+	public static ObservableList<GpUtilisateur>ListeGU=FXCollections.observableArrayList();
 	@FXML
 	private BorderPane root;
+	/*table groupe utilisateur*/
 	@FXML
-	private TableView TableGUtilisateur;
+	private TableView<GpUtilisateur> TableGUtilisateur;
 	@FXML
-	private TableColumn col_idGUt;
+	private TableColumn <GpUtilisateur,Long>col_idGUt;
 	@FXML
-	private TableColumn col_nomGU;
+	private TableColumn<GpUtilisateur,String> col_nomGU;
 	@FXML
-	private TableColumn col_DescGU;
+	private TableColumn<GpUtilisateur,String>  col_DescGU;
 	@FXML
 	private JFXButton btnNgroup;
 	@FXML
@@ -71,6 +76,7 @@ public class UtilisateursController implements Initializable{
 	public void setTableUtilisateur(TableView<Utilisateur> tableUtilisateur) {
 		TableUtilisateur = tableUtilisateur;
 	}
+	/*table utilisateur*/
 	@FXML
 	private TableColumn<Utilisateur,Long> col_idUt;
 	@FXML
@@ -83,6 +89,8 @@ public class UtilisateursController implements Initializable{
 	private TableColumn<Utilisateur,String>  col_GUt;
 	@FXML
 	private TableColumn<Utilisateur,String> col_Statut;
+	@FXML
+	private TableColumn<Utilisateur,String> col_DateCreer;
 	@FXML
 	private ComboBox titreUtil;
 	@FXML
@@ -173,12 +181,14 @@ public class UtilisateursController implements Initializable{
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		col_idUt.setCellValueFactory(new PropertyValueFactory<Utilisateur, Long>("id"));
-		col_nomUt.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("nomUt"));
-		col_MailUt.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("mail"));
-		col_MotPass.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("motdepasse"));
-		col_GUt.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("groupeUt"));
-		col_Statut.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("statut"));
+		/*initialisateion du tableau utilisateur*/
+		col_idUt.setCellValueFactory(new PropertyValueFactory<>("id"));
+		col_nomUt.setCellValueFactory(new PropertyValueFactory<>("nomUt"));
+		col_MailUt.setCellValueFactory(new PropertyValueFactory<>("mail"));
+		col_MotPass.setCellValueFactory(new PropertyValueFactory<>("motdepasse"));
+		col_GUt.setCellValueFactory(new PropertyValueFactory<>("groupeUt"));
+		col_Statut.setCellValueFactory(new PropertyValueFactory<>("statut"));
+		col_DateCreer.setCellValueFactory(new PropertyValueFactory<>("dteCreation"));
 		UtilisateurDAO UserDAO=new UtilisateurDAO();
 		if(UserDAO.findAll()!=null) {
 			ResultSet RS=UserDAO.findAll();
@@ -186,6 +196,7 @@ public class UtilisateursController implements Initializable{
 				while(RS.next()) {
 					long i=RS.getLong(1);
 					ListeUtilisateur.add(UserDAO.find(i));
+					System.out.println(UserDAO.find(i).getGroupeUt());
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -194,7 +205,25 @@ public class UtilisateursController implements Initializable{
 		}
 		TableUtilisateur.setItems(ListeUtilisateur);
 		
-		
+		/*initilisation du tableau groupe utilisateur*/
+		col_idGUt.setCellValueFactory(new PropertyValueFactory<>("id"));
+		col_nomGU.setCellValueFactory(new PropertyValueFactory<>("role"));
+		col_DescGU.setCellValueFactory(new PropertyValueFactory<>("description"));
+		DAOfactory DAOfac= new DAOfactory();
+		if(DAOfac.getGpUtilisateurDAO().findAll()!=null) {
+			ResultSet RS=DAOfac.getGpUtilisateurDAO().findAll();
+			try {
+				while(RS.next()) {
+					long i=RS.getLong(1);
+					ListeGU.add(DAOfac.getGpUtilisateurDAO().find(i));
+					System.out.println(DAOfac.getGpUtilisateurDAO().find(i));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			TableGUtilisateur.setItems(ListeGU);
+		}
 		
 	}
 }

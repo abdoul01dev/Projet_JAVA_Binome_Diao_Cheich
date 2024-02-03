@@ -2,12 +2,14 @@ package application;
 	
 import com.jfoenix.controls.JFXButton;
 
+import DataBase.DAOfactory;
 import DataBase.UtilisateurDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import metiers.Passager;
 import metiers.Utilisateur;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,12 +24,14 @@ public class Main extends Application {
 		this.primaryStage=primaryStage;
 		this.menu=new MenuController<JFXButton>();
 		afficherPage("Connexion.fxml", "Connexion");
-		//Utilisateur user= new Utilisateur("ComptableAbd","diao@gmail.com","comptable");
-		//UtilisateurDAO userDAO=new UtilisateurDAO();
-		//userDAO.create(user);
-		//user=userDAO.find((long) 5);
-		//System.out.println(user.getMail());
-		
+		DAOfactory DAOF=new DAOfactory();
+		Passager P=DAOF.getPassagerDAO().find(1l);
+		System.out.println(P.getId());
+		System.out.println(P.getPrenom());
+		System.out.println(P.getTypeBillet());
+		System.out.println(P.getHeure());
+		System.out.println(P.getDate());
+		System.out.println(P.getDestination());
 	}
 	
 	//Affichage des pages

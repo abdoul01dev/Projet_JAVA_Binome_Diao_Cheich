@@ -1,6 +1,7 @@
 package DataBase;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 
 public abstract  class DAO<T> {
 	public Connection connection=DataBaseConnect.getConnection();
@@ -13,4 +14,5 @@ public abstract  class DAO<T> {
 	//methode pour la suppression
 	public abstract void delete(T object);
 	
+	public abstract ResultSet findAll();
 }

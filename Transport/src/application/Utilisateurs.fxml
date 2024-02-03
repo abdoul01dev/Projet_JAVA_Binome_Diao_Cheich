@@ -117,6 +117,7 @@
                                     <TableColumn fx:id="col_MotPass" prefWidth="120" text="Mot de passe" />
                                     <TableColumn fx:id="col_GUt" prefWidth="150" text="Groupe utilisateur" />
                                     <TableColumn fx:id="col_Statut" prefWidth="150" text="Statut" />
+                                    <TableColumn fx:id="col_DateCreer" prefWidth="150" text="Créer le" />
                                  </columns>
                                  <BorderPane.margin>
                                     <Insets bottom="20.0" left="5.0" right="20.0" />

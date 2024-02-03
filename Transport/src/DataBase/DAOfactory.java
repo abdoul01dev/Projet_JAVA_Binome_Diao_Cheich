@@ -1,0 +1,13 @@
+package DataBase;
+
+public class DAOfactory {
+	public UtilisateurDAO getUtilisateurDAO() {
+		return new UtilisateurDAO();
+	}
+	public GpUtilisateurDAO getGpUtilisateurDAO() {
+		return new GpUtilisateurDAO(); 
+	}
+	public PassagerDAO getPassagerDAO() {
+		return new PassagerDAO();
+	}
+}

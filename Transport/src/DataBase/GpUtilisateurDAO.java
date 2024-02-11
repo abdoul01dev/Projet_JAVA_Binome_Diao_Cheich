@@ -20,9 +20,9 @@ public class GpUtilisateurDAO extends DAO<GpUtilisateur> {
 			 prepare.setString(1, object.getRole());
 			 prepare.setString(2, object.getDescription());
 			 prepare.executeUpdate();
-			 ResultSet result = statement.executeQuery("SELECT ID_Ut FROM grouputilisateurs ORDER BY ID_GU DESC LIMIT 1;");
+			 ResultSet result = statement.executeQuery("SELECT ID_GU FROM grouputilisateurs ORDER BY ID_GU DESC LIMIT 1;");
 			 if(result.next()) {
-				 long ID = result.getLong("ID_UG");
+				 long ID = result.getLong("ID_GU");
 				 object.setId(ID);
 				 object=this.find(ID);
 			}

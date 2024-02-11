@@ -1,5 +1,7 @@
 package application;
 	
+import java.time.LocalDate;
+
 import com.jfoenix.controls.JFXButton;
 
 import DataBase.DAOfactory;
@@ -9,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.util.converter.LocalDateStringConverter;
 import metiers.Passager;
 import metiers.Utilisateur;
 import javafx.scene.Parent;
@@ -23,7 +26,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		this.primaryStage=primaryStage;
 		this.menu=new MenuController<JFXButton>();
-		afficherPage("Connexion.fxml", "Connexion");
+		afficherPage("Menu.fxml", "Connexion");
 		DAOfactory DAOF=new DAOfactory();
 		Passager P=DAOF.getPassagerDAO().find(1l);
 		System.out.println(P.getId());
@@ -32,6 +35,11 @@ public class Main extends Application {
 		System.out.println(P.getHeure());
 		System.out.println(P.getDate());
 		System.out.println(P.getDestination());
+		 LocalDate date = LocalDate.now();
+		DAOF.getPassagerDAO().findPassagerByDate("2024-01-30");
+		
+		System.out.println(date);
+		
 	}
 	
 	//Affichage des pages

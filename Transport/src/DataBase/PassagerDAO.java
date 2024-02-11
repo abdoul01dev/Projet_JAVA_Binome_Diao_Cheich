@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.Date;
 
 import metiers.Passager;
 import metiers.Utilisateur;
@@ -61,6 +63,10 @@ public class PassagerDAO extends DAO<Passager>{
 				passager.setTypeBillet(result.getString("titre"));
 				passager.setDestination(result.getString("Nom_Destination"));
 				passager.setHeure(result.getString("Heure"));
+				passager.setCode(result.getString("Code_Passager"));
+				if(passager.getEtat()==1) {
+					passager.setEtatR("Résolu");
+				}
 				
 			}
 		} catch (SQLException e) {
@@ -84,9 +90,8 @@ public class PassagerDAO extends DAO<Passager>{
 			 prepare.setInt(4, object.getAge());
 			 prepare.setString(5, object.getSexe());
 			 prepare.setString(6, object.getDate());
-			 prepare.setString(7, object.getTypeBillet());
+			 prepare.setLong(7, object.getIdBillet());
 			 prepare.setLong(8, object.getIdDestination());
-			 prepare.setLong(9, object.getDepart());
 			 prepare.executeUpdate();
 			 object=find(object.getId());
 		} catch (SQLException e) {
@@ -116,7 +121,8 @@ public class PassagerDAO extends DAO<Passager>{
 			Statement statement=this.connection.createStatement();
 			Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
 					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
-					+ " INNER JOIN villledestinations ON departs.ID_Destination=villledestinations.ID_Destination ");
+					+ " INNER JOIN villledestinations ON departs.ID_Destination=villledestinations.ID_Destination"
+					+ " WHERE passagers.Type_Passager=1 ;");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -124,5 +130,50 @@ public class PassagerDAO extends DAO<Passager>{
 		return Rs;
 	}
 	
+	public ResultSet findPassagerByDate(String date) {
+		ResultSet Rs=null;
+		try {
+			Statement statement=this.connection.createStatement();
+			Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
+					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
+					+ " INNER JOIN villledestinations ON departs.ID_Destination=villledestinations.ID_Destination"
+					+ " WHERE passagers.Type_Passager=1 AND passagers.Date_voy="+"'"+date+"'"+";");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Rs;
+		
+	}
 	
+	public ResultSet findAllReservation() {
+		ResultSet Rs=null;
+		try {
+			Statement statement=this.connection.createStatement();
+			Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
+					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
+					+ " INNER JOIN villledestinations ON departs.ID_Destination=villledestinations.ID_Destination"
+					+ " WHERE passagers.Type_Passager=2 ;");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Rs;
+	}
+	
+	public ResultSet findReservationByDate(String date) {
+		ResultSet Rs=null;
+		try {
+			Statement statement=this.connection.createStatement();
+			Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
+					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
+					+ " INNER JOIN villledestinations ON departs.ID_Destination=villledestinations.ID_Destination"
+					+ " WHERE passagers.Type_Passager=2 AND passagers.Date_voy="+"'"+date+"'"+";");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Rs;
+		
+	}
 }

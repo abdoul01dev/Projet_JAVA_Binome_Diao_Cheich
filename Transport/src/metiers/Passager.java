@@ -10,8 +10,11 @@ public class Passager extends Peseonne{
 	private Long depart;
 	private Long idBillet;
 	private String date;
-	String destination;
-	String heure;
+	private String destination;
+	private String heure;
+	private Integer etat=1;
+	private String etatR;
+	private String code;
 	public Passager(Long id, String nom, String prenom, String sexe, int age, String numTel, Long idBillet,
 			Long destination, Double montant, Long depart, String date) {
 		super(id, nom, prenom, sexe, age, numTel);
@@ -21,6 +24,8 @@ public class Passager extends Peseonne{
 		this.depart = depart;
 		this.date = date;
 	}
+	//constructeur basé sur le précedent pour prendre en compte la reservation
+	//public Passager()
 	public String getTypeBillet() {
 		return typeBillet;
 	}
@@ -77,6 +82,24 @@ public class Passager extends Peseonne{
 	}
 	public void setDestination(String destination) {
 		this.destination = destination;
+	}
+	public Integer getEtat() {
+		return etat;
+	}
+	public void setEtat(Integer etat) {
+		this.etat = etat;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getEtatR() {
+		return etatR;
+	}
+	public void setEtatR(String etatR) {
+		this.etatR = etatR;
 	}
 	
 }

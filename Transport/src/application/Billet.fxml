@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -18,7 +20,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BilletController">
+<BorderPane prefHeight="518.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BilletController">
    <center>
       <TabPane prefHeight="400.0" prefWidth="704.0" style="-fx-background-color: #7B7D7D;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
@@ -26,9 +28,9 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <BorderPane layoutX="7.0" layoutY="2.0" prefHeight="364.0" prefWidth="707.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <BorderPane layoutX="7.0" layoutY="2.0" prefHeight="364.0" prefWidth="693.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <center>
-                              <TableView fx:id="tablePassager" prefHeight="296.0" prefWidth="489.0" BorderPane.alignment="CENTER">
+                              <TableView fx:id="tablePassager" maxHeight="-Infinity" onSort="#OK" prefHeight="420.0" prefWidth="526.0" BorderPane.alignment="TOP_CENTER">
                                 <columns>
                                   <TableColumn fx:id="col_id" prefWidth="60.0" text="ID" />
                                   <TableColumn fx:id="col_nom" prefWidth="160.0" text="Nom" />
@@ -45,7 +47,7 @@
                               </TableView>
                            </center>
                            <right>
-                              <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="136.0" BorderPane.alignment="CENTER">
+                              <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="136.0" BorderPane.alignment="CENTER">
                                  <BorderPane.margin>
                                     <Insets />
                                  </BorderPane.margin>
@@ -71,11 +73,12 @@
                            <top>
                               <HBox alignment="CENTER" prefHeight="36.0" prefWidth="650.0" spacing="5.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <ImageView fitHeight="17.0" fitWidth="21.0">
-                                       <image>
-                                          <Image url="@../../../../Downloads/edit-1103598_640.png" />
-                                       </image>
-                                    </ImageView>
+                                    <DatePicker fx:id="calend" promptText="Les passagers du : " HBox.hgrow="NEVER" />
+                                    <JFXButton fx:id="btnOK" onAction="#OK" style="-fx-background-color: white; -fx-background-radius: 20;" text="OK" textFill="#165db9">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </JFXButton>
                                     <ComboBox fx:id="combTitrePass" prefWidth="150.0" promptText="Titre" style="-fx-background-color: #fff; -fx-background-radius: 20;" />
                                     <TextField fx:id="champRechPass" prefHeight="25.0" prefWidth="264.0" promptText="Recherche..." style="-fx-background-color: #fff; -fx-background-radius: 20;" />
                                     <Button fx:id="btnRechPass" mnemonicParsing="false" onAction="#recherchePass" style="-fx-background-color: #ffaa33; -fx-background-radius: 25;" text="Rechercher" textFill="WHITE" />
@@ -88,6 +91,38 @@
                                  </padding>
                               </HBox>
                            </top>
+                           <bottom>
+                              <HBox alignment="CENTER" prefHeight="175.0" prefWidth="687.0" spacing="40.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ImageView fitHeight="200.0" fitWidth="195.0">
+                                       <image>
+                                          <Image url="@../../../../../Desktop/passenger-icon-4.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <TableView maxWidth="-Infinity" prefHeight="194.0" prefWidth="520.0" style="-fx-background-color: #333366;">
+                                       <columns>
+                                          <TableColumn fx:id="lecDestination" prefWidth="200" text="Destination" />
+                                          <TableColumn fx:id="lecHeure" prefWidth="115" text="Heure de depart" />
+                                          <TableColumn prefWidth="200" text="Nombre de places">
+                                             <columns>
+                                                <TableColumn fx:id="lecPlcsDispo" prefWidth="75.0" style="-fx-background-color: green;" text="En cours" />
+                                                <TableColumn fx:id="lecPlcsVendu" prefWidth="75.0" style="-fx-background-color: orange;" text="Annulées" />
+                                                <TableColumn fx:id="lecPlcsTotal" prefWidth="75.0" style="-fx-background-color: red;" text="Total" />
+                                             </columns>
+                                          </TableColumn>
+                                       </columns>
+                                    </TableView>
+                                    <ImageView fitHeight="200.0" fitWidth="200.0">
+                                       <image>
+                                          <Image url="@../../../../../Downloads/salle-dattente.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </HBox>
+                           </bottom>
                         </BorderPane>
                      </children>
                   </AnchorPane>
@@ -120,7 +155,7 @@
                               </AnchorPane>
                            </right>
                            <center>
-                              <TableView fx:id="tableR" prefHeight="311.0" prefWidth="472.0" BorderPane.alignment="CENTER">
+                              <TableView fx:id="tableR" maxHeight="-Infinity" prefHeight="420.0" prefWidth="600.0" BorderPane.alignment="TOP_RIGHT">
                                  <columns>
                                     <TableColumn fx:id="col_id1" prefWidth="75.0" text="ID" />
                                     <TableColumn fx:id="col_nom1" prefWidth="75.0" text="Nom" />
@@ -129,9 +164,8 @@
                                     <TableColumn fx:id="col_dest1" prefWidth="75.0" text="Destination" />
                                     <TableColumn fx:id="col_type1" prefWidth="75.0" text="Type de billet " />
                                     <TableColumn fx:id="col_motant1" prefWidth="75.0" text="Motant" />
-                                    <TableColumn prefWidth="75.0" text="Code de départ" />
-                                    <TableColumn prefWidth="75.0" text="Date de voyage" />
-                                    <TableColumn fx:id="col_dateLim" prefWidth="75.0" text="Date de peramtion" />
+                                    <TableColumn fx:id="col_date" prefWidth="75.0" text="Date de voyage" />
+                                    <TableColumn fx:id="col_Hdepart1" prefWidth="75.0" text="Heure de départ" />
                                     <TableColumn fx:id="col_etat" prefWidth="75.0" text="Etat " />
                                  </columns>
                                  <BorderPane.margin>
@@ -149,6 +183,12 @@
                            <top>
                               <HBox alignment="CENTER" prefHeight="36.0" prefWidth="650.0" spacing="5.0" BorderPane.alignment="CENTER">
                                  <children>
+                                    <DatePicker fx:id="calend1" promptText="Les passagers du : " />
+                                    <JFXButton fx:id="btnOK1" onAction="#OK" style="-fx-background-color: white; -fx-background-radius: 20;" text="OK" textFill="#165db9">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </JFXButton>
                                     <ComboBox fx:id="combRechReserv" prefWidth="150.0" promptText="Titre" style="-fx-background-color: #fff; -fx-background-radius: 20;" />
                                     <TextField fx:id="champRechReserv" onAction="#rechercheReserv" prefHeight="25.0" prefWidth="264.0" promptText="Recherche..." style="-fx-background-color: #fff; -fx-background-radius: 20;" />
                                     <Button fx:id="btnRechReserv" mnemonicParsing="false" onAction="#rechercheReserv" style="-fx-background-radius: 25; -fx-background-color: #ffaa33;" text="Rechercher" textFill="WHITE" />
@@ -158,6 +198,38 @@
                                  </padding>
                               </HBox>
                            </top>
+                           <bottom>
+                              <HBox alignment="CENTER" prefHeight="175.0" prefWidth="687.0" spacing="40.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ImageView fitHeight="200.0" fitWidth="195.0">
+                                       <image>
+                                          <Image url="@../../../../../Desktop/passenger-icon-4.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <TableView maxWidth="-Infinity" prefHeight="194.0" prefWidth="520.0" style="-fx-background-color: #333366;">
+                                       <columns>
+                                          <TableColumn fx:id="lecDestination1" prefWidth="200" text="Destination" />
+                                          <TableColumn fx:id="lecHeure1" prefWidth="115" text="Heure de depart" />
+                                          <TableColumn prefWidth="200" text="Nombre de places">
+                                             <columns>
+                                                <TableColumn fx:id="lecPlcsDispo1" prefWidth="75.0" style="-fx-background-color: green;" text="Disponibles" />
+                                                <TableColumn fx:id="lecPlcsVendu1" prefWidth="75.0" style="-fx-background-color: orange;" text="Vendues" />
+                                                <TableColumn fx:id="lecPlcsTotal1" prefWidth="75.0" style="-fx-background-color: red;" text="Total" />
+                                             </columns>
+                                          </TableColumn>
+                                       </columns>
+                                    </TableView>
+                                    <ImageView fitHeight="200.0" fitWidth="200.0">
+                                       <image>
+                                          <Image url="@../../../../../Downloads/salle-dattente.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </HBox>
+                           </bottom>
                         </BorderPane>
                      </children>
                   </AnchorPane>

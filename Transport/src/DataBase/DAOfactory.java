@@ -10,4 +10,13 @@ public class DAOfactory {
 	public PassagerDAO getPassagerDAO() {
 		return new PassagerDAO();
 	}
+	public DestinationDAO getDestinationDAO() {
+		return new DestinationDAO();
+	}
+	public DepartDAO getDepartDAO() {
+		return new DepartDAO();
+	}
+	public BilletDAO getBilletDAO() {
+		return new BilletDAO();
+	}
 }

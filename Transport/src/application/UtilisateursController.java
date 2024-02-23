@@ -196,7 +196,7 @@ public class UtilisateursController implements Initializable{
 				while(RS.next()) {
 					long i=RS.getLong(1);
 					ListeUtilisateur.add(UserDAO.find(i));
-					System.out.println(UserDAO.find(i).getGroupeUt());
+					//System.out.println(UserDAO.find(i).getGroupeUt());
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

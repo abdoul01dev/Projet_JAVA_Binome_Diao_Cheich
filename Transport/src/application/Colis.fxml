@@ -39,27 +39,28 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TableView layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="35.0">
+                                          <TableView fx:id="tableColisSortant" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="35.0">
                                             <columns>
-                                              <TableColumn prefWidth="75.0" text="ID" />
-                                              <TableColumn prefWidth="75.0" text="Expéditeur">
+                                              <TableColumn fx:id="col_id10" prefWidth="75.0" text="ID" />
+                                              <TableColumn fx:id="col_expedit10" prefWidth="75.0" text="Expéditeur">
                                                    <columns>
-                                                      <TableColumn prefWidth="75.0" text="Nom" />
-                                                      <TableColumn prefWidth="75.0" text="Prénom" />
-                                                      <TableColumn prefWidth="75.0" text="Téléphone" />
+                                                      <TableColumn fx:id="col_nom10" prefWidth="75.0" text="Nom" />
+                                                      <TableColumn fx:id="col_prenom10" prefWidth="75.0" text="Prénom" />
+                                                      <TableColumn fx:id="col_num10" prefWidth="75.0" text="Téléphone" />
                                                    </columns></TableColumn>
-                                                <TableColumn prefWidth="121.0" text="Date de reception" />
-                                                <TableColumn prefWidth="89.0" text="Valeur" />
-                                                <TableColumn prefWidth="89.0" text="Description" />
+                                                <TableColumn fx:id="col_date_rep1" prefWidth="121.0" text="Date de reception" />
+                                                <TableColumn fx:id="col_valeur1" prefWidth="89.0" text="Valeur" />
+                                                <TableColumn fx:id="col_descrip1" prefWidth="89.0" text="Description" />
                                                 <TableColumn prefWidth="89.0" text="Déstinataire">
                                                    <columns>
-                                                      <TableColumn prefWidth="75.0" text="Nom" />
-                                                      <TableColumn prefWidth="75.0" text="Prénom" />
-                                                      <TableColumn prefWidth="75.0" text="Téléphone" />
+                                                      <TableColumn fx:id="col_nom11" prefWidth="75.0" text="Nom" />
+                                                      <TableColumn fx:id="col_prenom11" prefWidth="75.0" text="Prénom" />
+                                                      <TableColumn fx:id="col_num11" prefWidth="75.0" text="Téléphone" />
                                                    </columns>
                                                 </TableColumn>
-                                                <TableColumn prefWidth="89.0" text="Destination" />
-                                                <TableColumn prefWidth="89.0" text="Date de sortie" />
+                                                <TableColumn fx:id="col_dest10" prefWidth="89.0" text="Destination" />
+                                                <TableColumn fx:id="col_date_sort10" prefWidth="89.0" text="Date de sortie" />
+                                                <TableColumn fx:id="col_frais10" prefWidth="89.0" text="Frais" />
                                             </columns>
                                           </TableView>
                                           <AnchorPane prefHeight="302.0" prefWidth="99.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -87,26 +88,27 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TableView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="35.0">
+                                          <TableView fx:id="tableColisEntrant" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="35.0">
                                              <columns>
-                                                <TableColumn prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="col_id20" prefWidth="75.0" text="ID" />
                                                 <TableColumn prefWidth="75.0" text="Expéditeur">
                                                    <columns>
-                                                      <TableColumn prefWidth="75.0" text="Nom" />
-                                                      <TableColumn prefWidth="75.0" text="Prénom" />
-                                                      <TableColumn prefWidth="75.0" text="Téléphone" />
+                                                      <TableColumn fx:id="col_nom20" prefWidth="75.0" text="Nom" />
+                                                      <TableColumn fx:id="col_prenom20" prefWidth="75.0" text="Prénom" />
+                                                      <TableColumn fx:id="col_num20" prefWidth="75.0" text="Téléphone" />
                                                    </columns></TableColumn>
-                                                <TableColumn prefWidth="121.0" text="Date d'entrée" />
-                                                <TableColumn prefWidth="89.0" text="Valeur" />
-                                                <TableColumn prefWidth="89.0" text="Provenance" />
-                                                <TableColumn prefWidth="89.0" text="Description" />
-                                                <TableColumn prefWidth="89.0" text="Destinataire">
+                                                <TableColumn fx:id="col_date_entrer20" prefWidth="121.0" text="Date d'entrée" />
+                                                <TableColumn fx:id="col_valeur20" prefWidth="89.0" text="Valeur" />
+                                                <TableColumn fx:id="col_provenace" prefWidth="89.0" text="Provenance" />
+                                                <TableColumn fx:id="col_description" prefWidth="89.0" text="Description" />
+                                                <TableColumn fx:id="col_destin20" prefWidth="89.0" text="Destinataire">
                                                    <columns>
-                                                      <TableColumn prefWidth="75.0" text="Nom" />
-                                                      <TableColumn prefWidth="75.0" text="Prénom" />
-                                                      <TableColumn prefWidth="81.0" text="téléphone" />
+                                                      <TableColumn fx:id="col_nom21" prefWidth="75.0" text="Nom" />
+                                                      <TableColumn fx:id="col_prenom21" prefWidth="75.0" text="Prénom" />
+                                                      <TableColumn fx:id="col_num21" prefWidth="81.0" text="téléphone" />
                                                    </columns></TableColumn>
-                                                <TableColumn prefWidth="89.0" text="Date de retrait" />
+                                                <TableColumn fx:id="col_dateRetrait21" prefWidth="89.0" text="Date de retrait" />
+                                                <TableColumn fx:id="col_frais20" prefWidth="89.0" text="Frais" />
                                              </columns>
                                           </TableView>
                                           <AnchorPane prefHeight="302.0" prefWidth="99.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -146,26 +148,27 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TableView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="35.0">
+                                          <TableView fx:id="TablecourierSortant" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="35.0">
                                              <columns>
-                                                <TableColumn prefWidth="75.0" text="ID" />
-                                                <TableColumn prefWidth="75.0" text="Expéditeur">
+                                                <TableColumn fx:id="col_id31" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="col_expedit31" prefWidth="75.0" text="Expéditeur">
                                                    <columns>
-                                                      <TableColumn prefWidth="75.0" text="Nom" />
-                                                      <TableColumn prefWidth="75.0" text="Prénom" />
-                                                      <TableColumn prefWidth="75.0" text="Téléphone" />
+                                                      <TableColumn fx:id="col_nom31" prefWidth="75.0" text="Nom" />
+                                                      <TableColumn fx:id="col_prenom31" prefWidth="75.0" text="Prénom" />
+                                                      <TableColumn fx:id="col_num31" prefWidth="75.0" text="Téléphone" />
                                                    </columns>
                                                 </TableColumn>
-                                                <TableColumn prefWidth="121.0" text="Date de reception" />
-                                                <TableColumn prefWidth="89.0" text="Déstinataire">
+                                                <TableColumn fx:id="col_dateRecep31" prefWidth="121.0" text="Date de reception" />
+                                                <TableColumn fx:id="col_destin31" prefWidth="89.0" text="Déstinataire">
                                                    <columns>
-                                                      <TableColumn prefWidth="75.0" text="Nom" />
-                                                      <TableColumn prefWidth="75.0" text="Prénom" />
-                                                      <TableColumn prefWidth="75.0" text="Téléphone" />
+                                                      <TableColumn fx:id="col_nom32" prefWidth="75.0" text="Nom" />
+                                                      <TableColumn fx:id="col_prenom32" prefWidth="75.0" text="Prénom" />
+                                                      <TableColumn fx:id="col_num32" prefWidth="75.0" text="Téléphone" />
                                                    </columns>
                                                 </TableColumn>
-                                                <TableColumn prefWidth="89.0" text="Destination" />
-                                                <TableColumn prefWidth="89.0" text="Date de sortie" />
+                                                <TableColumn fx:id="col_destin31" prefWidth="89.0" text="Destination" />
+                                                <TableColumn fx:id="col_dateSortie31" prefWidth="89.0" text="Date de sortie" />
+                                                 <TableColumn fx:id="col_frais30" prefWidth="89.0" text="Frais" />
                                              </columns>
                                           </TableView>
                                           <AnchorPane prefHeight="302.0" prefWidth="99.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -192,26 +195,26 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TableView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="35.0">
+                                          <TableView fx:id="TableCourierEntrant" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="35.0">
                                              <columns>
-                                                <TableColumn prefWidth="75.0" text="ID" />
-                                                <TableColumn prefWidth="75.0" text="Expéditeur">
+                                                <TableColumn fx:id="col_id41" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="col_expedit41" prefWidth="75.0" text="Expéditeur">
                                                    <columns>
-                                                      <TableColumn prefWidth="75.0" text="Nom" />
-                                                      <TableColumn prefWidth="75.0" text="Prénom" />
-                                                      <TableColumn prefWidth="75.0" text="Téléphone" />
+                                                      <TableColumn fx:id="col_nom41" prefWidth="75.0" text="Nom" />
+                                                      <TableColumn fx:id="col_prenom41" prefWidth="75.0" text="Prénom" />
+                                                      <TableColumn fx:id="clo_num41" prefWidth="75.0" text="Téléphone" />
                                                    </columns>
                                                 </TableColumn>
-                                                <TableColumn prefWidth="121.0" text="Date d'entrée" />
-                                                <TableColumn prefWidth="89.0" text="Provenance" />
-                                                <TableColumn prefWidth="89.0" text="Destinataire">
+                                                <TableColumn fx:id="col_dateEntre41" prefWidth="121.0" text="Date d'entrée" />
+                                                <TableColumn fx:id="col_dest41" prefWidth="89.0" text="Destinataire">
                                                    <columns>
-                                                      <TableColumn prefWidth="75.0" text="Nom" />
-                                                      <TableColumn prefWidth="75.0" text="Prénom" />
-                                                      <TableColumn prefWidth="81.0" text="téléphone" />
+                                                      <TableColumn fx:id="col_nom42" prefWidth="75.0" text="Nom" />
+                                                      <TableColumn fx:id="col_prenom42" prefWidth="75.0" text="Prénom" />
+                                                      <TableColumn fx:id="col_num42" prefWidth="81.0" text="téléphone" />
                                                    </columns>
                                                 </TableColumn>
-                                                <TableColumn prefWidth="89.0" text="Date de retrait" />
+                                                <TableColumn fx:id="col_proven41" prefWidth="89.0" text="Provenance" />
+                                                <TableColumn fx:id="col_dateRetrai41" prefWidth="89.0" text="Date de retrait" />
                                              </columns>
                                           </TableView>
                                           <AnchorPane layoutX="923.0" layoutY="-10.0" prefHeight="302.0" prefWidth="99.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

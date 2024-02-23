@@ -2,12 +2,16 @@ package outils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 
 
-public class Outils<E> {
-	public boolean Charger(ResultSet bdData,ObservableList<E> liste ){
+public class Outils {
+	public boolean Charger(ResultSet bdData,ObservableList liste ){
 		if(bdData!=null) {
 			try {
 				while(bdData.next()) {
@@ -22,5 +26,23 @@ public class Outils<E> {
 		return false;
 		
 	}
+	
+	public static boolean confirmer(String message) {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        
+        ButtonType buttonTypeYes = new ButtonType("Oui");
+        ButtonType buttonTypeNo = new ButtonType("Non");
+        alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == buttonTypeYes) {
+        	return true;
+        } else {
+        	return false;
+        }
+    }
 
 }

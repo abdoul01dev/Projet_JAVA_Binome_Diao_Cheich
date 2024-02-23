@@ -54,7 +54,7 @@
                   <TextField fx:id="nomExp" layoutX="429.0" layoutY="49.0" prefWidth="180.0" promptText="nom de l'expéditeur" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="45.0" />
                   <TextField fx:id="PrenomExp" layoutX="238.0" layoutY="51.0" prefWidth="180.0" promptText="prénom de l'expéditeur" AnchorPane.topAnchor="51.0" />
                   <DatePicker fx:id="dateRecep" layoutX="7.0" layoutY="103.0" prefWidth="180.0" promptText="date de réception" AnchorPane.leftAnchor="15.0" />
-                  <TextField fx:id="destination" layoutX="238.0" layoutY="108.0" prefWidth="180.0" promptText="description du colis" AnchorPane.topAnchor="108.0" />
+                  <TextField fx:id="description" layoutX="238.0" layoutY="108.0" prefWidth="180.0" promptText="description du colis" AnchorPane.topAnchor="108.0" />
                   <TextField fx:id="valeur" layoutX="421.0" layoutY="103.0" prefWidth="180.0" promptText="valeur du colis" AnchorPane.rightAnchor="15.0" />
                   <TextField fx:id="TelExp" prefHeight="25.0" prefWidth="180.0" promptText="téléphone de l'expéditeur" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="45.0" />
                   <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="99.0" text="Expédition" textAlignment="CENTER" textFill="#a82400">

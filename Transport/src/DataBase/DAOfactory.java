@@ -1,5 +1,7 @@
 package DataBase;
 
+import metiers.Courrier;
+
 public class DAOfactory {
 	public UtilisateurDAO getUtilisateurDAO() {
 		return new UtilisateurDAO();
@@ -18,5 +20,11 @@ public class DAOfactory {
 	}
 	public BilletDAO getBilletDAO() {
 		return new BilletDAO();
+	}
+	public ColisDAO getColisDAO(){
+		return new ColisDAO();
+	}
+	public CourierDAO getCourierDAO() {
+		return new CourierDAO();
 	}
 }

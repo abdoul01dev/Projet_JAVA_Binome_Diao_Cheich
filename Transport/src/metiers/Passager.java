@@ -13,9 +13,10 @@ public class Passager extends Peseonne{
 	private String destination;
 	private String heure;
 	private Integer etat=1;
+	private Integer typePassager;
 	private String etatR;
 	private String code;
-	public Passager(Long id, String nom, String prenom, String sexe, int age, String numTel, Long idBillet,
+	public Passager(Long id, String nom, String prenom, String sexe, Integer age, String numTel, Long idBillet,
 			Long destination, Double montant, Long depart, String date) {
 		super(id, nom, prenom, sexe, age, numTel);
 		this.idBillet =idBillet;
@@ -100,6 +101,12 @@ public class Passager extends Peseonne{
 	}
 	public void setEtatR(String etatR) {
 		this.etatR = etatR;
+	}
+	public Integer getTypePassager() {
+		return typePassager;
+	}
+	public void setTypePassager(Integer typePassager) {
+		this.typePassager = typePassager;
 	}
 	
 }

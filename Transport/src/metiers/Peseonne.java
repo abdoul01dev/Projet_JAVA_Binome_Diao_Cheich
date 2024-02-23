@@ -5,9 +5,10 @@ public class Peseonne {
 	private String nom;
 	private String prenom;
 	private String sexe;
-	private int age;
+	private Integer age;
 	private String numTel;
-	public Peseonne(Long id, String nom, String prenom, String sexe, int age,String numTel) {
+	private String ref;
+	public Peseonne(Long id, String nom, String prenom, String sexe, Integer age,String numTel) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -40,10 +41,10 @@ public class Peseonne {
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
 	}
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 	public String getNumTel() {
@@ -51,6 +52,12 @@ public class Peseonne {
 	}
 	public void setNumTel(String numTel) {
 		this.numTel = numTel;
+	}
+	public String getRef() {
+		return ref;
+	}
+	public void setRef(String ref) {
+		this.ref = ref;
 	}
 	
 }

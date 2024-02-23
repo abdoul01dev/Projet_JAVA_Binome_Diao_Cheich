@@ -19,20 +19,22 @@ public class PassagerDAO extends DAO<Passager>{
 			Statement statement= this.connection.createStatement();
 			
 			
-			 PreparedStatement prepare=connection.prepareStatement("INSERT INTO `passagers` (`ID_Passager`, `Nom_Pasager`, "
-			 		+ "`prenom_Passager`, `Tel_Pasager`, `Age_Passager`, `Sexe_Passager`, `Date_voy`, `ID_billet`, `ID_Destination`, `ID_Depart`)"
-			 		+ " VALUES (?,?,?,?,?,?,?,?,?);");
-			 prepare.setString(1, object.getNom());
-			 prepare.setString(2, object.getPrenom());
-			 prepare.setString(3, object.getNumTel());
-			 prepare.setInt(4, object.getAge());
-			 prepare.setString(5, object.getSexe());
-			 prepare.setString(6, object.getDate());
-			 prepare.setString(7, object.getTypeBillet());
-			 prepare.setLong(8, object.getIdDestination());
-			 prepare.setLong(9, object.getDepart());
+			 PreparedStatement prepare=connection.prepareStatement("INSERT INTO `passagers` (`Code_Passager`, `Nom_Passager`, "
+			 		+ "`prenom_Passager`, `Tel_Passager`, `Age_Passager`, `Sexe_Passager`, `Date_voy`, `ID_billet`,`Type_Passager`, `ID_Destination`, `ID_Depart`)"
+			 		+ " VALUES (?,?,?,?,?,?,?,?,?,?,?);");
+			 prepare.setString(1, object.getCode());
+			 prepare.setString(2, object.getNom());
+			 prepare.setString(3, object.getPrenom());
+			 prepare.setString(4, object.getNumTel());
+			 prepare.setInt(5, object.getAge());
+			 prepare.setString(6, object.getSexe());
+			 prepare.setString(7, object.getDate());
+			 prepare.setLong(8, object.getIdBillet());
+			 prepare.setInt(9, object.getTypePassager());
+			 prepare.setLong(10, object.getIdDestination());
+			 prepare.setLong(11, object.getDepart());
 			 prepare.executeUpdate();
-			 ResultSet result = statement.executeQuery("SELECT ID_Passager FROM passagers ORDER BY ID_Ut DESC LIMIT 1;");
+			 ResultSet result = statement.executeQuery("SELECT ID_Passager FROM passagers ORDER BY ID_Passager DESC LIMIT 1;");
 			 if(result.next()) {
 				 long ID = result.getLong("ID_Passager");
 				 object.setId(ID);
@@ -64,8 +66,11 @@ public class PassagerDAO extends DAO<Passager>{
 				passager.setDestination(result.getString("Nom_Destination"));
 				passager.setHeure(result.getString("Heure"));
 				passager.setCode(result.getString("Code_Passager"));
+				passager.setTypePassager(result.getInt("Type_Passager"));
 				if(passager.getEtat()==1) {
 					passager.setEtatR("Résolu");
+				}else {
+					passager.setEtatR("En cours");
 				}
 				
 			}
@@ -81,17 +86,20 @@ public class PassagerDAO extends DAO<Passager>{
 	public Passager update(Passager object) {
 		 PreparedStatement prepare;
 		try {
-			prepare = connection.prepareStatement("UPDATE `passagers` SET `ID_Passager`=?, `Nom_Pasager`=?, "
-			 		+ "`prenom_Passager`=?, `Tel_Pasager`=?, `Age_Passager`=?, `Sexe_Passager`=?, `Date_voy`=?, "
-			 		+ "`ID_billet`=?, `ID_Destination`=?, `ID_Depart`=?");
-			 prepare.setString(1, object.getNom());
-			 prepare.setString(2, object.getPrenom());
-			 prepare.setString(3, object.getNumTel());
-			 prepare.setInt(4, object.getAge());
-			 prepare.setString(5, object.getSexe());
-			 prepare.setString(6, object.getDate());
-			 prepare.setLong(7, object.getIdBillet());
-			 prepare.setLong(8, object.getIdDestination());
+			prepare = connection.prepareStatement("UPDATE `passagers` SET `Code_Passager`=?, `Nom_Passager`=?, "
+			 		+ "`prenom_Passager`=?, `Tel_Passager`=?, `Age_Passager`=?, `Sexe_Passager`=?, `Date_voy`=?, "
+			 		+ "`ID_billet`=?,`ID_Destination`=?, `ID_Depart`=? WHERE ID_Passager=?");
+			 prepare.setString(1, object.getCode());
+			 prepare.setString(2, object.getNom());
+			 prepare.setString(3, object.getPrenom());
+			 prepare.setString(4, object.getNumTel());
+			 prepare.setInt(5, object.getAge());
+			 prepare.setString(6, object.getSexe());
+			 prepare.setString(7, object.getDate());
+			 prepare.setLong(8, object.getIdBillet());
+			 prepare.setLong(9, object.getIdDestination());
+			 prepare.setLong(10, object.getDepart());
+			 prepare.setLong(11, object.getId());
 			 prepare.executeUpdate();
 			 object=find(object.getId());
 		} catch (SQLException e) {
@@ -175,5 +183,21 @@ public class PassagerDAO extends DAO<Passager>{
 		}
 		return Rs;
 		
+	}
+	
+	public Long idMax() {
+		Statement statement;
+		ResultSet result =null;
+		Long ID=0l;
+		try {
+			statement = this.connection.createStatement();
+			result = statement.executeQuery("SELECT ID_Passager FROM passagers ORDER BY ID_Passager DESC LIMIT 1;");
+			if(result.next())
+				ID=result.getLong("ID_Passager");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 return ID+1;
 	}
 }

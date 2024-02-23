@@ -39,7 +39,7 @@
                                     <TableColumn fx:id="col_dest" prefWidth="160.0" text="Destination" />
                                     <TableColumn fx:id="col_type" prefWidth="150.0" text="Type de billet " />
                                     <TableColumn fx:id="col_motant" prefWidth="75.0" text="Motant" />
-                                    <TableColumn fx:id="col_Hdepart" prefWidth="75.0" text="Heure départ" />
+                                    <TableColumn fx:id="col_Hdepart" prefWidth="95" text="Heure départ" />
                                 </columns>
                                  <BorderPane.margin>
                                     <Insets bottom="20.0" left="5.0" right="20.0" />
@@ -158,15 +158,15 @@
                               <TableView fx:id="tableR" maxHeight="-Infinity" prefHeight="420.0" prefWidth="600.0" BorderPane.alignment="TOP_RIGHT">
                                  <columns>
                                     <TableColumn fx:id="col_id1" prefWidth="75.0" text="ID" />
-                                    <TableColumn fx:id="col_nom1" prefWidth="75.0" text="Nom" />
-                                    <TableColumn fx:id="col_prenom1" prefWidth="75.0" text="Prénom" />
+                                    <TableColumn fx:id="col_nom1" prefWidth="120" text="Nom" />
+                                    <TableColumn fx:id="col_prenom1" prefWidth="150" text="Prénom" />
                                     <TableColumn fx:id="col_tel1" prefWidth="75.0" text="Téléphone" />
-                                    <TableColumn fx:id="col_dest1" prefWidth="75.0" text="Destination" />
+                                    <TableColumn fx:id="col_dest1" prefWidth="150" text="Destination" />
                                     <TableColumn fx:id="col_type1" prefWidth="75.0" text="Type de billet " />
                                     <TableColumn fx:id="col_motant1" prefWidth="75.0" text="Motant" />
-                                    <TableColumn fx:id="col_date" prefWidth="75.0" text="Date de voyage" />
-                                    <TableColumn fx:id="col_Hdepart1" prefWidth="75.0" text="Heure de départ" />
-                                    <TableColumn fx:id="col_etat" prefWidth="75.0" text="Etat " />
+                                    <TableColumn fx:id="col_date" prefWidth="95" text="Date de voyage" />
+                                    <TableColumn fx:id="col_Hdepart1" prefWidth="95" text="Heure de départ" />
+                                    <TableColumn fx:id="col_etat" prefWidth="95" text="Etat " />
                                  </columns>
                                  <BorderPane.margin>
                                     <Insets bottom="20.0" left="5.0" right="20.0" />
@@ -183,8 +183,8 @@
                            <top>
                               <HBox alignment="CENTER" prefHeight="36.0" prefWidth="650.0" spacing="5.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <DatePicker fx:id="calend1" promptText="Les passagers du : " />
-                                    <JFXButton fx:id="btnOK1" onAction="#OK" style="-fx-background-color: white; -fx-background-radius: 20;" text="OK" textFill="#165db9">
+                                    <DatePicker fx:id="calend1" promptText="Les réservations du : " />
+                                    <JFXButton fx:id="btnOK1" onAction="#OKR" style="-fx-background-color: white; -fx-background-radius: 20;" text="OK" textFill="#165db9">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>

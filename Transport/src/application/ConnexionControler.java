@@ -61,7 +61,6 @@ public class ConnexionControler extends BaseController{
 	        
 	        ButtonType buttonTypeYes = new ButtonType("Oui");
 	        ButtonType buttonTypeNo = new ButtonType("Non");
-
 	        alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
 	        Optional<ButtonType> result = alert.showAndWait();
 	        if (result.isPresent() && result.get() == buttonTypeYes) {

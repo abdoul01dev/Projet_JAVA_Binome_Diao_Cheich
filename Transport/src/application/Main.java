@@ -35,8 +35,11 @@ public class Main extends Application {
 		System.out.println(P.getHeure());
 		System.out.println(P.getDate());
 		System.out.println(P.getDestination());
-		 LocalDate date = LocalDate.now();
+		LocalDate date = LocalDate.now();
 		DAOF.getPassagerDAO().findPassagerByDate("2024-01-30");
+		Long i=5158960l;
+		String S=String.format("%09d",i);
+		
 		
 		System.out.println(date);
 		

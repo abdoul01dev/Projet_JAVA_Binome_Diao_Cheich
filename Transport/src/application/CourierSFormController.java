@@ -5,7 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
-
+import metiers.Courrier;
+import metiers.Destination;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -15,6 +16,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 
 public class CourierSFormController {
+	public static Courrier courier ;
+	public static int indicateur;
 	@FXML
 	private TextField nomExp;
 	@FXML
@@ -32,7 +35,7 @@ public class CourierSFormController {
 	@FXML
 	private TextField nomDes;
 	@FXML
-	private ComboBox comboDest;
+	private ComboBox<Destination> comboDest;
 	@FXML
 	public Label Dest_Prov;
 	@FXML

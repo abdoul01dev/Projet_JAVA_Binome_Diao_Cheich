@@ -44,5 +44,11 @@ public class Outils {
         	return false;
         }
     }
+	public static void erreur(String message){
+		Alert alert =new Alert(AlertType.ERROR);
+		alert.setTitle("ERREUR");
+		alert.setContentText(message);
+		alert.show();
+	}
 
 }

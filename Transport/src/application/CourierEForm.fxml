@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CourierEFormController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="631.0" style="-fx-background-color: #CFE9F7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CourierEFormController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -21,7 +20,7 @@
                   <TextField fx:id="nomExp" layoutX="429.0" layoutY="49.0" prefWidth="180.0" promptText="nom de l'expéditeur" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="45.0" />
                   <TextField fx:id="PrenomExp" layoutX="216.0" layoutY="44.0" prefWidth="180.0" promptText="prénom de l'expéditeur" AnchorPane.topAnchor="44.0" />
                   <DatePicker fx:id="dateRecep" layoutX="7.0" layoutY="103.0" prefWidth="180.0" promptText="date de réception" AnchorPane.leftAnchor="100.0" />
-                  <TextField fx:id="destination" layoutX="228.0" layoutY="103.0" prefWidth="180.0" promptText="description du colis" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="103.0" />
+                  <TextField fx:id="description" layoutX="228.0" layoutY="103.0" prefWidth="180.0" promptText="description du colis" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="103.0" />
                   <TextField fx:id="TelExp" prefHeight="25.0" prefWidth="180.0" promptText="téléphone de l'expéditeur" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="45.0" />
                   <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="99.0" text="Expédition" textAlignment="CENTER" textFill="#a82400">
                      <font>
@@ -111,7 +110,7 @@
       </AnchorPane>
    </center>
    <top>
-      <HBox alignment="CENTER" prefHeight="32.0" prefWidth="517.0" spacing="15.0" style="-fx-background-color: #2a3a4a; -fx-background-radius: 25;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="32.0" prefWidth="517.0" spacing="15.0" style="-fx-background-color: #0978f6; -fx-background-radius: 25;" BorderPane.alignment="CENTER">
          <children>
             <Label text="Code :" textFill="WHITE">
                <font>

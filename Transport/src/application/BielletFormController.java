@@ -117,7 +117,7 @@ public class BielletFormController extends BaseController implements Initializab
 			if(champNom.equals("")||champPrenom.equals("")||CombDep.getSelectionModel().isEmpty()
 					||CombDest.getSelectionModel().isEmpty()||CombType.getSelectionModel().isEmpty()) {
 				System.out.println("Donnée manquante");
-				System.out.println(CombType.getSelectionModel().getSelectedItem().getId());
+				//System.out.println(CombType.getSelectionModel().getSelectedItem().getId());
 			}else {
 				LocalDate date = LocalDate.now();
 				String sdate=formatter.format(date);
@@ -200,8 +200,7 @@ public class BielletFormController extends BaseController implements Initializab
         }
     }
 	
-	
-	@Override
+	//@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		DAOfactory DAOF=new DAOfactory();
 		PassagerDAO passagerDAO=DAOF.getPassagerDAO();

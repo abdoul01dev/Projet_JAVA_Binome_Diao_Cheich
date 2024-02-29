@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane prefHeight="513.0" prefWidth="1136.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ParametreController">
+   <center>
+      <AnchorPane style="-fx-background-color: #CFE9F7;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="35.0" prefHeight="370.0" prefWidth="593.0" style="-fx-border-color: darkblue; -fx-border-radius: 20;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <children>
+                  <Label layoutX="71.0" layoutY="14.0" text="Accès aux données">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="URL" layoutX="14.0" layoutY="66.0" prefHeight="25.0" prefWidth="442.0" promptText="URL vers la base de données" />
+                  <TextField fx:id="UserName" layoutX="14.0" layoutY="105.0" prefHeight="25.0" prefWidth="442.0" promptText="Le nom d'utilisateur de la base de données" />
+                  <PasswordField fx:id="pwd" layoutX="14.0" layoutY="145.0" prefHeight="25.0" prefWidth="440.0" promptText="Le mot de passe " />
+                  <Button fx:id="btntxt" layoutX="14.0" layoutY="205.0" mnemonicParsing="false" onAction="#test" prefHeight="41.0" prefWidth="210.0" style="-fx-background-color: darkblue;" text="Tester la connction" textFill="WHITE" />
+                  <Button fx:id="btnconnect" layoutX="241.0" layoutY="205.0" mnemonicParsing="false" onAction="#connect" prefHeight="41.0" prefWidth="216.0" style="-fx-background-color: darkblue;" text="Se connecter" textFill="WHITE" />
+                  <Text fill="#f20808" layoutX="198.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16; -fx-fill: darkred; -fx-font-family: Comic Sans MS;" text="Les bases de données supportées sont MySQL et SQLite">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <FontAwesomeIcon fill="#6f0404" glyphName="EXCLAMATION_TRIANGLE" layoutX="151.0" layoutY="338.0" size="40" />
+                  <TextArea fx:id="textDialogue" editable="false" layoutX="16.0" layoutY="344.0" prefHeight="132.0" prefWidth="633.0" style="-fx-background-color: #FEC606;" wrapText="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="345.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="502.0" layoutY="40.0" prefHeight="272.0" prefWidth="508.0" style="-fx-border-color: darkblue; -fx-border-radius: 20;" AnchorPane.leftAnchor="613.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <children>
+                  <Label layoutX="175.0" layoutY="34.0" text="Modifier l'apparence">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <ColorPicker fx:id="coulerSelecteur" layoutX="280.0" layoutY="105.0" onAction="#SurCouleurSecteur" prefHeight="25.0" prefWidth="201.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="31.0" />
+                  <Label layoutX="57.0" layoutY="110.0" text="La couleur du sélcteur de ménu :">
+                     <font>
+                        <Font name="Trebuchet MS Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <ColorPicker fx:id="couleurFond" layoutX="280.0" layoutY="150.0" onAction="#SurCouleurFond" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="31.0" />
+                  <Label layoutX="57.0" layoutY="155.0" text="La couleur de fond l'application :">
+                     <font>
+                        <Font name="Trebuchet MS Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnValider" layoutX="380.0" layoutY="223.0" mnemonicParsing="false" onAction="#Valider" prefHeight="35.0" prefWidth="114.0" style="-fx-background-color: darkblue;" text="Valider" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="618.0" layoutY="298.0" prefHeight="209.0" prefWidth="508.0" style="-fx-border-color: darkblue; -fx-border-radius: 20;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="613.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="289.0">
+               <children>
+                  <Label layoutX="304.0" layoutY="14.0" text="Appropo ">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="114.0" layoutY="82.0" text="La version de l'application">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="114.0" layoutY="134.0" text="Chercher une nouvelle mise à jour">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="114.0" layoutY="174.0" text="CopyRight">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Version" layoutX="297.0" layoutY="82.0" text="La version de l'application">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="MaJ" layoutX="357.0" layoutY="134.0" text="La version de l'application">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="copyright" layoutX="357.0" layoutY="174.0" text="La version de l'application">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

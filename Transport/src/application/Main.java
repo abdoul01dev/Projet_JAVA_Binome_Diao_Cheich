@@ -20,16 +20,16 @@ import javafx.scene.Scene;
 
 public class Main extends Application {
 	Stage primaryStage;
-	MenuController<JFXButton> menu=null;
+	MenuController menu=null;
 	public static Object [] parents=new Object[3];
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage=primaryStage;
-		this.menu=new MenuController<JFXButton>();
+		this.menu=new MenuController();
 		afficherPage("Menu.fxml", "Connexion");
 		DAOfactory DAOF=new DAOfactory();
 		Passager P=DAOF.getPassagerDAO().find(1l);
-		System.out.println(P.getId());
+		//System.out.println(P.getId());
 		System.out.println(P.getPrenom());
 		System.out.println(P.getTypeBillet());
 		System.out.println(P.getHeure());
@@ -41,7 +41,7 @@ public class Main extends Application {
 		String S=String.format("%09d",i);
 		
 		
-		System.out.println(date);
+		//System.out.println(date);
 		
 	}
 	

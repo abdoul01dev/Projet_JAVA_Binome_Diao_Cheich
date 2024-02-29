@@ -9,3 +9,13 @@
 	-fx-background-color:green;
 	
 }
+.table-view .column-header {
+    -fx-background-color: #4CAF50; 
+    -fx-text-fill: #ffffff; 
+}
+
+/* Définition d'un style pour les cellules de contenu */
+.table-view .table-cell {
+    -fx-background-color: #E8F5E9; 
+    -fx-text-fill: #000000; 
+}

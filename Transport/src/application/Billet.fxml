@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -22,7 +21,7 @@
 
 <BorderPane prefHeight="518.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BilletController">
    <center>
-      <TabPane prefHeight="400.0" prefWidth="704.0" style="-fx-background-color: #7B7D7D;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane prefHeight="400.0" prefWidth="704.0" style="-fx-background-color: #CFE9F7; -fx-background-radius: 20;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
           <Tab text="Passager">
             <content>
@@ -172,7 +171,7 @@
                                     <Insets bottom="20.0" left="5.0" right="20.0" />
                                  </BorderPane.margin>
                                  <effect>
-                                    <DropShadow height="7.57" radius="5.1775" width="15.14">
+                                    <DropShadow height="11.355" radius="6.12375" width="15.14">
                                        <color>
                                           <Color red="0.658823549747467" green="0.1411764770746231" />
                                        </color>
@@ -241,15 +240,4 @@
          </BorderPane.margin>
       </TabPane>
    </center>
-   <top>
-      <HBox alignment="CENTER" prefHeight="41.0" prefWidth="650.0" style="-fx-background-color: #2a3a4a;" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" text="Passagers&amp;Réservations" textFill="WHITE">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-   </top>
 </BorderPane>

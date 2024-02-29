@@ -13,7 +13,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ConnexionControler">
    <center>
-      <BorderPane layoutX="200.0" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="365.0" snapToPixel="false" style="-fx-background-color: #2a3a4a; -fx-border-color: green; -fx-border-radius: 25; -fx-border-width: 3; -fx-background-insets: 0; -fx-background-radius: 25;" BorderPane.alignment="CENTER">
+      <BorderPane layoutX="200.0" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="365.0" snapToPixel="false" style="-fx-background-color: #0978f6; -fx-border-color: #FEC606; -fx-border-radius: 25; -fx-border-width: 4; -fx-background-insets: 0; -fx-background-radius: 25;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="100.0" left="200.0" right="200.0" top="100.0" />
          </BorderPane.margin>
@@ -45,7 +45,7 @@
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <AnchorPane layoutX="116.0" layoutY="-2.0" prefHeight="4.0" prefWidth="128.0" style="-fx-background-color: green; -fx-background-radius: 50;" />
+                  <AnchorPane layoutX="116.0" layoutY="-2.0" prefHeight="4.0" prefWidth="128.0" style="-fx-background-color: #FEC606; -fx-background-radius: 50;" />
                   <Button fx:id="btnConn" layoutX="198.0" layoutY="256.0" mnemonicParsing="false" onAction="#Connecter" prefHeight="34.0" prefWidth="92.0" style="-fx-background-color: green;" text="Se connecter" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />

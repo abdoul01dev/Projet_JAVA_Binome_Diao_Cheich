@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.skin.TableHeaderRow;
 import javafx.stage.Stage;
 import metiers.Passager;
 import outils.Outils;
@@ -132,6 +133,7 @@ public class BilletController implements Initializable {
 	private DatePicker calend1;
 	@FXML
 	private Button btnOK1;
+	
 	
 
 	// Event Listener on Button[#btnNewPass].onAction
@@ -360,9 +362,16 @@ public class BilletController implements Initializable {
 		}
 	}
 	
+
+    
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		col_id1.setStyle("-fx-background-color: #4CAF50;");// -fx-text-fill: #ffffff;");
+		col_id.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: #ffffff;");
+		
+		
 		col_id.setCellValueFactory(new PropertyValueFactory<>("code"));
 		col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
 		col_prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));

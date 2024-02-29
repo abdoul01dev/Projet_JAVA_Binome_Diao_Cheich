@@ -19,7 +19,7 @@ public class CourierDAO extends DAO<Courrier> {
 			
 			 PreparedStatement prepare=connection.prepareStatement("INSERT INTO `couriers`(`Nom_Exp`, `prenom_Exp`, `Tel_Exp`, `Ref_Exp`, "
 						+ "`Code`, `Nom_Dest`, `prenom_Dest`, `Tel_Dest`, `Ref_Dest`, `Date_recep`, `codeES`, "
-						+ "`ID_Destination`, `Date_envoie`)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);");
+						+ "`ID_Destination`,ID_Depart, `Date_envoie`)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);");
 			 
 			 prepare.setString(1, object.getExpediteur().getNom());
 			 prepare.setString(2, object.getExpediteur().getPrenom());
@@ -31,12 +31,12 @@ public class CourierDAO extends DAO<Courrier> {
 			 prepare.setString(8, object.getDestinataire().getNumTel());
 			 prepare.setString(9, object.getDestinataire().getRef());
 			 prepare.setString(10, object.getDateRecep());
-			 prepare.setString(11, object.getDateSortie());
-			 prepare.setInt(12, object.getType());
-			 prepare.setLong(13, object.getIdDestination());
-			 prepare.setLong(14, object.getIdDepart());
+			 prepare.setInt(11, object.getType());
+			 prepare.setLong(12, object.getIdDestination());
+			 prepare.setLong(13, object.getIdDepart());
+			 prepare.setString(14, object.getDateSortie());
 			 prepare.executeUpdate();
-			 ResultSet result = statement.executeQuery("SELECT ID_Courier FROM colis ORDER BY ID_Courier DESC LIMIT 1;");
+			 ResultSet result = statement.executeQuery("SELECT ID_Courier FROM couriers ORDER BY ID_Courier DESC LIMIT 1;");
 			 if(result.next()) {
 				 long ID = result.getLong("ID_Courier");
 				 object.setId(ID);
@@ -81,8 +81,8 @@ public class CourierDAO extends DAO<Courrier> {
 		PreparedStatement prepare;
 		try {
 			prepare=connection.prepareStatement("UPDATE `couriers` SET `Nom_Exp`=?,`prenom_Exp`=?,`Tel_Exp`=?,"
-					+ "`Ref_Exp`=?,`Code`=?,`Nom_Dest`=?,`prenom_Dest`=?,`Tel_Dest`=?,`Ref_Dest`=?,`Date_recep`=?,`codeES`=?,"
-					+ "`ID_Destination`='?,`Date_envoie`=? WHERE ID_Courier="+object.getId());
+					+ "`Ref_Exp`=?,`Code`=?,`Nom_Dest`=?,`prenom_Dest`=?,`Tel_Dest`=?,`Ref_Dest`=?,`Date_recep`=?, "
+					+ "`ID_Destination`=?,`ID_Depart`=?,`Date_envoie`=? WHERE ID_Courier="+object.getId());
 			 
 			 prepare.setString(1, object.getExpediteur().getNom());
 			 prepare.setString(2, object.getExpediteur().getPrenom());
@@ -94,10 +94,10 @@ public class CourierDAO extends DAO<Courrier> {
 			 prepare.setString(8, object.getDestinataire().getNumTel());
 			 prepare.setString(9, object.getDestinataire().getRef());
 			 prepare.setString(10, object.getDateRecep());
-			 prepare.setString(11, object.getDateSortie());
-			 prepare.setInt(12, object.getType());
-			 prepare.setLong(13, object.getIdDestination());
-			 prepare.setLong(14, object.getIdDepart());
+			 prepare.setLong(11, object.getIdDestination());
+			// prepare.setInt(12, object.getType());
+			 prepare.setLong(12, object.getIdDepart());
+			 prepare.setString(13, object.getDateSortie());
 			 prepare.executeUpdate();
 			 object=this.find(object.getId());
 		} catch (SQLException e) {
@@ -111,7 +111,7 @@ public class CourierDAO extends DAO<Courrier> {
 	public void delete(Courrier object) {
 		try {
 			Statement statement=this.connection.createStatement();
-			statement.executeUpdate("DELETE FROM colis WHERE ID_Courier="+object.getId());
+			statement.executeUpdate("DELETE FROM couriers WHERE ID_Courier="+object.getId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -155,7 +155,7 @@ public class CourierDAO extends DAO<Courrier> {
 		Long ID=0l;
 		try {
 			statement = this.connection.createStatement();
-			result = statement.executeQuery("SELECT ID_Courier FROM colis ORDER BY ID_Courier DESC LIMIT 1;");
+			result = statement.executeQuery("SELECT ID_Courier FROM couriers ORDER BY ID_Courier DESC LIMIT 1;");
 			if(result.next())
 				ID=result.getLong("ID_Courier");
 		} catch (SQLException e) {

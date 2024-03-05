@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.skin.TableHeaderRow;
+
 import javafx.stage.Stage;
 import metiers.Passager;
 import outils.Outils;
@@ -177,6 +177,8 @@ public class BilletController implements Initializable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else {
+			Outils.erreur("Veullez selectionner un passager d'abdord");
 		}
 		
 		
@@ -193,6 +195,8 @@ public class BilletController implements Initializable {
 				passagerDAO.delete(passager);
 				ListePassager.remove(passager);
 			}
+		}else {
+			Outils.erreur("Veullez selectionner un passager d'abdord");
 		}
 	}
 	// Event Listener on Button[#btnRechPass].onAction
@@ -239,6 +243,8 @@ public class BilletController implements Initializable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else {
+			Outils.erreur("Veullez selectionner une une réservation d'abdord");
 		}
 	}
 	// Event Listener on Button[#btnDeletReserv].onAction
@@ -254,6 +260,8 @@ public class BilletController implements Initializable {
 				ListePassager.remove(passager);
 			}
 		
+		}else {
+			Outils.erreur("Veullez selectionner une une réservation d'abdord");
 		}
 	}
 	// Event Listener on TextField[#champRechReserv].onAction

@@ -6,6 +6,8 @@ public class Depart {
 	private String heure;
 	private int nbrPlaces;
 	private Long idDestination;
+	private String ligne;
+	private Long idLigne;
 	public Depart(Long id, String jour, String heure, int nbrPlaces, Long idDestination) {
 		super();
 		this.id = id;
@@ -47,6 +49,18 @@ public class Depart {
 	@Override
 	public String toString() {
 		return getHeure();
+	}
+	public String getLigne() {
+		return ligne;
+	}
+	public void setLigne(String ligne) {
+		this.ligne = ligne;
+	}
+	public Long getIdLigne() {
+		return idLigne;
+	}
+	public void setIdLigne(Long idLigne) {
+		this.idLigne = idLigne;
 	}
 	
 }

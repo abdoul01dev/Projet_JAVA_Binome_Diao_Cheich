@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import metiers.Colis;
+
 import metiers.Courrier;
 import metiers.Destination;
 import metiers.Peseonne;
@@ -19,7 +19,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-import DataBase.ColisDAO;
+
 import DataBase.CourierDAO;
 import DataBase.DAOfactory;
 import DataBase.DestinationDAO;
@@ -89,10 +89,10 @@ public class CourierSFormController implements Initializable{
 	@FXML
 	public void valider(ActionEvent event) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		String sdate=formatter.format(dateRecep.getValue());
 		if(nomDes!=null && prenomDest!=null &&telDest!=null && nomExp!=null && PrenomExp!=null &&
 				TelExp!=null && dateRecep.getValue()!=null && comboDest.getSelectionModel().getSelectedItem()!=null
 				) {
+			String sdate=formatter.format(dateRecep.getValue());
 			Peseonne expediteur=new Peseonne(1l, nomExp.getText(), PrenomExp.getText(),"", null, TelExp.getText());
 			Peseonne destinataire=new Peseonne(1l, nomDes.getText(), prenomDest.getText(), "", null, telDest.getText());
 			//Double val=Double.parseDouble(valeur.getText());
@@ -116,6 +116,8 @@ public class CourierSFormController implements Initializable{
 					
 				}
 			}
+		}else {
+			Outils.erreur("Des champs réquis n'o,t pas été saisie");
 		}
 	}
 	
@@ -171,8 +173,9 @@ public class CourierSFormController implements Initializable{
 			while(Rs.next()) {
 				Long id=Rs.getLong("ID_Destination");
 				Destination dest=destinationDAO.find(id);
-				System.out.println(dest.getLesBillet().isEmpty());
-				Listdestination.add(dest);
+				//System.out.println(dest.getLesBillet().isEmpty());
+				if(dest!=null)
+					Listdestination.add(dest);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

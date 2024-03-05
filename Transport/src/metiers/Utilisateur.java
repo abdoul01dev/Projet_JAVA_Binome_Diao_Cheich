@@ -10,20 +10,21 @@ public class Utilisateur {
 	private Long idgroupeUt=1l;
 	private String groupeUt;
 	private String statut="innactif";
-	private Date dteCreation;
+	private Integer codeStatut;
+	private String dteCreation;
 	public Utilisateur() {
 	}
-	public Utilisateur(Long id,String mail, String nomUt,String motdepasse,Long idgroup,String statut ,Date dtCreation) {
+	public Utilisateur(Long id, String nomUt,String mail,String motdepasse,Long idgroup,Integer codeStatut ,String dtCreation) {
 		super();
 		this.id = id;
 		this.mail = mail;
 		this.nomUt=nomUt;
 		this.motdepasse=motdepasse;
 		this.setIdgroupeUt(idgroup);
-		this.setStatut(statut);
+		this.codeStatut=codeStatut;
 		this.setDteCreation(dtCreation);
 	}
-	public Utilisateur(Long id, String mail, String nomUt,String motdepasse) {
+	public Utilisateur(Long id,  String nomUt,String mail,String motdepasse) {
 		super();
 		this.id = id;
 		this.mail = mail;
@@ -56,8 +57,7 @@ public class Utilisateur {
 	}
 	@Override
 	public String toString() {
-		return "Utilisateur [id=" + id + ", mail=" + mail + ", nom=" + nomUt + ", motdepasse="
-				+ motdepasse + "]";
+		return getNomUt();
 	}
 	public String getStatut() {
 		return statut;
@@ -65,11 +65,11 @@ public class Utilisateur {
 	public void setStatut(String statut) {
 		this.statut = statut;
 	}
-	public Date getDteCreation() {
+	public String getDteCreation() {
 		return dteCreation;
 	}
-	public void setDteCreation(Date dteCreation) {
-		this.dteCreation = dteCreation;
+	public void setDteCreation(String date) {
+		this.dteCreation = date;
 	}
 	public Long getIdgroupeUt() {
 		return idgroupeUt;
@@ -82,6 +82,12 @@ public class Utilisateur {
 	}
 	public void setGroupeUt(String groupeUt) {
 		this.groupeUt = groupeUt;
+	}
+	public Integer getCodeStatut() {
+		return codeStatut;
+	}
+	public void setCodeStatut(Integer codeStatut) {
+		this.codeStatut = codeStatut;
 	}
 	
 }

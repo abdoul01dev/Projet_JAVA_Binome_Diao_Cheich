@@ -12,13 +12,14 @@ import metiers.Billet;
 import metiers.Depart;
 import metiers.Destination;
 import metiers.Passager;
+import outils.Outils;
 
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -114,9 +115,10 @@ public class BielletFormController extends BaseController implements Initializab
 		//pour un nouveau passager
 		if(action==0) {
 			
-			if(champNom.equals("")||champPrenom.equals("")||CombDep.getSelectionModel().isEmpty()
+			if(champNom.equals(null)||champPrenom.equals(null)||CombDep.getSelectionModel().isEmpty()
 					||CombDest.getSelectionModel().isEmpty()||CombType.getSelectionModel().isEmpty()) {
-				System.out.println("Donnée manquante");
+				Outils.erreur("Des champs réquis n'ont pas été saisie");
+				//System.out.println("Donnée manquante");
 				//System.out.println(CombType.getSelectionModel().getSelectedItem().getId());
 			}else {
 				LocalDate date = LocalDate.now();
@@ -139,10 +141,11 @@ public class BielletFormController extends BaseController implements Initializab
 			}
 		//sinon si c'est une mise à jour
 		}else {
-			if(champNom.equals("")||champPrenom.equals("")||CombDep.getSelectionModel().getSelectedItem().equals(null)
+			if(champNom.equals(null)||champPrenom.equals(null)||CombDep.getSelectionModel().getSelectedItem().equals(null)
 					||CombDest.getSelectionModel().getSelectedItem().equals(null)||CombType.getSelectionModel().getSelectedItem().equals(null)) {
-				System.out.println("Donnée manquante");
-				System.out.println(CombType.getSelectionModel().getSelectedItem().getId());
+				/*System.out.println("Donnée manquante");
+				System.out.println(CombType.getSelectionModel().getSelectedItem().getId());*/
+				Outils.erreur("Des champs réquis n'ont pas été saisie");
 			}else {
 				LocalDate date = LocalDate.now();
 				String sdate=formatter.format(date);
@@ -226,13 +229,13 @@ public class BielletFormController extends BaseController implements Initializab
 				labMontant.setText(String.valueOf(tmpPassager.getMontant()));
 				labID.setText(tmpPassager.getCode());
 			}else {
-				champNom.setText("");
-				champPrenom.setText("");
-				champTel.setText("");
+				champNom.setText(null);
+				champPrenom.setText(null);
+				champTel.setText(null);
 				CombDep.getSelectionModel().select(null);
 				CombDest.getSelectionModel().select(null);
 				CombType.getSelectionModel().select(null);
-				labMontant.setText("");
+				labMontant.setText(null);
 			}
 		}
 		else { 
@@ -257,13 +260,13 @@ public class BielletFormController extends BaseController implements Initializab
 				dateV.setValue(localDate);
 				
 			}else {
-				champNom.setText("");
-				champPrenom.setText("");
-				champTel.setText("");
+				champNom.setText(null);
+				champPrenom.setText(null);
+				champTel.setText(null);
 				CombDep.getSelectionModel().select(null);
 				CombDest.getSelectionModel().select(null);
 				CombType.getSelectionModel().select(null);
-				labMontant.setText("");
+				labMontant.setText(null);
 			}
 		}
 		
@@ -276,8 +279,9 @@ public class BielletFormController extends BaseController implements Initializab
 			while(Rs.next()) {
 				Long id=Rs.getLong("ID_Destination");
 				Destination dest=destinationDAO.find(id);
-				System.out.println(dest.getLesBillet().isEmpty());
-				destination.add(dest);
+				//System.out.println(dest.getLesBillet().isEmpty());
+				if(dest!=null)
+					destination.add(dest);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -292,7 +296,6 @@ public class BielletFormController extends BaseController implements Initializab
 
 			    if (selectedDestination != null) {
 			        ObservableList<Depart> departList = selectedDestination.getLesDaparts();
-
 			        if (departList != null) {
 			            CombDep.setItems(departList);
 			            
@@ -309,10 +312,10 @@ public class BielletFormController extends BaseController implements Initializab
 
 			    if (selectedDestination != null) {
 			        ObservableList<Billet> billetList = selectedDestination.getLesBillet();
-
 			        if (billetList!= null) {
 			            CombType.setItems(billetList);
 			            //CombType.getSelectionModel().selectFirst();
+			         
 			        } else {
 			        	CombDep.setItems(null);
 			        	Alert alert = new Alert(AlertType.WARNING);
@@ -321,7 +324,19 @@ public class BielletFormController extends BaseController implements Initializab
 			            alert.setContentText("Veuillez sélectionner le départ d'abord");
 			            alert.showAndWait();
 			        }
+			        
+			        ObservableList<Depart> departList = selectedDestination.getLesDaparts();
+			        if (departList != null) {
+			            CombDep.setItems(departList);
+			            
+			        } else {
+			        	System.out.println("Ko");
+			        }
 			    }
+			    
+			    
+		        
+			    
 			    
 			    
 		});

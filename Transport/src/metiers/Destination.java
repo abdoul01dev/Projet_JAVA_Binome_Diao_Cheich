@@ -6,6 +6,8 @@ public class Destination {
 	private Long id ;
 	private String nomDestination;
 	private Double distance;
+	private String ligne;
+	private Long idLigne;
 	private ObservableList<Depart> lesDaparts=null;
 	private ObservableList<Billet> lesBillet=null;
 	public Destination(Long id, String nomDestination, Double distance) {
@@ -47,6 +49,18 @@ public class Destination {
 	}
 	public void setLesBillet(ObservableList<Billet> lesBillet) {
 		this.lesBillet = lesBillet;
+	}
+	public String getLigne() {
+		return ligne;
+	}
+	public void setLigne(String ligne) {
+		this.ligne = ligne;
+	}
+	public Long getIdLigne() {
+		return idLigne;
+	}
+	public void setIdLigne(Long idLigne) {
+		this.idLigne = idLigne;
 	}
 	
 

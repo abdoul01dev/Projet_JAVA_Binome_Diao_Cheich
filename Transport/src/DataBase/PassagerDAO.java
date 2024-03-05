@@ -16,9 +16,7 @@ public class PassagerDAO extends DAO<Passager>{
 	@Override
 	public Passager create(Passager object) {
 		try {
-			Statement statement= this.connection.createStatement();
-			
-			
+			Statement statement= this.connection.createStatement();		
 			 PreparedStatement prepare=connection.prepareStatement("INSERT INTO `passagers` (`Code_Passager`, `Nom_Passager`, "
 			 		+ "`prenom_Passager`, `Tel_Passager`, `Age_Passager`, `Sexe_Passager`, `Date_voy`, `ID_billet`,`Type_Passager`, `ID_Destination`, `ID_Depart`)"
 			 		+ " VALUES (?,?,?,?,?,?,?,?,?,?,?);");

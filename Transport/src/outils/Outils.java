@@ -1,7 +1,10 @@
 package outils;
 
+import java.security.MessageDigest;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import javafx.collections.ObservableList;
@@ -50,5 +53,36 @@ public class Outils {
 		alert.setContentText(message);
 		alert.show();
 	}
+	
+	public static void info(String message) {
+		Alert alert =new Alert(AlertType.INFORMATION);
+		alert.setTitle("Info");
+		alert.setContentText(message);
+		alert.show();
+	}
+	
+	public String sha256(String motDePasse) {
+		StringBuilder hexString = new StringBuilder();
+		 try {
+	            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+	            byte[] hashedBytes = digest.digest(motDePasse.getBytes());
+	            for (byte hashedByte : hashedBytes) {
+	                String hex = Integer.toHexString(0xff & hashedByte);
+	                if (hex.length() == 1) hexString.append('0');
+	                hexString.append(hex);
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+		 return hexString.toString();
+	}
+	public static String DateEnChaine(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String formattedDate = date.format(formatter);
+        return formattedDate;
+
+	}
+	
+	
 
 }

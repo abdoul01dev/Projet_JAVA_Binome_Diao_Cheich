@@ -388,7 +388,7 @@ public class ColisController implements Initializable {
 				e.printStackTrace();
 			}
 		}else {
-			Outils.erreur("Veuillez sélectionner un colis");
+			Outils.erreur("Veuillez sélectionner un courier");
 		}
 		
 	}
@@ -447,6 +447,8 @@ public class ColisController implements Initializable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else {
+			Outils.erreur("Veuillez selectionner un courier");
 		}
 		
 	}
@@ -492,6 +494,11 @@ public class ColisController implements Initializable {
 		col_frais10.setCellValueFactory(new PropertyValueFactory<>("frais"));
 		Rs=colisDAO.findAll();
 		try {
+			if(Rs.next()) {
+				listecolisSortant.clear();
+				id=Rs.getLong("ID_Colis");
+				listecolisSortant.add(colisDAO.find(id));
+			}
 			while(Rs.next()) {
 				id=Rs.getLong("ID_Colis");
 				listecolisSortant.add(colisDAO.find(id));
@@ -518,6 +525,11 @@ public class ColisController implements Initializable {
 		col_frais20.setCellValueFactory(new PropertyValueFactory<>("frais"));
 		Rs=colisDAO.findAllV2();
 		try {
+			if(Rs.next()) {
+				listecolisEntrant.clear();
+				id=Rs.getLong("ID_Colis");
+				listecolisEntrant.add(colisDAO.find(id));
+			}
 			while(Rs.next()) {
 				id=Rs.getLong("ID_Colis");
 				listecolisEntrant.add(colisDAO.find(id));

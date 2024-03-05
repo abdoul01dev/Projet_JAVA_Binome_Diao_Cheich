@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RecuController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFE9F7;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TableView fx:id="tableLinge" layoutX="31.0" layoutY="53.0" prefHeight="224.0" prefWidth="528.0" AnchorPane.leftAnchor="40.0">
+                     <columns>
+                        <TableColumn fx:id="col_id" prefWidth="75.0" text="ID" />
+                        <TableColumn fx:id="col_ville" prefWidth="152.0" text="Ville" />
+                        <TableColumn fx:id="col_TA" minWidth="0.0" prefWidth="78.0" text="Tarif aller" />
+                        <TableColumn fx:id="col_TAR" prefWidth="129.0" text="Tarif aller-retour" />
+                        <TableColumn fx:id="col_TARC" prefWidth="91.0" text="Tarif colis" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="btnModif" layoutX="577.0" layoutY="53.0" mnemonicParsing="false" onAction="#modif" prefHeight="25.0" prefWidth="72.0" style="-fx-background-color: #2a3a4a;" text="Modifier" textFill="WHITE" />
+                  <Button fx:id="btnSupprime" layoutX="577.0" layoutY="94.0" mnemonicParsing="false" onAction="#supprime" style="-fx-background-color: darkred;" text="Supprimer" textFill="WHITE" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="244.0" layoutY="14.0" text="Nos tarifs" textFill="#2a3a4a" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="31.0" layoutY="285.0" prefHeight="138.0" prefWidth="523.0" style="-fx-background-color: #CFE9F7; -fx-border-color: darkblue; -fx-border-radius: 20;" AnchorPane.leftAnchor="40.0">
+                     <children>
+                        <Button fx:id="btnValide" layoutX="445.0" layoutY="63.0" mnemonicParsing="false" onAction="#valide" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: darkgreen;" text="Valider" textFill="WHITE" />
+                        <Button fx:id="btnAnnule" layoutX="445.0" layoutY="102.0" mnemonicParsing="false" onAction="#Annuler" style="-fx-background-color: darkred;" text="Annuler" textFill="WHITE" />
+                        <ComboBox fx:id="comboDest" layoutX="8.0" layoutY="20.0" prefHeight="25.0" prefWidth="229.0" promptText="Ville" style="-fx-background-color: white;" />
+                        <TextField fx:id="TAR" layoutX="286.0" layoutY="63.0" promptText="Tarif aller-retour" />
+                        <TextField fx:id="TA" layoutX="286.0" layoutY="20.0" promptText="Tarif aller" />
+                        <TextField fx:id="TC" layoutX="286.0" layoutY="102.0" promptText="Tarif colis" />
+                     </children>
+                  </AnchorPane>
+                  <Button fx:id="btnFerme" layoutX="641.0" layoutY="433.0" mnemonicParsing="false" onAction="#fermer" style="-fx-background-color: red;" text="Fermer" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -24,8 +24,8 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 			 prepare.setString(1, object.getNomUt());
 			 prepare.setString(2, object.getMail());
 			 prepare.setString(3, object.getMotdepasse());
-			 prepare.setString(4, object.getStatut());
-			 prepare.setDate(5, object.getDteCreation());
+			 prepare.setInt(4, 0);
+			 prepare.setString(5, object.getDteCreation());
 			 prepare.setLong(6, object.getIdgroupeUt());
 			 prepare.executeUpdate();
 			 ResultSet result = statement.executeQuery("SELECT ID_Ut FROM utilisateurs ORDER BY ID_Ut DESC LIMIT 1;");
@@ -49,7 +49,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 			ResultSet result=statement.executeQuery("SELECT * FROM utilisateurs as U RIGHT JOIN grouputilisateurs as GU ON U.ID_GU=GU.ID_GU  WHERE ID_Ut="+id);
 			if(result.next()) {
 				user=new Utilisateur(id, result.getString("Nom_Ut"), result.getString("Mail_Ut"),
-				result.getString("MotPass_Ut"), result.getLong("ID_GU"),result.getString("statut"),result.getDate("Date_Creer"));
+				result.getString("MotPass_Ut"), result.getLong("ID_GU"),result.getInt("statut"),result.getString("Date_Creer"));
 				user.setGroupeUt(result.getString("Role_GU"));
 			}
 		} catch (SQLException e) {
@@ -107,4 +107,22 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 		
 	}
 	
+	public Utilisateur findLogin(String nomUser,String mdp) {
+		Utilisateur user=null;
+		try {
+			Statement statement=this.connection.createStatement();
+			ResultSet result=statement.executeQuery("SELECT * FROM utilisateurs as U RIGHT JOIN grouputilisateurs as GU ON U.ID_GU=GU.ID_GU "
+					+ "WHERE Nom_Ut="+"'"+nomUser+"'"+" AND MotPass_Ut="+"'"+mdp+"'");
+			if(result.next()) {
+				user=new Utilisateur(result.getLong("ID_Ut"), result.getString("Nom_Ut"), result.getString("Mail_Ut"),
+				result.getString("MotPass_Ut"), result.getLong("ID_GU"),result.getInt("statut"),result.getString("Date_Creer"));
+				user.setGroupeUt(result.getString("Role_GU"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return user;
+	}
 }

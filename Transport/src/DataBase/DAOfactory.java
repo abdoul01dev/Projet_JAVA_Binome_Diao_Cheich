@@ -1,6 +1,6 @@
 package DataBase;
 
-import metiers.Courrier;
+
 
 public class DAOfactory {
 	public UtilisateurDAO getUtilisateurDAO() {
@@ -26,5 +26,8 @@ public class DAOfactory {
 	}
 	public CourierDAO getCourierDAO() {
 		return new CourierDAO();
+	}
+	public LigneDAO getLigneDAO() {
+		return new LigneDAO();
 	}
 }

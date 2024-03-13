@@ -26,5 +26,21 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Program Files/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/commons-beanutils-1.9.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/commons-collections-3.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/commons-collections4-4.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/ecj-3.21.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/jackson-annotations-2.15.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/jackson-core-2.15.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/jackson-databind-2.15.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/jackson-dataformat-xml-2.15.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/jasperreports-6.21.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/jfreechart-1.0.19.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/openpdf-1.3.30.jaspersoft.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/stax2-api-4.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Desktop/jar_files/woodstox-core-6.5.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

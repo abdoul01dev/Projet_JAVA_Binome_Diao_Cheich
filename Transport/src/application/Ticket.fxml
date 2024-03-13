@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" minHeight="350.0" prefHeight="427.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TicketController">
+   <children>
+      <GridPane fx:id="tickets" layoutX="165.0" prefHeight="354.0" prefWidth="472.0" AnchorPane.leftAnchor="165.0" AnchorPane.rightAnchor="119.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="341.0" minWidth="0.0" prefWidth="0.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="756.0" minWidth="10.0" prefWidth="593.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="111.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="190.0" minHeight="4.0" prefHeight="38.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="277.0" minHeight="10.0" prefHeight="220.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="217.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="463.0" style="-fx-background-color: gray;" text="Billet de voyage" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets left="3.0" right="3.0" />
+               </GridPane.margin>
+            </Label>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="210.0" prefWidth="460.0" style="-fx-border-color: grey; -fx-border-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Separator layoutX="236.0" layoutY="3.0" orientation="VERTICAL" prefHeight="204.0" prefWidth="19.0" />
+                  <HBox layoutX="5.0" layoutY="14.0" prefHeight="35.0" prefWidth="235.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="106.0" text="Nom: ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Nom" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="125.0" text="label ">
+                           <font>
+                              <Font name="Trebuchet MS Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="4.0" layoutY="70.0" prefHeight="35.0" prefWidth="235.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="120.0" text="Prénom(s): ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Prenom" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="178.0" text="label ">
+                           <font>
+                              <Font name="Trebuchet MS Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="3.0" layoutY="116.0" prefHeight="35.0" prefWidth="235.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="120.0" text="Réf :">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="references" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="149.0" text="label ">
+                           <font>
+                              <Font name="Trebuchet MS Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="249.0" layoutY="14.0" prefHeight="35.0" prefWidth="207.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="134.0" text="Destination:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="destination" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="168.0" text="label ">
+                           <font>
+                              <Font name="Trebuchet MS Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="250.0" layoutY="70.0" prefHeight="35.0" prefWidth="207.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="79.0" text="Type :">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="type" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="129.0" text="label ">
+                           <font>
+                              <Font name="Trebuchet MS Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="251.0" layoutY="116.0" prefHeight="35.0" prefWidth="207.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="51.0" text="Depart:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="depart" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="156.0" text="label ">
+                           <font>
+                              <Font name="Trebuchet MS Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="4.0" layoutY="165.0" prefHeight="35.0" prefWidth="235.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="120.0" text="Date:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="date" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="168.0" text="label ">
+                           <font>
+                              <Font name="Trebuchet MS Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin>
+            </Pane>
+            <HBox prefHeight="31.0" prefWidth="529.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="249.0" text="Montant :">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="montant" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="29.0" prefWidth="287.0" text="Label">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+      <JFXButton fx:id="Imprimer" layoutX="557.0" layoutY="388.0" onAction="#ImpressionTicket" prefHeight="31.0" prefWidth="111.0" style="-fx-background-color: yellow;" text="Imprimer" AnchorPane.leftAnchor="545.0">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon glyphName="PRINT" />
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

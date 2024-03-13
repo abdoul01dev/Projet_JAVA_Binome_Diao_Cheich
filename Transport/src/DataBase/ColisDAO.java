@@ -151,6 +151,32 @@ public class ColisDAO extends DAO<Colis> {
 		return Rs;
 	}
 	
+	
+	public ResultSet findAllByDate(String date) {
+		ResultSet Rs=null;
+		try {
+			Statement statement=this.connection.createStatement();
+			Rs=statement.executeQuery("SELECT * FROM colis WHERE Date_Recep_Cl='"+date+"' AND codeES=1");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Rs;
+	}
+	
+	public ResultSet findAllByDateV2(String date) {
+		ResultSet Rs=null;
+		try {
+			Statement statement=this.connection.createStatement();
+			Rs=statement.executeQuery("SELECT * FROM colis WHERE Date_Recep_Cl='"+date+"' AND codeES=2");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Rs;
+	}
+	
+	
 	public Long idMax() {
 		Statement statement;
 		ResultSet result =null;
@@ -166,6 +192,13 @@ public class ColisDAO extends DAO<Colis> {
 		}
 		 return ID+1;
 	}
+	
+	/*public Colis UpdateDate(Colis object) {
+		PreparedStatement prepare;
+			prepare=connection.prepareStatement("UPDATE `colis` SET `Date_envoie`=?,")
+					 + "WHERE ID_Colis= "+object.getId());
+			 prepare.setString(1, object.getCode());
+	}*/
 	
 	
 }

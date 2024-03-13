@@ -71,6 +71,9 @@ public class UtilisateursController implements Initializable{
     private Button btnValiderUser;
 
     @FXML
+    private JFXButton btnAction;
+    
+    @FXML
     private PasswordField confMdp;
 
     @FXML
@@ -198,10 +201,30 @@ public class UtilisateursController implements Initializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		
+	}
+	
+	@FXML
+	public void action( ActionEvent event ) {
+		Utilisateur user=TableUtilisateur.getSelectionModel().getSelectedItem();
+		if(user!=null) {
+			if(user.getCodeStatut()==0) {
+				if(Outils.confirmer("Cet utilisateur est inactif, voullez vous l'activer?")) {
+					user.setCodeStatut(1);
+					int index=ListeUtilisateur.indexOf(user);
+					user=userDAO.update(user);
+					ListeUtilisateur.set(index, user);
+				}
+			}else {
+				if(Outils.confirmer("Cet utilisateur est actif, voullez vous le désactiver?")) {
+					user.setCodeStatut(0);
+					int index=ListeUtilisateur.indexOf(user);
+					user=userDAO.update(user);
+					ListeUtilisateur.set(index, user);
+				}
+			}
+		}else {
+			Outils.erreur("Veuillez selectionner un utilisateur ");
+		}
 	}
 	// Event Listener on JFXButton[#btnModifUt].onAction
 	@FXML
@@ -342,6 +365,7 @@ public class UtilisateursController implements Initializable{
 		col_DateCreer.setCellValueFactory(new PropertyValueFactory<>("dteCreation"));
 		UtilisateurDAO UserDAO=new UtilisateurDAO();
 		if(UserDAO.findAll()!=null) {
+			ListeUtilisateur.clear();
 			ResultSet RS=UserDAO.findAll();
 			try {
 				while(RS.next()) {
@@ -362,6 +386,7 @@ public class UtilisateursController implements Initializable{
 		col_DescGU.setCellValueFactory(new PropertyValueFactory<>("description"));
 		DAOfactory DAOfac= new DAOfactory();
 		if(DAOfac.getGpUtilisateurDAO().findAll()!=null) {
+			ListeGU.clear();
 			ResultSet RS=DAOfac.getGpUtilisateurDAO().findAll();
 			try {
 				while(RS.next()) {

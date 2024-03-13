@@ -128,15 +128,28 @@ public class BielletFormController extends BaseController implements Initializab
 						CombDest.getSelectionModel().getSelectedItem().getId(), 
 						Double.parseDouble(labMontant.getText()), CombDep.getSelectionModel().getSelectedItem().getId(), sdate);
 				passager.setCode(labID.getText());
+				
 				if(indiacteur==0) {
 					passager.setTypePassager(1);
+					passager.setEtat(1);
 					passager=passagerDAO.create(passager);
 					BilletController.ListePassager.add(passager);
+					Outils.info("Passager ajouté avec succès");
+					DashBordController.nbPassager++;
 				}else {
-					passager.setTypePassager(2);
-					passager.setDate(formatter.format(dateV.getValue()));
-					passager=passagerDAO.create(passager);
-					BilletController.ListeReservation.add(passager);
+					
+					if(dateV.getValue()!=null) {
+						passager.setTypePassager(2);
+						passager.setEtat(2);
+						passager.setDate(formatter.format(dateV.getValue()));
+						passager=passagerDAO.create(passager);
+						passager.setDate_Enreg(Outils.DateEnChaine(LocalDate.now()));
+						BilletController.ListeReservation.add(passager);
+						Outils.info("Réservation ajoutée avec succès");
+						DashBordController.nbreservation++;
+					}else {
+						Outils.erreur("Vous n'avez pas choisi la date du voyage");
+					}
 				}
 			}
 		//sinon si c'est une mise à jour
@@ -147,8 +160,8 @@ public class BielletFormController extends BaseController implements Initializab
 				System.out.println(CombType.getSelectionModel().getSelectedItem().getId());*/
 				Outils.erreur("Des champs réquis n'ont pas été saisie");
 			}else {
-				LocalDate date = LocalDate.now();
-				String sdate=formatter.format(date);
+				//LocalDate date = LocalDate.now();
+				//String sdate=formatter.format(date);
 				Passager passager=new Passager(null, champNom.getText(), champPrenom.getText(), null, 0, champTel.getText(),
 						CombType.getSelectionModel().getSelectedItem().getId(),
 						CombDest.getSelectionModel().getSelectedItem().getId(), 
@@ -161,8 +174,10 @@ public class BielletFormController extends BaseController implements Initializab
 					if(confirmer("Voullez-vous vraiment modifié ce passager?")) {
 						passager=passagerDAO.update(passager);
 						int index=BilletController.ListePassager.indexOf(tmpPassager);
-						if(index!=-1)
+						if(index!=-1) {
 							BilletController.ListePassager.set(index, passager);
+							Outils.info("Passager modifié avec succès");
+						}	
 						Stage stage=(Stage)CombDep.getScene().getWindow();
 						//reinitialiser le passager temporaire à null
 						tmpPassager=null;
@@ -172,8 +187,10 @@ public class BielletFormController extends BaseController implements Initializab
 					if(confirmer("Voullez-vous vraiment modifié cette réservation?")) {
 						passager=passagerDAO.update(passager);
 						int index=BilletController.ListeReservation.indexOf(tmpPassager);
-						if(index!=-1)
+						if(index!=-1) {
 							BilletController.ListeReservation.set(index, passager);
+							Outils.info("Résevation modifié avec succès");
+						}							
 						Stage stage=(Stage)CombDep.getScene().getWindow();
 						//reinitialiser le passager temporaire à null
 						tmpPassager=null;

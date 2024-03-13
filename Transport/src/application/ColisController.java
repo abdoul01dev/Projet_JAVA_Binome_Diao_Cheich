@@ -19,6 +19,7 @@ import outils.Outils;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import DataBase.ColisDAO;
@@ -42,6 +43,19 @@ public class ColisController implements Initializable {
 	ColisDAO colisDAO=DAOF.getColisDAO();
 	CourierDAO courierDAO=DAOF.getCourierDAO();
 	Outils outil=new Outils();
+	
+    @FXML
+    private Button btnExpedierCOl1;
+
+    @FXML
+    private Button btnExpédierCour;
+
+    @FXML
+    private Button btnSupRestituer;
+
+    @FXML
+    private Button btnSupRestituerCOl;
+	
 	@FXML
 	private Button btnNewColisS;
 	@FXML
@@ -219,10 +233,93 @@ public class ColisController implements Initializable {
     
     
     
-	
-	
-	//le controlleur de courier pour le choix du type de courier
-	//private CourierSFormController =new CourierSFormController();
+    @FXML
+    void expedierCol(ActionEvent event) {
+    	Colis colis=tableColisEntrant.getSelectionModel().getSelectedItem();
+		if(colis!=null) {
+			if(colis.getDateSortie()==null) {
+				if(Outils.confirmer("Voulez-vous vraiment restutuer ce colis?")) {
+					int index=listecolisEntrant.indexOf(colis);
+					colis.setDateSortie(Outils.DateEnChaine(LocalDate.now()));
+					colis=colisDAO.update(colis);
+					listecolisEntrant.set(index, colis);
+					Outils.info("Restitution prise en compte avec succès");
+					
+				}
+			}else {
+				Outils.info("Ce clois avait déjà été restitué");
+			}
+			
+		}else {
+			Outils.erreur("Veuillez selectionner un colis");
+		}
+    }
+
+    @FXML
+    void expedierCour(ActionEvent event) {
+    	Courrier courrier=TablecourierSortant.getSelectionModel().getSelectedItem();
+		if(courrier!=null) {
+			if(courrier.getDateSortie()==null) {
+				if(Outils.confirmer("Voullez-vous vraiment expédier ce courier?")) {
+					int index= listecourierSortant.indexOf(courrier);
+					courrier.setDateSortie(Outils.DateEnChaine(LocalDate.now()));
+					courrier=courierDAO.update(courrier);
+					listecourierSortant.set(index, courrier);
+					Outils.info("Expédition prise en compte avec succès");
+				}	
+			}else {
+				Outils.info("Ce courrier avait été déjà expédié");
+			}
+					
+		}else {
+			Outils.erreur("Veuillez selectionner un courrier");
+		}
+    	
+    }
+    
+    @FXML
+    void restituer(ActionEvent event) {
+    	Courrier courrier=TableCourierEntrant.getSelectionModel().getSelectedItem();
+		if(courrier!=null) {
+			if(courrier.getDateSortie()==null) {
+				if(Outils.confirmer("Voullez-vous vraiment expédier ce courier?")) {
+					int index= listecourierEntant.indexOf(courrier);
+					courrier.setDateSortie(Outils.DateEnChaine(LocalDate.now()));
+					courrier=courierDAO.update(courrier);
+					listecourierEntant.set(index, courrier);
+					Outils.info("Restitution prise en compte avec succès");
+				}
+			}else {
+				Outils.info("Ce courrier avait été déjà restitué");
+			}
+			
+		}else {
+			Outils.erreur("Veuillez selectionner un courrier");
+		}
+    	
+    }
+
+    @FXML
+    void restituerCol(ActionEvent event) {
+    	Colis colis=tableColisSortant.getSelectionModel().getSelectedItem();
+		if(colis!=null) {
+			if(colis.getDateSortie()==null) {
+				if(Outils.confirmer("Voulez-vous vraiment expédier ce colis?")) {
+					int index=listecolisSortant.indexOf(colis);
+					colis.setDateSortie(Outils.DateEnChaine(LocalDate.now()));
+					colis=colisDAO.update(colis);
+					listecolisSortant.set(index, colis);
+					Outils.info("Expédition prise en compte avec succès");
+					
+				}
+			}else {
+				Outils.info("Ce colis avait déjà été expédié");
+			}
+			
+		}else {
+			Outils.erreur("Veuillez selectionner un colis");
+		}
+    }
 
 	// Event Listener on Button[#btnNewColisS].onAction
 	@FXML
@@ -275,6 +372,9 @@ public class ColisController implements Initializable {
 			if(Outils.confirmer("Voulez vous vraiment suprimer ce colis? ")) {
 				colisDAO.delete(colis);
 				listecolisSortant.remove(colis);
+				Outils.info("Colis supprimé avec succès");
+				if(colis.getDateRecep().compareTo(Outils.DateEnChaine(LocalDate.now()))==0)
+					DashBordController.nbcolisS--;
 			}
 			
 		}else {
@@ -338,6 +438,9 @@ public class ColisController implements Initializable {
 			if(Outils.confirmer("Voulez vous vraiment suprimer ce colis? ")) {
 				colisDAO.delete(colis);
 				listecolisEntrant.remove(colis);
+				Outils.info("Colis supprimé avec succès");
+				if(colis.getDateRecep().compareTo(Outils.DateEnChaine(LocalDate.now()))==0)
+					DashBordController.nbcolisE--;
 			}
 			
 		}else {
@@ -400,6 +503,9 @@ public class ColisController implements Initializable {
 			if(Outils.confirmer("Voulez vous vraiment suprimer ce courier? ")) {
 				courierDAO.delete(courier);
 				listecourierSortant.remove(courier);
+				Outils.info("Courrier supprimé avec succès");
+				if(courier.getDateRecep().compareTo(Outils.DateEnChaine(LocalDate.now()))==0)
+					DashBordController.nbcourierS--;
 			}
 		}else {
 			Outils.erreur("Veuillez sélectionner un courrier");
@@ -460,6 +566,9 @@ public class ColisController implements Initializable {
 			if(Outils.confirmer("Voulez vous vraiment suprimer ce courier? ")) {
 				courierDAO.delete(courier);
 				listecourierEntant.remove(courier);
+				Outils.info("Courrier supprimé avec succès");
+				if(courier.getDateRecep().compareTo(Outils.DateEnChaine(LocalDate.now()))==0)
+					DashBordController.nbcourierE--;
 			}
 		}else {
 			Outils.erreur("Veuillez sélectionner un courrier");

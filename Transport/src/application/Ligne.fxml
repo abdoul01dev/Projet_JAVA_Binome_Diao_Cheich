@@ -9,12 +9,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="BorderPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LigneController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFE9F7;" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableLinge" layoutX="82.0" layoutY="53.0" prefHeight="224.0" prefWidth="351.0">
+            <TableView fx:id="tableLinge" layoutX="82.0" layoutY="53.0" prefHeight="224.0" prefWidth="351.0" stylesheets="@application.css">
               <columns>
                 <TableColumn fx:id="col_id" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="col_nom" prefWidth="228.0" text="Nom de la ligne" />

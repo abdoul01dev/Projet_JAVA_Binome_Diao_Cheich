@@ -51,6 +51,11 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 				user=new Utilisateur(id, result.getString("Nom_Ut"), result.getString("Mail_Ut"),
 				result.getString("MotPass_Ut"), result.getLong("ID_GU"),result.getInt("statut"),result.getString("Date_Creer"));
 				user.setGroupeUt(result.getString("Role_GU"));
+				if(user.getCodeStatut()==1) {
+					user.setStatut("Actif");
+				}else {
+					user.setStatut("Inactif");
+				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -63,11 +68,12 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 	@Override
 	public Utilisateur update(Utilisateur object) {
 		try {
-			PreparedStatement Pstatement = this.connection.prepareStatement("UPDATE utilisateurs SET Nom_Ut=?,Mail_Ut=?,MotPass_Ut=? WHERE ID_Ut=?;");
+			PreparedStatement Pstatement = this.connection.prepareStatement("UPDATE utilisateurs SET Nom_Ut=?,Mail_Ut=?,MotPass_Ut=?,statut=? WHERE ID_Ut=?;");
 			Pstatement.setString(1, object.getNomUt());
 			Pstatement.setString(2, object.getMail());
 			Pstatement.setString(3, object.getMotdepasse());
-			Pstatement.setLong(4, object.getId());
+			Pstatement.setInt(4, object.getCodeStatut());
+			Pstatement.setLong(5, object.getId());
 			Pstatement.executeUpdate();
 			object=this.find(object.getId());
 		} catch (SQLException e) {

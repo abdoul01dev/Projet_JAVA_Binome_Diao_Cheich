@@ -39,14 +39,14 @@ public class Main extends Application {
 		System.out.println(P.getDate());
 		System.out.println(P.getDestination());
 		System.out.println(l.getNom()+"  @@");
-		LocalDate date = LocalDate.now();
+		//LocalDate date = LocalDate.now();
 		DAOF.getPassagerDAO().findPassagerByDate("2024-01-30");
-		Long i=5158960l;
-		String S=String.format("%09d",i);
+		//Long i=5158960l;
+		//String S=String.format("%09d",i);
 		Outils outil=new Outils();
 		System.out.println("le sha 256 de admin :"+outil.sha256("admin"));
 
-		
+		//Outils.gestionAutoResev();
 		//System.out.println(date);
 		
 	}

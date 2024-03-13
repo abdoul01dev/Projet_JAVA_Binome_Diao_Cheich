@@ -105,6 +105,8 @@ public class ColisEFormeController implements Initializable{
 					codeColis.setText(code);
 				colis=colisDAO.create(colis);
 				ColisController.listecolisEntrant.add(colis);
+				Outils.info("Colis ajouté avec succès");
+				DashBordController.nbcolisE++;
 			}else {
 				if(Outils.confirmer("Voulez-vous vraiment enregistrer ces modifications?")) {
 					colis.setId(tmpcolis.getId());

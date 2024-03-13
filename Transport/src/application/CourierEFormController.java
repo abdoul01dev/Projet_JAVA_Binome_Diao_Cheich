@@ -103,6 +103,8 @@ public class CourierEFormController implements Initializable {
 				codeColis.setText(code);
 				courier=courierDAO.create(courier);
 				ColisController.listecourierEntant.add(courier);
+				Outils.info("Courrier ajouté avec succès");
+				DashBordController.nbcourierE++;
 			}else {
 				if(Outils.confirmer("Voulez-vous vraiment enregistrer ces modifications?")) {
 					courier.setId(tmpcourier.getId());

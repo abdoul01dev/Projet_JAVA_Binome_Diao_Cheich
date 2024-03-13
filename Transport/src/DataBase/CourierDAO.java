@@ -148,6 +148,40 @@ public class CourierDAO extends DAO<Courrier> {
 		return result;
 	}
 	
+	public ResultSet findAllByDatev2(String date) {
+		Statement statement;
+		ResultSet result=null;
+		try {
+			statement = this.connection.createStatement();
+			result=statement.executeQuery("SELECT * FROM couriers WHERE codeES=2 AND Date_recep='"+date+"';" );
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	public ResultSet findAllByDate(String date) {
+		//Statement statement;
+		ResultSet result=null;
+		try {
+			//statement = this.connection.createStatement();
+			//result=statement.executeQuery("SELECT * FROM couriers WHERE codeES=1 AND Date_recep='"+date+"';" );
+			String query = "SELECT * FROM couriers WHERE codeES=? AND Date_recep=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, 2); 
+			preparedStatement.setString(2, date); 
+			result = preparedStatement.executeQuery();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 	
 	public Long idMax() {
 		Statement statement;

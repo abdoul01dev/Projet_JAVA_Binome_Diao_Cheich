@@ -106,6 +106,8 @@ public class CourierSFormController implements Initializable{
 				codeColis.setText(code);
 				courier=courierDAO.create(courier);
 				ColisController.listecourierSortant.add(courier);
+				Outils.info("Courrier ajouté avec succès");
+				DashBordController.nbcourierS++;
 			}else {
 				if(Outils.confirmer("Voulez-vous vraiment enregistrer ces modifications?")) {
 					courier.setId(tmpcourier.getId());

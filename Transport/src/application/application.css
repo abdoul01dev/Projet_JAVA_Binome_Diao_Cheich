@@ -10,12 +10,57 @@
 	
 }
 .table-view .column-header {
-    -fx-background-color: #4CAF50; 
+    -fx-background-color: darkblue; 
+    -fx-border-color: white;
+    -fx-border-width: 0.25px; 
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+}
+
+.table-view .column-header-separator {
+    -fx-background-color: white; 
+}
+
+.table-view .table-header {
     -fx-text-fill: #ffffff; 
 }
 
-/* Définition d'un style pour les cellules de contenu */
 .table-view .table-cell {
-    -fx-background-color: #E8F5E9; 
-    -fx-text-fill: #000000; 
+	
 }
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #0978f6;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: red;
+}
+
+.tab-pane .tab-header-area .headers-region {
+    -fx-background-color: blue; 
+}
+
+.tab-pane .tab-header-area .tab:selected {
+    -fx-background-color: darkblue;
+     -fx-text-fill: #ffffff;
+}
+
+.tab-pane .tab-header-area .tab {
+    -fx-background-color: #0978f6;
+}
+
+
+.tab-pane .tab-header-background {
+    -fx-background-color: #0978f6
+    ;
+}
+
+.tab .tab-label {
+    -fx-text-fill: white; 
+}
+
+
+

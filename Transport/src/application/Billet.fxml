@@ -21,7 +21,7 @@
 
 <BorderPane prefHeight="518.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BilletController">
    <center>
-      <TabPane prefHeight="400.0" prefWidth="704.0" style="-fx-background-color: #CFE9F7; -fx-background-radius: 20;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane prefHeight="400.0" prefWidth="704.0" style="-fx-background-color: #CFE9F7; -fx-background-radius: 20;" stylesheets="@application.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
           <Tab text="Passager">
             <content>
@@ -29,15 +29,15 @@
                      <children>
                         <BorderPane layoutX="7.0" layoutY="2.0" prefHeight="364.0" prefWidth="693.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <center>
-                              <TableView fx:id="tablePassager" maxHeight="-Infinity" onSort="#OK" prefHeight="420.0" prefWidth="526.0" BorderPane.alignment="TOP_CENTER">
+                              <TableView fx:id="tablePassager" maxHeight="-Infinity" onSort="#OK" prefHeight="420.0" prefWidth="526.0" stylesheets="@application.css" BorderPane.alignment="TOP_CENTER">
                                 <columns>
                                   <TableColumn fx:id="col_id" prefWidth="60.0" text="ID" />
                                   <TableColumn fx:id="col_nom" prefWidth="160.0" text="Nom" />
-                                    <TableColumn fx:id="col_prenom" prefWidth="200.0" text="Prénom" />
-                                    <TableColumn fx:id="col_tel" prefWidth="75.0" text="Téléphone" />
+                                    <TableColumn fx:id="col_prenom" prefWidth="210.0" text="Prénom" />
+                                    <TableColumn fx:id="col_tel" prefWidth="100.0" text="Téléphone" />
                                     <TableColumn fx:id="col_dest" prefWidth="160.0" text="Destination" />
                                     <TableColumn fx:id="col_type" prefWidth="150.0" text="Type de billet " />
-                                    <TableColumn fx:id="col_motant" prefWidth="75.0" text="Motant" />
+                                    <TableColumn fx:id="col_motant" prefWidth="100.0" text="Motant" />
                                     <TableColumn fx:id="col_Hdepart" prefWidth="95" text="Heure départ" />
                                 </columns>
                                  <BorderPane.margin>
@@ -98,9 +98,9 @@
                                           <Image url="@../../../../../Desktop/passenger-icon-4.jpg" />
                                        </image>
                                     </ImageView>
-                                    <TableView maxWidth="-Infinity" prefHeight="194.0" prefWidth="520.0" style="-fx-background-color: #333366;">
+                                    <TableView maxWidth="-Infinity" prefHeight="194.0" prefWidth="520.0" stylesheets="@application.css">
                                        <columns>
-                                          <TableColumn fx:id="lecDestination" prefWidth="200" text="Destination" />
+                                          <TableColumn fx:id="lecDestination" prefWidth="200" text="Ligne" />
                                           <TableColumn fx:id="lecHeure" prefWidth="115" text="Heure de depart" />
                                           <TableColumn prefWidth="200" text="Nombre de places">
                                              <columns>
@@ -133,19 +133,24 @@
                      <children>
                         <BorderPane layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <right>
-                              <AnchorPane prefHeight="371.0" prefWidth="136.0" BorderPane.alignment="CENTER">
+                              <AnchorPane prefHeight="253.0" prefWidth="175.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <Button fx:id="btnNewResev" layoutY="14.0" mnemonicParsing="false" onAction="#newReserv" prefHeight="35.0" prefWidth="86.0" style="-fx-background-color: darkgreen; -fx-background-radius: 5;" text="Nouveau" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                                    <Button fx:id="btnNewResev" layoutY="14.0" mnemonicParsing="false" onAction="#newReserv" prefHeight="35.0" prefWidth="86.0" style="-fx-background-color: darkgreen; -fx-background-radius: 5;" text="Nouveau" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="btnModifResev" layoutY="66.0" mnemonicParsing="false" onAction="#modifReserv" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #2a3a4a; -fx-background-radius: 5;" text="Modifier" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+                                    <Button fx:id="btnModifResev" layoutY="66.0" mnemonicParsing="false" onAction="#modifReserv" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #2a3a4a; -fx-background-radius: 5;" text="Modifier" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="50.0">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="btnDeletReserv" layoutY="116.0" mnemonicParsing="false" onAction="#deleteReserv" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #a82400; -fx-background-radius: 5;" text="Supprimer" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0">
+                                    <Button fx:id="btnDeletReserv" layoutY="116.0" mnemonicParsing="false" onAction="#deleteReserv" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #a82400; -fx-background-radius: 5;" text="Supprimer" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="100.0">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="btnAnnuler" layoutY="164.0" mnemonicParsing="false" onAction="#annuler" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: FEC606; -fx-background-radius: 5;" text="Annuler" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="150.0">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -154,7 +159,7 @@
                               </AnchorPane>
                            </right>
                            <center>
-                              <TableView fx:id="tableR" maxHeight="-Infinity" prefHeight="420.0" prefWidth="600.0" BorderPane.alignment="TOP_RIGHT">
+                              <TableView fx:id="tableR" maxHeight="-Infinity" prefHeight="420.0" prefWidth="600.0" stylesheets="@application.css" BorderPane.alignment="TOP_RIGHT">
                                  <columns>
                                     <TableColumn fx:id="col_id1" prefWidth="75.0" text="ID" />
                                     <TableColumn fx:id="col_nom1" prefWidth="120" text="Nom" />
@@ -205,9 +210,9 @@
                                           <Image url="@../../../../../Desktop/passenger-icon-4.jpg" />
                                        </image>
                                     </ImageView>
-                                    <TableView maxWidth="-Infinity" prefHeight="194.0" prefWidth="520.0" style="-fx-background-color: #333366;">
+                                    <TableView maxWidth="-Infinity" prefHeight="194.0" prefWidth="520.0" stylesheets="@application.css">
                                        <columns>
-                                          <TableColumn fx:id="lecDestination1" prefWidth="200" text="Destination" />
+                                          <TableColumn fx:id="lecDestination1" prefWidth="200" text="Ligne" />
                                           <TableColumn fx:id="lecHeure1" prefWidth="115" text="Heure de depart" />
                                           <TableColumn prefWidth="200" text="Nombre de places">
                                              <columns>

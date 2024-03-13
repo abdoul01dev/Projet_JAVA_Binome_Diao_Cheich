@@ -31,7 +31,7 @@ import javafx.event.ActionEvent;
 
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Dialog;
+
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -75,6 +75,8 @@ public class BilletController implements Initializable {
 	@FXML
 	private Button btnDeletReserv;
 	@FXML
+	private Button btnAnnuler;
+	@FXML
 	private TableView<Passager> tableR;
 	@FXML
 	private TableColumn<Passager,Long>  col_id1;
@@ -97,7 +99,7 @@ public class BilletController implements Initializable {
 	@FXML
 	private TableColumn<Passager,String>col_Hdepart1;
 	@FXML
-	private ComboBox combRechReserv;
+	private ComboBox<String> combRechReserv;
 	@FXML
 	private TextField champRechReserv;
 	@FXML
@@ -194,6 +196,9 @@ public class BilletController implements Initializable {
 			if(Outils.confirmer(messager)) {
 				passagerDAO.delete(passager);
 				ListePassager.remove(passager);
+				Outils.info("Passager supprimé avec succès");
+				if(passager.getDate().compareTo(Outils.DateEnChaine(LocalDate.now()))==0)
+					DashBordController.nbPassager--;
 			}
 		}else {
 			Outils.erreur("Veullez selectionner un passager d'abdord");
@@ -257,13 +262,47 @@ public class BilletController implements Initializable {
 			messager="Voullez-vous vraiment supprimé ce cette réservation?";
 			if(Outils.confirmer(messager)) {
 				passagerDAO.delete(passager);
-				ListePassager.remove(passager);
+				ListeReservation.remove(passager);
+				Outils.info("Réservation supprimée avec succès");
+				if(passager.getDate_Enreg()!=null && passager.getDate_Enreg().compareTo(Outils.DateEnChaine(LocalDate.now()))==0)
+					DashBordController.nbreservation--;
 			}
 		
 		}else {
 			Outils.erreur("Veullez selectionner une une réservation d'abdord");
 		}
 	}
+	
+	// Event Listener on Button[#btnDeletReserv].onAction
+		@FXML
+		public void annuler(ActionEvent event) {
+			Passager passager=tableR.getSelectionModel().getSelectedItem();
+			if(passager!=null) {
+				LocalDate d=LocalDate.parse(passager.getDate());
+				if(d.isAfter(LocalDate.now())) {
+					if(passager.getEtat()!=3) {
+						int index=ListeReservation.indexOf(passager);
+						PassagerDAO passagerDAO=new PassagerDAO();
+						String messager="";
+						messager="Voullez-vous vraiment annuler cette réservation?";
+						if(Outils.confirmer(messager)) {
+							passager.setEtat(3);
+							passager.setMontant(passager.getMontant()*0.2);
+							passager=passagerDAO.updateEtat(passager);					
+							ListeReservation.set(index,passager);
+						}
+					}else {
+						Outils.info("Cette réservation a été déjà annulée");
+					}
+				}else {
+					Outils.erreur("Impossible d'annuler un réservation dont la date est passée");
+					
+				}
+			}else {
+				Outils.erreur("Veullez selectionner une une réservation d'abdord");
+			}
+		}
+	
 	// Event Listener on TextField[#champRechReserv].onAction
 	@FXML
 	public void rechercheReserv(ActionEvent event) {
@@ -376,10 +415,6 @@ public class BilletController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		col_id1.setStyle("-fx-background-color: #4CAF50;");// -fx-text-fill: #ffffff;");
-		col_id.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: #ffffff;");
-		
-		
 		col_id.setCellValueFactory(new PropertyValueFactory<>("code"));
 		col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
 		col_prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
@@ -436,6 +471,7 @@ public class BilletController implements Initializable {
 			}
 		}
 		tableR.setItems(ListeReservation);
+		Outils.gestionAutoResev();
 	}
 }
 

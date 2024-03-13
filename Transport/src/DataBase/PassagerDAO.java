@@ -9,6 +9,7 @@ import java.util.Date;
 
 import metiers.Passager;
 import metiers.Utilisateur;
+import outils.Outils;
 
 public class PassagerDAO extends DAO<Passager>{
 	Passager PassagerCourent=null;
@@ -18,8 +19,8 @@ public class PassagerDAO extends DAO<Passager>{
 		try {
 			Statement statement= this.connection.createStatement();		
 			 PreparedStatement prepare=connection.prepareStatement("INSERT INTO `passagers` (`Code_Passager`, `Nom_Passager`, "
-			 		+ "`prenom_Passager`, `Tel_Passager`, `Age_Passager`, `Sexe_Passager`, `Date_voy`, `ID_billet`,`Type_Passager`, `ID_Destination`, `ID_Depart`)"
-			 		+ " VALUES (?,?,?,?,?,?,?,?,?,?,?);");
+			 		+ "`prenom_Passager`, `Tel_Passager`, `Age_Passager`, `Sexe_Passager`, `Date_voy`, `ID_billet`,`Type_Passager`, `ID_Destination`, `ID_Depart`, etat , Date_enreg)"
+			 		+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);");
 			 prepare.setString(1, object.getCode());
 			 prepare.setString(2, object.getNom());
 			 prepare.setString(3, object.getPrenom());
@@ -31,6 +32,8 @@ public class PassagerDAO extends DAO<Passager>{
 			 prepare.setInt(9, object.getTypePassager());
 			 prepare.setLong(10, object.getIdDestination());
 			 prepare.setLong(11, object.getDepart());
+			 prepare.setInt(12, object.getEtat());
+			 prepare.setString(13, Outils.DateEnChaine(LocalDate.now()));
 			 prepare.executeUpdate();
 			 ResultSet result = statement.executeQuery("SELECT ID_Passager FROM passagers ORDER BY ID_Passager DESC LIMIT 1;");
 			 if(result.next()) {
@@ -65,10 +68,14 @@ public class PassagerDAO extends DAO<Passager>{
 				passager.setHeure(result.getString("Heure"));
 				passager.setCode(result.getString("Code_Passager"));
 				passager.setTypePassager(result.getInt("Type_Passager"));
+				passager.setEtat(result.getInt("etat"));
 				if(passager.getEtat()==1) {
 					passager.setEtatR("Résolu");
-				}else {
+				}else if(passager.getEtat()==2) {
 					passager.setEtatR("En cours");
+				}else {
+					passager.setEtatR("Annulé");
+					passager.setMontant(result.getDouble("cout"));
 				}
 				
 			}
@@ -198,4 +205,40 @@ public class PassagerDAO extends DAO<Passager>{
 		}
 		 return ID+1;
 	}
-}
+	
+	
+	
+	public Passager updateEtat(Passager object) {
+		 PreparedStatement prepare;
+		
+			try {
+				prepare = connection.prepareStatement("UPDATE passagers SET cout=?,etat=? WHERE ID_Passager=?");
+				prepare.setDouble(1, object.getMontant());
+				prepare.setInt(2, object.getEtat());
+				prepare.setLong(3, object.getId());
+				prepare.executeUpdate();
+				 object=find(object.getId());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return object;
+			 
+	}
+			public ResultSet findReservationToDay(String date){
+				ResultSet Rs=null;
+					Statement statement;
+					try {
+						statement = this.connection.createStatement();
+						Rs=statement.executeQuery("SELECT * FROM passagers WHERE Date_enreg='"+date+"' AND Type_Passager=2");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					return Rs;
+	}
+			
+	}
+	
+

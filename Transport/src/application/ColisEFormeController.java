@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 import metiers.Colis;
 import metiers.Destination;
 import metiers.Peseonne;
@@ -190,6 +192,12 @@ public class ColisEFormeController implements Initializable{
 		}
 		comboProvenance.setItems(Listdestination);
 		comboProvenance.getSelectionModel().selectFirst();
+		
+		
+		telDest.setTextFormatter(Outils.Tranformateur( new IntegerStringConverter()));
+		TelExp.setTextFormatter(Outils.formater());
+		valeur.setTextFormatter(Outils.Tranformateur( new DoubleStringConverter()));
 	}
 		
+	
 }

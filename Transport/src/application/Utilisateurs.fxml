@@ -30,12 +30,12 @@
             </TableView>
             <AnchorPane layoutX="356.0" layoutY="87.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="136.0">
                <children>
-                  <JFXButton fx:id="btnmodifG" layoutX="5.0" onAction="#ModifGrou" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: #2a3a4a;" text="Modifier" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                  <JFXButton fx:id="btnmodifG" layoutX="26.0" onAction="#ModifGrou" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: #2a3a4a;" text="Modifier" textFill="WHITE" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="supGrou" layoutX="5.0" layoutY="46.0" onAction="#supgroup" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: #a82400;" text="Supprimer" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="55.0">
+                  <JFXButton fx:id="supGrou" layoutX="26.0" layoutY="44.0" onAction="#supgroup" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: #a82400;" text="Supprimer" textFill="WHITE" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="44.0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -49,20 +49,20 @@
                   <Button fx:id="ResercheGroupe" mnemonicParsing="false" onAction="#groupeU" style="-fx-background-color: #ffaa33; -fx-background-radius: 25;" stylesheets="@application.css" text="Rechercher" textFill="WHITE" />
                </children>
             </HBox>
-            <AnchorPane layoutX="10.0" layoutY="388.0" prefHeight="138.0" prefWidth="346.0" style="-fx-background-radius: 20; -fx-border-color: darkblue; -fx-border-radius: 20;" AnchorPane.bottomAnchor="31.0">
+            <AnchorPane layoutX="10.0" layoutY="388.0" prefHeight="138.0" prefWidth="346.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="31.0">
                <children>
-                  <TextField fx:id="nomGUser" layoutX="7.0" layoutY="33.0" prefHeight="25.0" prefWidth="200.0" promptText="Nom du groupe" />
+                  <TextField fx:id="nomGUser" layoutX="7.0" layoutY="33.0" prefHeight="25.0" prefWidth="228.0" promptText="Nom du groupe" />
                   <Button fx:id="btnValider" layoutX="251.0" layoutY="45.0" mnemonicParsing="false" onAction="#ValiderGU" style="-fx-background-color: green;" text="Valider" textFill="#fffdfd" />
                   <Button fx:id="btnAnnulerGU" layoutX="249.0" layoutY="87.0" mnemonicParsing="false" onAction="#AnnulerGU" style="-fx-background-color: red;" text="Annuler" textFill="WHITE" />
-                  <Label layoutX="112.0" layoutY="8.0" text="Un groupe Users">
+                  <Label alignment="CENTER" layoutY="2.0" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: #0978f6;" text="Un groupe Users" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="16.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="description" layoutX="7.0" layoutY="73.0" prefHeight="53.0" prefWidth="200.0" promptText="Description" />
+                  <TextArea fx:id="description" layoutX="7.0" layoutY="73.0" prefHeight="53.0" prefWidth="227.0" promptText="Description" />
                </children>
             </AnchorPane>
-            <Label layoutX="145.0" layoutY="14.0" text="Groupe utilisateurs">
+            <Label alignment="CENTER" layoutX="8.0" layoutY="14.0" prefHeight="27.0" prefWidth="348.0" style="-fx-background-color: #0978f6;" text="Groupe utilisateurs" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -120,23 +120,23 @@
                   <Insets left="15.0" />
                </padding>
             </HBox>
-            <AnchorPane layoutX="-1.0" layoutY="332.0" prefHeight="154.0" prefWidth="506.0" style="-fx-background-radius: 20; -fx-border-color: darkblue; -fx-border-radius: 20;" AnchorPane.bottomAnchor="31.0">
+            <AnchorPane layoutX="-1.0" layoutY="332.0" prefHeight="154.0" prefWidth="506.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="31.0">
                <children>
                   <TextField fx:id="nomUser" layoutX="14.0" layoutY="37.0" prefHeight="25.0" prefWidth="214.0" promptText="Nom d'utilisateur" />
                   <TextField fx:id="mailUser" layoutX="14.0" layoutY="76.0" prefHeight="25.0" prefWidth="214.0" promptText="Mail de l'utilisateur" />
                   <ComboBox fx:id="comboGU" layoutX="14.0" layoutY="115.0" prefHeight="25.0" prefWidth="213.0" promptText="Groupe utilisateur" style="-fx-background-color: white;" />
-                  <PasswordField fx:id="mdpUser" layoutX="253.0" layoutY="37.0" prefHeight="25.0" prefWidth="219.0" promptText="Mot de passe" />
-                  <PasswordField fx:id="confMdp" layoutX="253.0" layoutY="76.0" prefHeight="25.0" prefWidth="219.0" promptText="Confirmer le mot de passe" />
+                  <PasswordField fx:id="mdpUser" layoutX="273.0" layoutY="37.0" prefHeight="25.0" prefWidth="219.0" promptText="Mot de passe" />
+                  <PasswordField fx:id="confMdp" layoutX="273.0" layoutY="76.0" prefHeight="25.0" prefWidth="219.0" promptText="Confirmer le mot de passe" />
                   <Button fx:id="btnValiderUser" layoutX="396.0" layoutY="115.0" mnemonicParsing="false" onAction="#ValiderUser" style="-fx-background-color: green;" text="Valider" textFill="#fffdfd" />
                   <Button fx:id="btnAnnulerUser" layoutX="294.0" layoutY="115.0" mnemonicParsing="false" onAction="#AnnulerUser" style="-fx-background-color: red;" text="Annuler" textFill="WHITE" />
-                  <Label layoutX="201.0" layoutY="2.0" text="Un utilisateur">
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="2.0" prefHeight="25.0" prefWidth="496.0" style="-fx-background-color: #0978f6;" text="Un utilisateur" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="16.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <Label layoutX="238.0" layoutY="14.0" text="Les utilisateurs">
+            <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="27.0" prefWidth="499.0" style="-fx-background-color: #0978f6;" text="Les utilisateurs" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

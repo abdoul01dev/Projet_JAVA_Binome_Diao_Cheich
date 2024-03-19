@@ -50,18 +50,18 @@
                   <Insets left="15.0" top="5.0" />
                </padding>
             </HBox>
-            <Label layoutX="271.0" layoutY="8.0" text="Nos départs" textAlignment="CENTER" textFill="#000000c4" AnchorPane.topAnchor="10.0">
+            <Label alignment="CENTER" layoutX="16.0" layoutY="1.0" prefHeight="27.0" prefWidth="499.0" style="-fx-background-color: #0978f6;" text="Nos départs" textAlignment="CENTER" textFill="#ffffffc4" AnchorPane.topAnchor="1.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="12.0" layoutY="390.0" prefHeight="196.0" prefWidth="499.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: darkblue;" AnchorPane.bottomAnchor="14.0">
+            <AnchorPane layoutX="12.0" layoutY="390.0" prefHeight="196.0" prefWidth="499.0" style="-fx-background-radius: 20;" AnchorPane.bottomAnchor="14.0">
                <children>
                   <TextField fx:id="HeureDepart" layoutX="259.0" layoutY="59.0" prefHeight="26.0" prefWidth="232.0" promptText="Heure" />
                   <ComboBox fx:id="comboJour" layoutX="6.0" layoutY="58.0" prefHeight="26.0" prefWidth="236.0" promptText="Jour" style="-fx-background-color: white;" />
                   <Button fx:id="btnannuleDepart" layoutX="327.0" layoutY="156.0" mnemonicParsing="false" onAction="#annuleDepart" style="-fx-background-color: red;" text="Annuler" textFill="#f8f8f8" />
                   <Button fx:id="btnvalideDepart" layoutX="418.0" layoutY="156.0" mnemonicParsing="false" onAction="#valideDepart" style="-fx-background-color: green;" text="Valider" textFill="WHITE" />
-                  <Label layoutX="213.0" layoutY="14.0" text="Un départ">
+                  <Label alignment="CENTER" layoutX="1.0" layoutY="7.0" prefHeight="33.0" prefWidth="498.0" style="-fx-background-color: #0978f6;" text="Un départ" textFill="#f5f5f5">
                      <font>
                         <Font name="Trebuchet MS Bold Italic" size="22.0" />
                      </font>
@@ -108,27 +108,27 @@
                   </Button>
                </children>
             </VBox>
-            <Label layoutX="212.0" layoutY="1.0" text="Nos destinations" AnchorPane.topAnchor="10.0">
+            <Label alignment="CENTER" layoutX="29.0" layoutY="1.0" prefHeight="27.0" prefWidth="453.0" style="-fx-background-color: #0978f6;" text="Nos destinations" textFill="WHITE" AnchorPane.topAnchor="1.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="5.0" layoutY="446.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="181.0" prefWidth="500.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: darkblue;" AnchorPane.bottomAnchor="26.0">
+            <AnchorPane layoutX="5.0" layoutY="446.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="181.0" prefWidth="500.0" style="-fx-border-radius: 20;" AnchorPane.bottomAnchor="26.0">
                <children>
                   <TextField fx:id="distance" layoutX="266.0" layoutY="45.0" prefHeight="26.0" prefWidth="232.0" promptText="Distance" />
                   <ComboBox fx:id="comboLigne" layoutX="14.0" layoutY="98.0" prefHeight="27.0" prefWidth="232.0" promptText="ligne" style="-fx-background-color: white;" />
                   <Button fx:id="btn_annule_dest" layoutX="330.0" layoutY="95.0" mnemonicParsing="false" onAction="#annuleDest" style="-fx-background-color: red;" text="Annuler" textFill="#f5f5f5" />
                   <Button fx:id="btn_valideDest" layoutX="419.0" layoutY="95.0" mnemonicParsing="false" onAction="#valideDest" style="-fx-background-color: green;" text="Valider" textFill="WHITE" />
                   <TextField fx:id="nom_dest" layoutX="15.0" layoutY="45.0" prefHeight="26.0" prefWidth="232.0" promptText="Nom de la destination" />
-                  <Label layoutX="184.0" layoutY="14.0" text="Une destination">
+                  <Label alignment="CENTER" layoutX="3.0" prefHeight="32.0" prefWidth="495.0" style="-fx-background-color: #0978f6;" text="Une destination" textFill="WHITE">
                      <font>
                         <Font name="Trebuchet MS Bold Italic" size="22.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="voirLigne" layoutX="260.0" layoutY="357.0" mnemonicParsing="false" onAction="#OnvoirLinge" prefHeight="30.0" prefWidth="219.0" text="Voir les lignes" AnchorPane.bottomAnchor="266.0" />
-            <Button fx:id="voirTarif" layoutX="30.0" layoutY="357.0" mnemonicParsing="false" onAction="#OnvoirLTarif" prefHeight="30.0" prefWidth="225.0" text="Voir les tarifs" AnchorPane.bottomAnchor="266.0" />
+            <Button fx:id="voirLigne" layoutX="260.0" layoutY="357.0" mnemonicParsing="false" onAction="#OnvoirLinge" prefHeight="30.0" prefWidth="219.0" style="-fx-background-color: darkblue;" text="Voir les lignes" textFill="WHITE" AnchorPane.bottomAnchor="266.0" />
+            <Button fx:id="voirTarif" layoutX="30.0" layoutY="357.0" mnemonicParsing="false" onAction="#OnvoirLTarif" prefHeight="30.0" prefWidth="225.0" style="-fx-background-color: darkblue;" text="Voir les tarifs" textFill="WHITE" AnchorPane.bottomAnchor="266.0" />
          </children>
       </AnchorPane>
    </center>

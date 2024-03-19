@@ -33,12 +33,12 @@ public class Main extends Application {
 		Passager P=DAOF.getPassagerDAO().find(1l);
 		Ligne l=DAOF.getLigneDAO().find(1l);
 		//System.out.println(P.getId());
-		System.out.println(P.getPrenom());
+		/*System.out.println(P.getPrenom());
 		System.out.println(P.getTypeBillet());
 		System.out.println(P.getHeure());
 		System.out.println(P.getDate());
 		System.out.println(P.getDestination());
-		System.out.println(l.getNom()+"  @@");
+		System.out.println(l.getNom()+"  @@");*/
 		//LocalDate date = LocalDate.now();
 		DAOF.getPassagerDAO().findPassagerByDate("2024-01-30");
 		//Long i=5158960l;

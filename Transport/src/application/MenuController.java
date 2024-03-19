@@ -217,6 +217,17 @@ public class MenuController extends BaseController implements Initializable{
 		 btnUsers.setStyle("-fx-background-color:  #0978f6; -fx-text-fill: white;");
 		 btnParam.setStyle("-fx-background-color:  #0978f6; -fx-text-fill: white;");
 		 btnBil.setStyle("-fx-background-color:  #0978f6; -fx-text-fill: white;");
+		 if(Pages[7]==null) {
+				try {
+					Parent root=FXMLLoader.load(getClass().getResource("Comptabilite.fxml"));
+					Pages[7]=root;
+					PanePrincipal.setCenter((Node) Pages[7]);
+				} catch (IOException e) {
+					
+					e.printStackTrace();
+				}
+				
+			}else {PanePrincipal.setCenter((Node) Pages[7]);}
 
 	}
 	

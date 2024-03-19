@@ -1,41 +1,33 @@
 package outils;
 
+import java.io.IOException;
 import java.security.MessageDigest;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 import DataBase.PassagerDAO;
-import application.BielletFormController;
 import application.BilletController;
-import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextFormatter;
+import javafx.stage.Stage;
+import javafx.util.StringConverter;
+import javafx.util.converter.IntegerStringConverter;
 import metiers.Passager;
 import javafx.scene.control.Alert.AlertType;
 
 
 public class Outils {
-	public boolean Charger(ResultSet bdData,ObservableList liste ){
-		if(bdData!=null) {
-			try {
-				while(bdData.next()) {
-					Long id=bdData.getLong("ID_Passager");
-					//liste.add(passagerDAO.find(id));
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return false;
-		
-	}
 	
 	public static boolean confirmer(String message) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -90,8 +82,8 @@ public class Outils {
 
 	}
 	
-	public static void Imprimer() {
-		 
+	public void Imprimer() {
+		
 	}
 	
 	
@@ -100,7 +92,7 @@ public class Outils {
 		PassagerDAO passagerDAO=new PassagerDAO();
         Runnable task = () -> {
         	for(Passager p:BilletController.ListeReservation) {
-        		if(LocalDate.parse(p.getDate()).compareTo(LocalDate.now())==0&& p.getEtat()==2) {
+        		if(LocalDate.parse(p.getDate()).compareTo(LocalDate.now())<=0 && p.getEtat()==2) {
         			int index=BilletController.ListeReservation.indexOf(p);
         			p.setEtat(1);
         			p.setMontant(p.getMontant());
@@ -115,4 +107,29 @@ public class Outils {
         scheduler.scheduleAtFixedRate(task, 0, intervalInSeconds, TimeUnit.MINUTES);
 
 	}
+	
+	
+public static TextFormatter<Integer> formater() {
+	StringConverter<Integer> converter = new IntegerStringConverter();
+
+    return new TextFormatter<>(converter, null, change -> {
+        String newText = change.getControlNewText();
+        if (newText.matches("\\d*") || newText.isEmpty()) {
+            return change; 
+        }
+        return null; 
+    });
+}
+
+public static <T> TextFormatter<T> Tranformateur(StringConverter<T> converter) {
+    return new TextFormatter<>(converter, null, change -> {
+        String newText = change.getControlNewText();
+        if (newText.isEmpty() || converter.fromString(newText) != null) {
+            return change; 
+        }
+        return null; 
+    });
+}
+	
+	
 }

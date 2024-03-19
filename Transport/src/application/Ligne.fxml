@@ -16,14 +16,14 @@
             <TableView fx:id="tableLinge" layoutX="82.0" layoutY="53.0" prefHeight="224.0" prefWidth="351.0" stylesheets="@application.css">
               <columns>
                 <TableColumn fx:id="col_id" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="col_nom" prefWidth="228.0" text="Nom de la ligne" />
+                <TableColumn fx:id="col_nom" prefWidth="275.0" text="Nom de la ligne" />
               </columns>
             </TableView>
             <TextField fx:id="nomligne" layoutX="84.0" layoutY="300.0" prefHeight="25.0" prefWidth="276.0" />
             <Button fx:id="btnValide" layoutX="387.0" layoutY="300.0" mnemonicParsing="false" onAction="#valide" style="-fx-background-color: darkgreen;" text="Valider" textFill="WHITE" />
-            <Button fx:id="btnModif" layoutX="440.0" layoutY="53.0" mnemonicParsing="false" onAction="#modif" prefHeight="25.0" prefWidth="72.0" style="-fx-background-color: #2a3a4a;" text="Modifier" textFill="WHITE" />
-            <Button fx:id="btnSupprime" layoutX="440.0" layoutY="94.0" mnemonicParsing="false" onAction="#supprime" style="-fx-background-color: darkred;" text="Supprimer" textFill="WHITE" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="244.0" layoutY="14.0" text="Nos lignes" textFill="#2a3a4a" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Button fx:id="btnModif" layoutX="440.0" layoutY="53.0" mnemonicParsing="false" onAction="#modif" prefHeight="28.0" prefWidth="72.0" style="-fx-background-color: #2a3a4a;" text="Modifier" textFill="WHITE" />
+            <Button fx:id="btnSupprime" layoutX="438.0" layoutY="106.0" mnemonicParsing="false" onAction="#supprime" style="-fx-background-color: darkred;" text="Supprimer" textFill="WHITE" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="82.0" layoutY="14.0" prefHeight="36.0" prefWidth="353.0" style="-fx-background-color: #0978f6;" text="Nos lignes" textFill="WHITE" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="165.0">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="20.0" />
                </font>

@@ -1,12 +1,18 @@
 package application;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+
 import javafx.stage.Stage;
+
+
 import javafx.scene.control.Alert.AlertType;
 import metiers.Billet;
 import metiers.Depart;
@@ -14,6 +20,7 @@ import metiers.Destination;
 import metiers.Passager;
 import outils.Outils;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -109,6 +116,7 @@ public class BielletFormController extends BaseController implements Initializab
 	// Event Listener on Button[#btnValider].onAction
 	@FXML
 	public void Valider(ActionEvent event) {
+		//Outils u=new Outils();
 		DAOfactory DAOF=new DAOfactory();
 		PassagerDAO passagerDAO=DAOF.getPassagerDAO();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -118,8 +126,6 @@ public class BielletFormController extends BaseController implements Initializab
 			if(champNom.equals(null)||champPrenom.equals(null)||CombDep.getSelectionModel().isEmpty()
 					||CombDest.getSelectionModel().isEmpty()||CombType.getSelectionModel().isEmpty()) {
 				Outils.erreur("Des champs réquis n'ont pas été saisie");
-				//System.out.println("Donnée manquante");
-				//System.out.println(CombType.getSelectionModel().getSelectedItem().getId());
 			}else {
 				LocalDate date = LocalDate.now();
 				String sdate=formatter.format(date);
@@ -128,6 +134,7 @@ public class BielletFormController extends BaseController implements Initializab
 						CombDest.getSelectionModel().getSelectedItem().getId(), 
 						Double.parseDouble(labMontant.getText()), CombDep.getSelectionModel().getSelectedItem().getId(), sdate);
 				passager.setCode(labID.getText());
+				passager.setDate_Enreg(Outils.DateEnChaine(LocalDate.now()));
 				
 				if(indiacteur==0) {
 					passager.setTypePassager(1);
@@ -136,14 +143,26 @@ public class BielletFormController extends BaseController implements Initializab
 					BilletController.ListePassager.add(passager);
 					Outils.info("Passager ajouté avec succès");
 					DashBordController.nbPassager++;
+					TicketController.passager=passager;
+					try {
+						Parent parent=FXMLLoader.load(getClass().getResource("Ticket.fxml"));
+						Scene scene=new Scene(parent,720,500);
+						Stage stage=new Stage();
+						stage.setScene(scene);
+						stage.setTitle("Enregistrement de colis sortant");
+						stage.setResizable(false);
+						stage.show();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}else {
 					
 					if(dateV.getValue()!=null) {
 						passager.setTypePassager(2);
 						passager.setEtat(2);
 						passager.setDate(formatter.format(dateV.getValue()));
-						passager=passagerDAO.create(passager);
-						passager.setDate_Enreg(Outils.DateEnChaine(LocalDate.now()));
+						passager=passagerDAO.create(passager);						
 						BilletController.ListeReservation.add(passager);
 						Outils.info("Réservation ajoutée avec succès");
 						DashBordController.nbreservation++;
@@ -350,15 +369,10 @@ public class BielletFormController extends BaseController implements Initializab
 			        	System.out.println("Ko");
 			        }
 			    }
-			    
-			    
-		        
-			    
-			    
-			    
+			     
 		});
 		
-		
+		 champTel.setTextFormatter(Outils.formater());
 		
 		
 	}

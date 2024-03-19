@@ -5,10 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.util.Date;
 
+import metiers.Caisse;
 import metiers.Passager;
-import metiers.Utilisateur;
 import outils.Outils;
 
 public class PassagerDAO extends DAO<Passager>{
@@ -55,7 +54,7 @@ public class PassagerDAO extends DAO<Passager>{
 			Statement statement=this.connection.createStatement();
 			ResultSet result=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
 					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
-					+ " INNER JOIN villledestinations ON departs.ID_Destination=villledestinations.ID_Destination "
+					+ " INNER JOIN villledestinations ON departs.ID_Ligne=villledestinations.ID_Ligne "
 					+ "WHERE ID_Passager="+id+";");
 			if(result.next()) {
 				passager=new Passager(id, result.getString("Nom_Passager"), 
@@ -76,6 +75,15 @@ public class PassagerDAO extends DAO<Passager>{
 				}else {
 					passager.setEtatR("Annulé");
 					passager.setMontant(result.getDouble("cout"));
+				}
+				
+				CaisseDAO caisseDAO=new CaisseDAO();
+				if(!caisseDAO.getJustif(passager.getCode())) {
+					if(passager.getTypePassager()==1)
+						caisseDAO.create(new Caisse(null, passager.getDate(), passager.getCode(), null, passager.getMontant(), 2));
+					else
+						caisseDAO.create(new Caisse(null, passager.getDate(), passager.getCode(), null, passager.getMontant(), 3));
+						
 				}
 				
 			}
@@ -134,7 +142,7 @@ public class PassagerDAO extends DAO<Passager>{
 			Statement statement=this.connection.createStatement();
 			Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
 					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
-					+ " INNER JOIN villledestinations ON departs.ID_Destination=villledestinations.ID_Destination"
+					+ " INNER JOIN villledestinations ON departs.ID_Ligne=villledestinations.ID_Ligne"
 					+ " WHERE passagers.Type_Passager=1 ;");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -149,7 +157,7 @@ public class PassagerDAO extends DAO<Passager>{
 			Statement statement=this.connection.createStatement();
 			Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
 					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
-					+ " INNER JOIN villledestinations ON departs.ID_Destination=villledestinations.ID_Destination"
+					+ " INNER JOIN villledestinations ON departs.ID_Ligne=villledestinations.ID_Ligne"
 					+ " WHERE passagers.Type_Passager=1 AND passagers.Date_voy="+"'"+date+"'"+";");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -165,7 +173,7 @@ public class PassagerDAO extends DAO<Passager>{
 			Statement statement=this.connection.createStatement();
 			Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
 					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
-					+ " INNER JOIN villledestinations ON departs.ID_Destination=villledestinations.ID_Destination"
+					+ " INNER JOIN villledestinations ON departs.ID_Ligne=villledestinations.ID_Ligne"
 					+ " WHERE passagers.Type_Passager=2 ;");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -180,7 +188,7 @@ public class PassagerDAO extends DAO<Passager>{
 			Statement statement=this.connection.createStatement();
 			Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
 					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
-					+ " INNER JOIN villledestinations ON departs.ID_Destination=villledestinations.ID_Destination"
+					+ " INNER JOIN villledestinations ON departs.ID_Ligne=villledestinations.ID_Ligne"
 					+ " WHERE passagers.Type_Passager=2 AND passagers.Date_voy="+"'"+date+"'"+";");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -237,7 +245,29 @@ public class PassagerDAO extends DAO<Passager>{
 					}
 					
 					return Rs;
-	}
+			}
+			
+			public ResultSet findPassagerByDateAndLigne(String date,Long idLigne,Long idDepart) {
+				ResultSet Rs=null;
+				try {
+					Statement statement=this.connection.createStatement();
+					Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
+							+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart "
+							+ "INNER JOIN villledestinations ON departs.ID_Ligne=villledestinations.ID_Ligne "
+							+ "JOIN ligne ON villledestinations.ID_Ligne=ligne.ID_Ligne"
+							+ " WHERE passagers.etat=1 AND passagers.Date_voy="+"'"+date+"'"
+							+" AND ligne.ID_ligne="+idLigne 
+							+" AND departs.ID_Depart="+idDepart);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return Rs;
+				
+			}
+			
+			
+			
 			
 	}
 	

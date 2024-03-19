@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" minHeight="350.0" prefHeight="698.0" prefWidth="913.0" style="-fx-border-color: #CFE9F7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ListePassagerController">
+   <children>
+      <GridPane fx:id="tickets" layoutX="67.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="819.0" style="-fx-border-color: blue;" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="66.0" AnchorPane.topAnchor="5.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="341.0" minWidth="0.0" prefWidth="3.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1032.0" minWidth="10.0" prefWidth="1032.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="123.0" minHeight="0.0" prefHeight="47.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="190.0" minHeight="4.0" prefHeight="33.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="529.0" minHeight="10.0" prefHeight="516.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="152.0" minHeight="14.0" percentHeight="0.0" prefHeight="46.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="820.0" style="-fx-background-color: #0978f6;" text="Liste des passagers" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Label>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="819.0" style="-fx-background-color: #CFE9F7;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <Label fx:id="references" layoutX="14.0" layoutY="38.0" prefHeight="17.0" prefWidth="188.0" text="Label" textFill="#2a3bbf" AnchorPane.bottomAnchor="3.0">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="252.0" layoutY="14.0" prefHeight="17.0" prefWidth="188.0" text="Bon voyage cher passagers!!" textFill="#2a3bbf" AnchorPane.bottomAnchor="15.0">
+                     <font>
+                        <Font name="Cambria Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </AnchorPane>
+            <HBox prefHeight="50.0" prefWidth="472.0" />
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="820.0" style="-fx-border-color: blue; -fx-background-color: #CFE9F7;" GridPane.columnIndex="1">
+               <children>
+                  <FontAwesomeIcon fill="DARKBLUE" glyphName="BUS" layoutX="14.0" layoutY="53.0" size="4em" />
+                  <Label layoutX="64.0" layoutY="28.0" prefHeight="17.0" prefWidth="93.0" text="Sécurité" textFill="#0978f6">
+                     <font>
+                        <Font name="Arial Narrow Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="63.0" layoutY="45.0" prefHeight="17.0" prefWidth="93.0" text="Résiliance" textFill="#0978f6">
+                     <font>
+                        <Font name="Arial Narrow Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="63.0" layoutY="12.0" prefHeight="17.0" prefWidth="93.0" text="Confort" textFill="#0978f6">
+                     <font>
+                        <Font name="Arial Narrow Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" layoutX="272.0" layoutY="24.0" prefHeight="17.0" prefWidth="178.0" text="notresociete@gamil.bf" textFill="#0978f6" AnchorPane.rightAnchor="5.0">
+                     <font>
+                        <Font name="Arial Narrow Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" layoutX="272.0" layoutY="42.0" prefHeight="17.0" prefWidth="178.0" text="Tel:70-50-50-50/78-00-01-02-03" textFill="#0978f6" AnchorPane.rightAnchor="5.0">
+                     <font>
+                        <Font name="Arial Narrow Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" layoutX="272.0" layoutY="6.0" prefHeight="17.0" prefWidth="178.0" text="Avenue Thoma Sankara" textFill="#0978f6" AnchorPane.rightAnchor="5.0">
+                     <font>
+                        <Font name="Arial Narrow Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="817.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <TableView fx:id="tablePassager" maxHeight="-Infinity" onSort="#OK" prefHeight="500.0" prefWidth="696.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="col_id" prefWidth="60.0" text="ID" />
+                        <TableColumn fx:id="col_nom" prefWidth="160.0" text="Nom" />
+                        <TableColumn fx:id="col_prenom" prefWidth="210.0" text="Prénom" />
+                        <TableColumn fx:id="col_tel" prefWidth="100.0" text="Téléphone" />
+                        <TableColumn fx:id="col_dest" prefWidth="160.0" text="Destination" />
+                        <TableColumn fx:id="col_type" prefWidth="150.0" text="Type de billet " />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+      <JFXButton fx:id="Imprimer" layoutX="585.0" layoutY="470.0" onAction="#ImpressionTicket" prefHeight="31.0" prefWidth="111.0" style="-fx-background-color: yellow;" text="Imprimer" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon glyphName="PRINT" />
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -175,7 +175,6 @@ public class CourierSFormController implements Initializable{
 			while(Rs.next()) {
 				Long id=Rs.getLong("ID_Destination");
 				Destination dest=destinationDAO.find(id);
-				//System.out.println(dest.getLesBillet().isEmpty());
 				if(dest!=null)
 					Listdestination.add(dest);
 			}
@@ -185,6 +184,9 @@ public class CourierSFormController implements Initializable{
 		}
 		comboDest.setItems(Listdestination);
 		comboDest.getSelectionModel().selectFirst();
+		
+		telDest.setTextFormatter(Outils.formater());
+		TelExp.setTextFormatter(Outils.formater());
 	}
 		
 }

@@ -66,6 +66,16 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Button>
+                                    <Button fx:id="btnTicket" layoutX="48.0" layoutY="124.0" mnemonicParsing="false" onAction="#ticket" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #FEC606;" text="Ticket" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="btnListe" layoutX="48.0" layoutY="124.0" mnemonicParsing="false" onAction="#liste" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: darkblue;" text="Liste" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="200.0">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
                                  </children>
                               </AnchorPane>
                            </right>
@@ -151,6 +161,11 @@
                                        </font>
                                     </Button>
                                     <Button fx:id="btnAnnuler" layoutY="164.0" mnemonicParsing="false" onAction="#annuler" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: FEC606; -fx-background-radius: 5;" text="Annuler" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="150.0">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="btnTicket1" layoutX="48.0" layoutY="124.0" mnemonicParsing="false" onAction="#ticket1" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: darkblue;" text="Ticket" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="200.0">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>

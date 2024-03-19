@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.stage.Stage;
+import metiers.Caisse;
 import metiers.Passager;
 import outils.Outils;
 
@@ -23,6 +24,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import DataBase.CaisseDAO;
 import DataBase.DAOfactory;
 import DataBase.PassagerDAO;
 import javafx.collections.FXCollections;
@@ -62,6 +64,12 @@ public class BilletController implements Initializable {
 	private Button btnModif;
 	@FXML
 	private Button btnDel;
+	@FXML
+	private Button btnTicket;
+	@FXML
+	private Button btnTicket1;
+	@FXML
+	private Button btnListe;
 	@FXML
 	private ComboBox<?> combTitrePass;
 	@FXML
@@ -138,6 +146,66 @@ public class BilletController implements Initializable {
 	
 	
 
+	@FXML
+	public void liste(ActionEvent event) {
+		try {
+			Parent parent=FXMLLoader.load(getClass().getResource("BoiteImpression.fxml"));
+			Scene scene=new Scene(parent,360,250);
+			Stage stage=new Stage();
+			stage.setScene(scene);
+			stage.setTitle("Impression de billet");
+			stage.setResizable(false);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	public void ticket(ActionEvent event) {
+		Passager passager=tablePassager.getSelectionModel().getSelectedItem();
+		if(passager!=null) {
+			try {
+				TicketController.passager=passager;
+				Parent parent=FXMLLoader.load(getClass().getResource("Ticket.fxml"));
+				Scene scene=new Scene(parent,760,560);
+				Stage stage=new Stage();
+				stage.setScene(scene);
+				stage.setTitle("Impression de billet");
+				stage.setResizable(false);
+				stage.show();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			Outils.erreur("Veillez selectioner un passager");
+		}
+		
+	}
+	
+	@FXML
+	public void ticket1(ActionEvent event) {
+		Passager passager=tableR.getSelectionModel().getSelectedItem();
+		if(passager!=null) {
+			try {
+				TicketController.passager=passager;
+				Parent parent=FXMLLoader.load(getClass().getResource("Ticket.fxml"));
+				Scene scene=new Scene(parent,760,560);
+				Stage stage=new Stage();
+				stage.setScene(scene);
+				stage.setTitle("Impression de billet");
+				stage.setResizable(false);
+				stage.show();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			Outils.erreur("Veillez selectioner un passager");
+		}
+		
+	}
 	// Event Listener on Button[#btnNewPass].onAction
 	@FXML
 	public void NewPass(ActionEvent event) {
@@ -386,7 +454,7 @@ public class BilletController implements Initializable {
 						e.printStackTrace();
 						System.out.println(dt+"+++");
 					}
-					tablePassager.setItems(ListeReservation);
+					tableR.setItems(ListeReservation);
 				}else {
 				    Alert alert = new Alert(Alert.AlertType.INFORMATION);
 				    alert.setTitle("Alert");
@@ -409,7 +477,6 @@ public class BilletController implements Initializable {
 		}
 	}
 	
-
     
 	
 	@Override
@@ -425,7 +492,7 @@ public class BilletController implements Initializable {
 		col_Hdepart.setCellValueFactory(new PropertyValueFactory<>("heure"));
 		DAOfactory DAOF=new DAOfactory();
 		PassagerDAO passagerDAO=DAOF.getPassagerDAO();
-		System.out.println("id max=..."+passagerDAO.idMax());
+		
 		ResultSet Rs=passagerDAO.findAll();
 		//ResultSet Rs=passagerDAO.findPassagerByDate("2024-01-31");
 		if(Rs!=null) {
@@ -464,6 +531,7 @@ public class BilletController implements Initializable {
 				while(RsR.next()) {
 					Long id=RsR.getLong("ID_Passager");
 					ListeReservation.add(passagerDAO.find(id));
+					
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

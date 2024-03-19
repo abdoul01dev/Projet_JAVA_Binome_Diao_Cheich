@@ -9,44 +9,49 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane prefHeight="513.0" prefWidth="1136.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ParametreController">
+<BorderPane prefHeight="513.0" prefWidth="1297.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ParametreController">
    <center>
       <AnchorPane style="-fx-background-color: #CFE9F7;" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane layoutX="14.0" layoutY="35.0" prefHeight="370.0" prefWidth="593.0" style="-fx-border-color: darkblue; -fx-border-radius: 20;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+            <AnchorPane layoutX="14.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="573.0" style="-fx-border-color: darkblue; -fx-border-radius: 20;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="533.0" AnchorPane.topAnchor="15.0">
                <children>
-                  <Label layoutX="71.0" layoutY="14.0" text="Accès aux données">
+                  <Label alignment="CENTER" layoutX="11.0" layoutY="14.0" prefHeight="28.0" prefWidth="557.0" style="-fx-background-color: #0978f6;" text="Accès aux données" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="URL" layoutX="14.0" layoutY="66.0" prefHeight="25.0" prefWidth="442.0" promptText="URL vers la base de données" />
-                  <TextField fx:id="UserName" layoutX="14.0" layoutY="105.0" prefHeight="25.0" prefWidth="442.0" promptText="Le nom d'utilisateur de la base de données" />
-                  <PasswordField fx:id="pwd" layoutX="14.0" layoutY="145.0" prefHeight="25.0" prefWidth="440.0" promptText="Le mot de passe " />
-                  <Button fx:id="btntxt" layoutX="14.0" layoutY="205.0" mnemonicParsing="false" onAction="#test" prefHeight="41.0" prefWidth="210.0" style="-fx-background-color: darkblue;" text="Tester la connction" textFill="WHITE" />
-                  <Button fx:id="btnconnect" layoutX="241.0" layoutY="205.0" mnemonicParsing="false" onAction="#connect" prefHeight="41.0" prefWidth="216.0" style="-fx-background-color: darkblue;" text="Se connecter" textFill="WHITE" />
-                  <Text fill="#f20808" layoutX="198.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16; -fx-fill: darkred; -fx-font-family: Comic Sans MS;" text="Les bases de données supportées sont MySQL et SQLite">
+                  <TextField fx:id="URL" layoutX="7.0" layoutY="66.0" prefHeight="25.0" prefWidth="582.0" promptText="URL vers la base de données" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="145.0" />
+                  <TextField fx:id="UserName" layoutX="7.0" layoutY="105.0" prefHeight="25.0" prefWidth="579.0" promptText="Le nom d'utilisateur de la base de données" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="145.0" />
+                  <PasswordField fx:id="pwd" layoutX="7.0" layoutY="145.0" prefHeight="25.0" prefWidth="577.0" promptText="Le mot de passe " AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="145.0" />
+                  <Text fill="#f20808" layoutX="164.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16; -fx-fill: darkred; -fx-font-family: Comic Sans MS;" text="Les bases de données supportées sont MySQL et SQLite">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <FontAwesomeIcon fill="#6f0404" glyphName="EXCLAMATION_TRIANGLE" layoutX="151.0" layoutY="338.0" size="40" />
+                  <FontAwesomeIcon fill="#6f0404" glyphName="EXCLAMATION_TRIANGLE" layoutX="117.0" layoutY="333.0" size="40" />
                   <TextArea fx:id="textDialogue" editable="false" layoutX="16.0" layoutY="344.0" prefHeight="132.0" prefWidth="633.0" style="-fx-background-color: #FEC606;" wrapText="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="345.0" />
+                  <FontAwesomeIcon fill="DARKBLUE" glyphName="DATABASE" layoutX="474.0" layoutY="160.0" selectionFill="#0505a4" size="10em" AnchorPane.rightAnchor="20.0" />
+                  <HBox alignment="CENTER" layoutX="7.0" layoutY="177.0" prefHeight="48.0" prefWidth="573.0" spacing="15.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="155.0">
+                     <children>
+                        <Button fx:id="btntxt" mnemonicParsing="false" onAction="#test" prefHeight="41.0" prefWidth="312.0" style="-fx-background-color: darkblue;" text="Tester la connction" textFill="WHITE" />
+                        <Button fx:id="btnconnect" mnemonicParsing="false" onAction="#connect" prefHeight="41.0" prefWidth="290.0" style="-fx-background-color: darkblue;" text="Se connecter" textFill="WHITE" />
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="502.0" layoutY="40.0" prefHeight="272.0" prefWidth="508.0" style="-fx-border-color: darkblue; -fx-border-radius: 20;" AnchorPane.leftAnchor="613.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+            <AnchorPane layoutX="502.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="272.0" prefWidth="512.0" style="-fx-border-color: darkblue; -fx-border-radius: 20;" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                <children>
-                  <Label layoutX="175.0" layoutY="34.0" text="Modifier l'apparence">
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="28.0" prefWidth="520.0" style="-fx-background-color: #0978f6;" text="Modifier l'apparence" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="20.0" />
                      </font>
                   </Label>
                   <ColorPicker fx:id="coulerSelecteur" layoutX="280.0" layoutY="105.0" onAction="#SurCouleurSecteur" prefHeight="25.0" prefWidth="201.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="31.0" />
-                  <Label layoutX="57.0" layoutY="110.0" text="La couleur du sélcteur de ménu :">
+                  <Label layoutX="57.0" layoutY="110.0" text="La couleur du sélcteur de menu :">
                      <font>
                         <Font name="Trebuchet MS Italic" size="14.0" />
                      </font>
@@ -60,43 +65,56 @@
                   <Button fx:id="btnValider" layoutX="380.0" layoutY="223.0" mnemonicParsing="false" onAction="#Valider" prefHeight="35.0" prefWidth="114.0" style="-fx-background-color: darkblue;" text="Valider" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="618.0" layoutY="298.0" prefHeight="209.0" prefWidth="508.0" style="-fx-border-color: darkblue; -fx-border-radius: 20;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="613.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="289.0">
+            <AnchorPane layoutX="618.0" layoutY="298.0" prefHeight="209.0" prefWidth="513.0" style="-fx-border-color: darkblue; -fx-border-radius: 20;" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="289.0">
                <children>
-                  <Label layoutX="304.0" layoutY="14.0" text="Appropo ">
+                  <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="28.0" prefWidth="520.0" style="-fx-background-color: #0978f6;" text="Appropo " textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="114.0" layoutY="82.0" text="La version de l'application">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="114.0" layoutY="134.0" text="Chercher une nouvelle mise à jour">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="114.0" layoutY="174.0" text="CopyRight">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="Version" layoutX="297.0" layoutY="82.0" text="La version de l'application">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="MaJ" layoutX="357.0" layoutY="134.0" text="La version de l'application">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="copyright" layoutX="357.0" layoutY="174.0" text="La version de l'application">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane layoutX="7.0" layoutY="58.0" prefHeight="146.0" prefWidth="269.0" style="-fx-border-color: #0978f6;" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="238.0" AnchorPane.topAnchor="57.0">
+                     <children>
+                        <Label layoutX="2.0" layoutY="33.0" text="La version :" AnchorPane.leftAnchor="5.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="4.0" layoutY="80.0" text="CopyRight :" AnchorPane.leftAnchor="5.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Version" layoutX="91.0" layoutY="33.0" text="1.0.0">
+                           <font>
+                              <Font name="Tw Cen MT Italic" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="copyright" layoutX="91.0" layoutY="80.0" text="202403_tout droit reservé.">
+                           <font>
+                              <Font name="Tw Cen MT Italic" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="MaJ1" alignment="CENTER" layoutX="49.0" layoutY="-1.0" prefHeight="27.0" prefWidth="222.0" style="-fx-background-color: darkblue;" text="L'application" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="284.0" layoutY="57.0" prefHeight="147.0" prefWidth="224.0" style="-fx-border-color: #0978f6;" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="283.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="56.0">
+                     <children>
+                        <Label fx:id="MaJ" alignment="CENTER" layoutX="37.0" layoutY="-2.0" prefHeight="27.0" prefWidth="222.0" style="-fx-background-color: darkblue;" text="Les auteurs" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextArea editable="false" layoutX="2.0" layoutY="27.0" prefHeight="118.0" prefWidth="122.0" text="Cette application est devellopée par messieurs Abdouramane DIAO et Eric Cheick Omar Yalawéogo sous la direction M. Cédric Berré enseignant lau Départeme,nt Informatique de l'UniversitéJosephKi-Zerbo.                      Toute utilisation en partie ou intégralement de cette application doit préceder de leur accords.&#10;Tout desasemblassage ou tentative de desasemblage est interdite.&#10;&#10;adresse mail: ujkz.ufr.sea.depinfo.bdy@gmail.bf" wrapText="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="26.0">
+                           <font>
+                              <Font name="Trebuchet MS" size="12.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>

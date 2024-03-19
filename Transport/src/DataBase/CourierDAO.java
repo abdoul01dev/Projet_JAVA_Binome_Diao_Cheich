@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
+import metiers.Caisse;
 import metiers.Courrier;
 import metiers.Peseonne;
 
@@ -68,6 +68,10 @@ public class CourierDAO extends DAO<Courrier> {
 				courrier.setDestination(result.getString("Nom_Destination"));
 				courrier.setFrais(result.getDouble("prix"));
 				courrier.setIdDestination(result.getLong("ID_Destination"));
+				CaisseDAO caisseDAO=new CaisseDAO();
+				if(!caisseDAO.getJustif(courrier.getCode())) {
+					caisseDAO.create(new Caisse(null, courrier.getDateRecep(), courrier.getCode(), null, courrier.getFrais(), 5));
+				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import metiers.Caisse;
 import metiers.Colis;
 import metiers.Peseonne;
 
@@ -70,6 +71,10 @@ public class ColisDAO extends DAO<Colis> {
 				colis.setFrais(result.getDouble("Cout"));
 				colis.setIdDestination(result.getLong("ID_Destination"));
 				//colis.setId(result.getLong("ID_Colis"));
+				CaisseDAO caisseDAO=new CaisseDAO();
+				if(!caisseDAO.getJustif(colis.getCode())) {
+					caisseDAO.create(new Caisse(null, colis.getDateRecep(), colis.getCode(), null, colis.getFrais(), 4));
+				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

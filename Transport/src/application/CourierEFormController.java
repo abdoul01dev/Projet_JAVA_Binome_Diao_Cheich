@@ -181,5 +181,8 @@ public class CourierEFormController implements Initializable {
 		}
 		comboProv.setItems(Listdestination);
 		comboProv.getSelectionModel().selectFirst();
+		
+		telDest.setTextFormatter(Outils.formater());
+		TelExp.setTextFormatter(Outils.formater());
 	}
 }

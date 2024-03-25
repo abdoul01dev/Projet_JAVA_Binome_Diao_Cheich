@@ -245,6 +245,12 @@ public class MenuController extends BaseController implements Initializable{
 		if(utilisateur!=null) {
 			UserName.setText(utilisateur.getNomUt());
 			UserRole.setText(utilisateur.getGroupeUt());
+			if(utilisateur.getGroupeUt().equals("Gestionnaire de colis")) {
+				btnParam.setVisible(false);
+				btnProg.setVisible(false);
+				btnStat.setVisible(false);
+				btnUsers.setVisible(false);
+			}
 		}
 	}
 }

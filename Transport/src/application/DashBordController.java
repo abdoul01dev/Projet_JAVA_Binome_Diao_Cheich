@@ -16,10 +16,12 @@ import DataBase.DAOfactory;
 import DataBase.PassagerDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import metiers.Passager;
+
 
 
 public class DashBordController implements Initializable {
@@ -30,9 +32,17 @@ public class DashBordController implements Initializable {
 	public static int nbcourierE;
 	public static int nbcourierS;
 
+	
+	DAOfactory daof=new DAOfactory();
+	PassagerDAO pDAO=daof.getPassagerDAO();
+	ColisDAO colDAO=daof.getColisDAO();
+	CourierDAO courDAO=daof.getCourierDAO();
     @FXML
     private BorderPane borderpane;
 
+
+    @FXML
+    private BarChart<String, Integer> barchart;
     @FXML
     private Label colis;
 
@@ -72,9 +82,35 @@ public class DashBordController implements Initializable {
         	courier.setText(String.valueOf(nbcourierS));
         	courier1.setText(String.valueOf(nbcourierE));
         	
+        	 
         };
-        int intervalInSeconds = 5;
+        int intervalInSeconds = 10;
         scheduler.scheduleAtFixedRate(task, 0, intervalInSeconds, TimeUnit.SECONDS);
+    }
+    
+    public void construitHist() {
+    	ResultSet rs = pDAO.findPassagerByDateGroupByDateE();
+		XYChart.Series<String, Integer> series = new XYChart.Series<>();
+	    try {
+	    	
+	        while (rs.next()) {
+	            String date = rs.getString("Date_enreg");
+	            int nbPassagers = rs.getInt("nbPassagers");
+	            series.getData().add(new XYChart.Data<>(date, nbPassagers));
+	            XYChart.Data<String, Integer> data = new XYChart.Data<>(date, nbPassagers);
+	            data.nodeProperty().addListener((obs, oldNode, newNode) -> {
+	                if (newNode != null) {
+	                    newNode.setStyle("-fx-bar-fill: #87ceeb;");
+	                }
+	            });
+	            series.getData().add(data);
+	        
+	        }
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    barchart.getData().add(series);
     }
     
 	@Override
@@ -86,10 +122,7 @@ public class DashBordController implements Initializable {
 		nbcourierE=0;
 		nbcourierS=0;
 		ResultSet RS=null;
-		DAOfactory daof=new DAOfactory();
-		PassagerDAO pDAO=daof.getPassagerDAO();
-		ColisDAO colDAO=daof.getColisDAO();
-		CourierDAO courDAO=daof.getCourierDAO();
+		
 		String dt = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		RS=pDAO.findPassagerByDate(dt);
 		//int i=0;
@@ -184,6 +217,11 @@ public class DashBordController implements Initializable {
 		courier1.setText(String.valueOf(nbcourierE));
 		
 		this.compteur();
+		
+		construitHist();
+		
+	    
+	    
 	}
 	
 	}

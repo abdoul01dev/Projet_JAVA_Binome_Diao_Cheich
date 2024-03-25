@@ -3,6 +3,8 @@ package DataBase;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+
+
 public class DataBaseConnect {
 	private static String Url="jdbc:mysql://localhost:3306/bd-trans";
 	private static String User="root";
@@ -43,6 +45,29 @@ public class DataBaseConnect {
 			}
 		}
 		return connection;
+	}
+	public static void sqlite() {
+		 Connection connection = null;
+
+	     try {
+	         Class.forName("org.sqlite.JDBC");
+	         String dbURL = "jdbc:sqlite:/Bureau/donnees.db";
+	         connection = DriverManager.getConnection(dbURL);
+
+	         if (connection != null) {
+	             System.out.println("Connexion réussie à la base de données SQLite.");
+	         }
+	     } catch ( Exception e) {
+	         ((Throwable) e).printStackTrace();
+	     } finally {
+	         try {
+	             if (connection != null) {
+	                 connection.close();
+	             }
+	         } catch (Exception e) {
+	             e.printStackTrace();
+	         }
+	     }
 	}
 	
 }

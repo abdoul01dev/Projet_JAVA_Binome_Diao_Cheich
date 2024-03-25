@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import javafx.scene.control.Alert.AlertType;
 import metiers.Billet;
+import metiers.Caisse;
 import metiers.Depart;
 import metiers.Destination;
 import metiers.Passager;
@@ -30,6 +31,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import DataBase.CaisseDAO;
 import DataBase.DAOfactory;
 import DataBase.DestinationDAO;
 import DataBase.PassagerDAO;
@@ -122,7 +124,7 @@ public class BielletFormController extends BaseController implements Initializab
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		//pour un nouveau passager
 		if(action==0) {
-			
+			champTel.setTextFormatter(Outils.formater());
 			if(champNom.equals(null)||champPrenom.equals(null)||CombDep.getSelectionModel().isEmpty()
 					||CombDest.getSelectionModel().isEmpty()||CombType.getSelectionModel().isEmpty()) {
 				Outils.erreur("Des champs réquis n'ont pas été saisie");
@@ -144,6 +146,7 @@ public class BielletFormController extends BaseController implements Initializab
 					Outils.info("Passager ajouté avec succès");
 					DashBordController.nbPassager++;
 					TicketController.passager=passager;
+					new CaisseDAO().create(new Caisse(null,Outils.DateEnChaine(date),passager.getCode(),MenuController.utilisateur.getNomUt(),passager.getMontant(),2));
 					try {
 						Parent parent=FXMLLoader.load(getClass().getResource("Ticket.fxml"));
 						Scene scene=new Scene(parent,720,500);
@@ -166,6 +169,19 @@ public class BielletFormController extends BaseController implements Initializab
 						BilletController.ListeReservation.add(passager);
 						Outils.info("Réservation ajoutée avec succès");
 						DashBordController.nbreservation++;
+						TicketController.passager=passager;
+						try {
+							Parent parent=FXMLLoader.load(getClass().getResource("Ticket.fxml"));
+							Scene scene=new Scene(parent,720,500);
+							Stage stage=new Stage();
+							stage.setScene(scene);
+							stage.setTitle("Enregistrement de colis sortant");
+							stage.setResizable(false);
+							stage.show();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}else {
 						Outils.erreur("Vous n'avez pas choisi la date du voyage");
 					}
@@ -174,19 +190,15 @@ public class BielletFormController extends BaseController implements Initializab
 		//sinon si c'est une mise à jour
 		}else {
 			if(champNom.equals(null)||champPrenom.equals(null)||CombDep.getSelectionModel().getSelectedItem().equals(null)
-					||CombDest.getSelectionModel().getSelectedItem().equals(null)||CombType.getSelectionModel().getSelectedItem().equals(null)) {
-				/*System.out.println("Donnée manquante");
-				System.out.println(CombType.getSelectionModel().getSelectedItem().getId());*/
+					||CombDest.getSelectionModel().getSelectedItem().equals(null)
+					||CombType.getSelectionModel().getSelectedItem().equals(null)) {
 				Outils.erreur("Des champs réquis n'ont pas été saisie");
 			}else {
-				//LocalDate date = LocalDate.now();
-				//String sdate=formatter.format(date);
+				
 				Passager passager=new Passager(null, champNom.getText(), champPrenom.getText(), null, 0, champTel.getText(),
 						CombType.getSelectionModel().getSelectedItem().getId(),
 						CombDest.getSelectionModel().getSelectedItem().getId(), 
 						Double.parseDouble(labMontant.getText()), CombDep.getSelectionModel().getSelectedItem().getId(), tmpPassager.getDate());
-				//passager.setCode(labID.getText());
-				//passager.setTypePassager(1);
 				passager.setId(tmpPassager.getId());
 				passager.setCode(tmpPassager.getCode());
 				if(indiacteur==0) {
@@ -247,7 +259,7 @@ public class BielletFormController extends BaseController implements Initializab
 		//gestion de la visibilité du champ date
 		if(indiacteur==0) {
 			dateV.setVisible(false);
-			//sinitialiser la valeur de l'id du nouveau passager
+			//initialiser la valeur de l'id du nouveau passager
 			idMax=passagerDAO.idMax();
 			String code=String.format("PA-%04d", idMax);
 			labID.setText(code);
@@ -372,7 +384,7 @@ public class BielletFormController extends BaseController implements Initializab
 			     
 		});
 		
-		 champTel.setTextFormatter(Outils.formater());
+		 
 		
 		
 	}

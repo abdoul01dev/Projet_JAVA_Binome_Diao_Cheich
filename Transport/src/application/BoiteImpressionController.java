@@ -73,39 +73,50 @@ public class BoiteImpressionController implements Initializable{
 	public void ok(ActionEvent event) {
 		Long idLigne=ligne.getSelectionModel().getSelectedItem().getId();
 		Long idDepart=depart.getSelectionModel().getSelectedItem().getId();
-		String sdate=Outils.DateEnChaine(date.getValue());
-		if(idLigne!=null&&idDepart!=null&&sdate!=null) {
-			ListePassagerController.idLigne=idLigne;
-			ListePassagerController.idDepart=idDepart;
-			ListePassagerController.date=sdate;
-			DAOfactory DAOF=new DAOfactory();
-			PassagerDAO passagerDAO=DAOF.getPassagerDAO();
-			ResultSet Rs=passagerDAO.findPassagerByDateAndLigne(sdate,idLigne,idDepart);
-			try {
-				if(Rs.next()) {
-					try {
-						Parent parent=FXMLLoader.load(getClass().getResource("ListePassager.fxml"));
-						Scene scene=new Scene(parent,960,700);
-						Stage stage=new Stage();
-						stage.setScene(scene);
-						stage.setTitle("Impression de billet");
-						stage.setResizable(false);
-						stage.show();
-					} catch (IOException e) {
+		String sdate=null;
+		if(date==null) {
+			Outils.erreur("veuillez selectionner une date");
+		}else {
+			sdate=Outils.DateEnChaine(date.getValue());
+			if(idLigne!=null&&idDepart!=null&&sdate!=null) {
+				ListePassagerController.idLigne=idLigne;
+				ListePassagerController.idDepart=idDepart;
+				ListePassagerController.date=sdate;
+				DAOfactory DAOF=new DAOfactory();
+				PassagerDAO passagerDAO=DAOF.getPassagerDAO();
+				ResultSet Rs=passagerDAO.findPassagerByDateAndLigne(sdate,idLigne,idDepart);
+				if(Rs!=null) {
+					try {				
+						if(Rs.next()) {
+							try {
+								Parent parent=FXMLLoader.load(getClass().getResource("ListePassager.fxml"));
+								Scene scene=new Scene(parent,960,700);
+								Stage stage=new Stage();
+								stage.setScene(scene);
+								stage.setTitle("Impression de billet");
+								stage.setResizable(false);
+								stage.show();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}else {
+							Outils.info("Aucun passager trouvé");
+						}
+					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}else {
-					Outils.info("Aucun passager trouvé");
+					Outils.info("Aucune donnée trouvée");
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
+				
+			}else {
+				Outils.erreur("veuillez remplire toutes les inforamtions");
 			}
-			
-		}else {
-			Outils.erreur("veuillez remplire toutes les inforamtions");
 		}
+		
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

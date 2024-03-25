@@ -6,10 +6,18 @@ public class Recu {
 	private Double montant;
 	private Long idDest; 
 	private String destination;
+	//recu passager
 	public Recu(Long id, String nom, Double montant,Long idDest) {
 		super();
 		this.id = id;
 		this.nom = nom;
+		this.montant = montant;
+		this.setIdDest(idDest);
+	}
+	//recu courrier
+	public Recu(Long id, Double montant,Long idDest) {
+		super();
+		this.id = id;
 		this.montant = montant;
 		this.setIdDest(idDest);
 	}

@@ -1,6 +1,6 @@
 package outils;
 
-import java.io.IOException;
+
 import java.security.MessageDigest;
 
 import java.time.LocalDate;
@@ -9,25 +9,27 @@ import java.util.Optional;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.function.UnaryOperator;
-import java.util.regex.Pattern;
+
+
 
 import DataBase.PassagerDAO;
 import application.BilletController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextFormatter;
-import javafx.stage.Stage;
+
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
+
 import metiers.Passager;
+
 import javafx.scene.control.Alert.AlertType;
 
 
 public class Outils {
+	
+	public static boolean flag;
 	
 	public static boolean confirmer(String message) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -109,6 +111,10 @@ public class Outils {
 	}
 	
 	
+        
+	
+	
+	
 public static TextFormatter<Integer> formater() {
 	StringConverter<Integer> converter = new IntegerStringConverter();
 
@@ -130,6 +136,8 @@ public static <T> TextFormatter<T> Tranformateur(StringConverter<T> converter) {
         return null; 
     });
 }
+
+
 	
 	
 }

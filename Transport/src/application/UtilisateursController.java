@@ -271,7 +271,10 @@ public class UtilisateursController implements Initializable{
 
 	    @FXML
 	    void AnnulerUser(ActionEvent event) {
-	    	
+	    	mailUser.setText(null);
+			nomUser.setText(null);
+			mdpUser.setText(null);
+			confMdp.setText(null);
 
 	    }
 
@@ -306,7 +309,8 @@ public class UtilisateursController implements Initializable{
 	    @FXML
 	    void ValiderUser(ActionEvent event) {
 	    	LocalDate currentDate = LocalDate.now();
-	    	if(!(mailUser.getText().equals(null)&& nomUser.getText().equals(null) && mdpUser.equals(null)&& confMdp.equals(null))) {				
+	    	if(!(mailUser.getText().equals(null)&& nomUser.getText().equals(null) 
+	    			&& mdpUser.equals(null)&& confMdp.equals(null) && comboGU.getSelectionModel().getSelectedItem()==null)) {				
 				if(utilisateurCourant!=null) {
 			
 					if(!mdpUser.getText().equals(confMdp.getText()) ) {
@@ -321,6 +325,10 @@ public class UtilisateursController implements Initializable{
 							int i =ListeUtilisateur.indexOf(utilisateurCourant);
 							ListeUtilisateur.set(i,user);
 							utilisateurCourant=null;
+							mailUser.setText(null);
+							nomUser.setText(null);
+							mdpUser.setText(null);
+							confMdp.setText(null);
 						}
 						
 					}
@@ -329,12 +337,13 @@ public class UtilisateursController implements Initializable{
 					if(!mdpUser.getText().equals(confMdp.getText()) ) {
 						Outils.erreur("Les mots de passe que vous avez saisie ne sont pas conforment");
 					}else {
-						Utilisateur user= userDAO.create(new Utilisateur(null, mailUser.getText(),
-								nomUser.getText(), outils.sha256(mdpUser.getText())));
-						GpUtilisateur gu=comboGU.getSelectionModel().getSelectedItem();
-						if(gu!=null) {
-							user.setIdgroupeUt(gu.getId());
-							user.setDteCreation(Outils.DateEnChaine(currentDate));
+						Utilisateur user=new Utilisateur(null, 
+								nomUser.getText(), mailUser.getText(),outils.sha256(mdpUser.getText()));
+						user.setIdgroupeUt(comboGU.getSelectionModel().getSelectedItem().getId());
+						user.setDteCreation(Outils.DateEnChaine(currentDate));
+						user.setGroupeUt(comboGU.getSelectionModel().getSelectedItem().getRole());						
+						user=userDAO.create(user);
+						if(user!=null) {
 							ListeUtilisateur.add(user);
 							Outils.info("Utilisateur ajouté avec succès");
 							mailUser.setText(null);
@@ -342,10 +351,7 @@ public class UtilisateursController implements Initializable{
 							mdpUser.setText(null);
 							confMdp.setText(null);
 							comboGU.getSelectionModel().select(null);
-							
-					}else {
-						Outils.erreur("Le choix de groupe utilisateur est obligatoire");
-					}
+						}						
 				}
 	    	}
 	    }else {
@@ -365,9 +371,10 @@ public class UtilisateursController implements Initializable{
 		col_DateCreer.setCellValueFactory(new PropertyValueFactory<>("dteCreation"));
 		UtilisateurDAO UserDAO=new UtilisateurDAO();
 		if(UserDAO.findAll()!=null) {
-			ListeUtilisateur.clear();
+			
 			ResultSet RS=UserDAO.findAll();
 			try {
+				ListeUtilisateur.clear();
 				while(RS.next()) {
 					long i=RS.getLong(1);
 					ListeUtilisateur.add(UserDAO.find(i));
@@ -393,13 +400,14 @@ public class UtilisateursController implements Initializable{
 					long i=RS.getLong(1);
 					ListeGU.add(DAOfac.getGpUtilisateurDAO().find(i));
 					System.out.println(DAOfac.getGpUtilisateurDAO().find(i));
-					comboGU.setItems(ListeGU);
+					
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			TableGUtilisateur.setItems(ListeGU);
+			comboGU.setItems(ListeGU);
 		}
 		
 		

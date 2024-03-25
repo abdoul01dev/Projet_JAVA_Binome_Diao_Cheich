@@ -5,7 +5,6 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -18,16 +17,7 @@
          <children>
             <AnchorPane prefHeight="492.0" prefWidth="1029.0" style="-fx-background-color: #CFE9F7;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <TextField layoutX="411.0" layoutY="72.0" prefHeight="25.0" prefWidth="164.0" />
-                  <Label layoutX="575.0" layoutY="74.0" text="Recherche">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="SEARCH" size="16" />
-                     </graphic>
-                  </Label>
-                  <BarChart layoutX="60.0" layoutY="283.0" prefHeight="248.0" prefWidth="1035.0" title="Evolution des voyages" titleSide="BOTTOM" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="300.0">
+                  <BarChart fx:id="barchart" layoutX="60.0" layoutY="283.0" prefHeight="248.0" prefWidth="1035.0" title="Evolution des voyages" titleSide="BOTTOM" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="300.0">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -117,7 +107,7 @@
                         </Pane>
                      </children>
                   </HBox>
-                  <AnchorPane layoutX="909.0" layoutY="6.0" prefHeight="68.0" prefWidth="126.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane layoutX="909.0" layoutY="6.0" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #0978f6;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <FontAwesomeIcon fill="DARKBLUE" glyphName="BELL" layoutX="76.0" layoutY="35.0" onMouseClicked="#notification1" size="2em" />
                         <Label fx:id="notif" alignment="CENTER" layoutX="64.0" layoutY="18.0" onMouseClicked="#notification" prefHeight="17.0" prefWidth="25.0" style="-fx-background-radius: 50; -fx-background-color: red;" text="15" textFill="WHITE">
@@ -127,6 +117,11 @@
                         </Label>
                      </children>
                   </AnchorPane>
+                  <Label alignment="CENTER" layoutY="7.0" prefHeight="40.0" prefWidth="1189.0" style="-fx-background-color: #0978f6;" text="BIENVENUE!" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="33.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>

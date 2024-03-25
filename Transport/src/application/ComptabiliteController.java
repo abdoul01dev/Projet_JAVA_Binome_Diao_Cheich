@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import DataBase.CaisseDAO;
 import javafx.collections.FXCollections;
@@ -82,6 +85,23 @@ public class ComptabiliteController implements Initializable{
     @FXML
     private TableView<Caisse> tableDepense;
 
+    
+    public void calculateur() {
+    	ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        Runnable task = () -> {
+        	
+        	depense.setText(String.valueOf(caisseDAO.getMDepense(null,null))+" FCFA");
+    		reserv.setText(String.valueOf(caisseDAO.getMreservation(null,null))+" FCFA");
+    		billet.setText(String.valueOf(caisseDAO.getMbillet(null,null))+" FCFA");
+    		colis.setText(String.valueOf(caisseDAO.getMcolis(null, null))+" FCFA");
+    		courrier.setText(String.valueOf(caisseDAO.getMcourriers(null, null))+" FCFA");
+    		solde.setText(String.valueOf(caisseDAO.getSolde(null, null))+" FCFA");
+        	 
+        };
+        int intervalInSeconds = 10;
+        scheduler.scheduleAtFixedRate(task, 0, intervalInSeconds, TimeUnit.SECONDS);
+    }
+    
     @FXML
     void annuler(ActionEvent event) {
 
@@ -97,10 +117,19 @@ public class ComptabiliteController implements Initializable{
     				+ "Vous ne pourrez pas la supprimer et la modifier")) {
     			Caisse caisse=new Caisse(null, Outils.DateEnChaine(LocalDate.now()),
     					sai_justif.getText(), null, Double.parseDouble(sai_montant.getText()), 1);
+    			if(MenuController.utilisateur!=null) {
+    				caisse.setResponsable(MenuController.utilisateur.getNomUt());
+    			}
     			caisse=caisseDAO.create(caisse);
     			if(caisse!=null) {
     				listeCaisse.add(caisse);
     				annuler(event);
+    				depense.setText(String.valueOf(caisseDAO.getMDepense(null,null))+" FCFA");
+    	    		reserv.setText(String.valueOf(caisseDAO.getMreservation(null,null))+" FCFA");
+    	    		billet.setText(String.valueOf(caisseDAO.getMbillet(null,null))+" FCFA");
+    	    		colis.setText(String.valueOf(caisseDAO.getMcolis(null, null))+" FCFA");
+    	    		courrier.setText(String.valueOf(caisseDAO.getMcourriers(null, null))+" FCFA");
+    	    		solde.setText(String.valueOf(caisseDAO.getSolde(null, null))+" FCFA");
     			}
     		}
     	}else {
@@ -110,7 +139,41 @@ public class ComptabiliteController implements Initializable{
     
     @FXML
     void ok(ActionEvent event) {
-
+    	if(du.getValue()!=null &&au.getValue()!=null) {
+    		if(du.getValue().isBefore(au.getValue())||du.getValue().isEqual(au.getValue()) ) {
+    			String dateDu= Outils.DateEnChaine(du.getValue());
+            	String dateAu= Outils.DateEnChaine(au.getValue());
+            	miseAjour(dateDu,dateAu);
+    		}else {
+    			Outils.erreur("L'intervalle de date que vous avez choisie est incorrect");
+    		}
+    		
+    	}else {
+    		Outils.erreur("Veuillez choisir un intervalle de date");
+    	}
+    	
+    }
+    
+    public void miseAjour(String dateDu,String dateAu) {
+    	if(dateDu!=null && dateAu!=null) {
+    		depense.setText(String.valueOf(caisseDAO.getMDepense(dateDu,dateAu))+" FCFA");
+    		reserv.setText(String.valueOf(caisseDAO.getMreservation(dateDu,dateAu))+" FCFA");
+    		billet.setText(String.valueOf(caisseDAO.getMbillet(dateDu,dateAu))+" FCFA");
+    		colis.setText(String.valueOf(caisseDAO.getMcolis(dateDu, dateAu))+" FCFA");
+    		courrier.setText(String.valueOf(caisseDAO.getMcourriers(dateDu, dateAu))+" FCFA");
+    		solde.setText(String.valueOf(caisseDAO.getSolde(dateDu, dateAu))+" FCFA");
+    	}else if(dateDu==null || dateAu==null){
+    		Outils.erreur("Veuillez choisir un intervalle de date");
+    	}else if(LocalDate.parse(dateDu).isAfter(LocalDate.parse(dateAu))) {
+    		Outils.erreur("L'intervalle de date que vous avez choisie est incorrect");
+    	}else {
+    		depense.setText(String.valueOf(caisseDAO.getMDepense(null,null))+" FCFA");
+    		reserv.setText(String.valueOf(caisseDAO.getMreservation(null,null))+" FCFA");
+    		billet.setText(String.valueOf(caisseDAO.getMbillet(null,null))+" FCFA");
+    		colis.setText(String.valueOf(caisseDAO.getMcolis(null, null))+" FCFA");
+    		courrier.setText(String.valueOf(caisseDAO.getMcourriers(null, null))+" FCFA");
+    		solde.setText(String.valueOf(caisseDAO.getSolde(null, null))+" FCFA");
+    	}
     }
 
 	@Override
@@ -131,13 +194,8 @@ public class ComptabiliteController implements Initializable{
 			e.printStackTrace();
 		}
 		tableDepense.setItems(listeCaisse);
-		depense.setText(String.valueOf(caisseDAO.getMDepense(null,null))+" FCFA");
-		reserv.setText(String.valueOf(caisseDAO.getMreservation(null,null))+" FCFA");
-		billet.setText(String.valueOf(caisseDAO.getMbillet(null,null))+" FCFA");
-		colis.setText(String.valueOf(caisseDAO.getMcolis(null, null))+" FCFA");
-		courrier.setText(String.valueOf(caisseDAO.getMcourriers(null, null))+" FCFA");
-		solde.setText(String.valueOf(caisseDAO.getSolde(null, null))+" FCFA");
 		
+		calculateur();
 		sai_montant.setTextFormatter(Outils.formater());
 	}
 

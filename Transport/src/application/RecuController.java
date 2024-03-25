@@ -1,8 +1,10 @@
 package application;
 
 import javafx.fxml.FXML;
-
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
@@ -13,7 +15,7 @@ import metiers.Destination;
 import metiers.Recu;
 import outils.Outils;
 
-
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,7 +58,8 @@ public class RecuController implements Initializable {
 	private Button btnValide;
 	@FXML
 	private Button btnAnnule;
-	
+	@FXML
+	private Button btnTarC;
 	@FXML
 	private Button btnFerme;
 	@FXML
@@ -137,6 +140,22 @@ public class RecuController implements Initializable {
 			stage.close();
 		}
 	}
+	@FXML
+	public void tarC(ActionEvent event) {
+		try {
+			Parent parent=FXMLLoader.load(getClass().getResource("TarifCourrier.fxml"));
+			Scene scene=new Scene(parent,600,450);
+			Stage stage=new Stage();
+			stage.setScene(scene);
+			stage.setTitle("Tarif courrier");
+			stage.setResizable(false);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		col_id.setCellValueFactory(new PropertyValueFactory<>("id"));

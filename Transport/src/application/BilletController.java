@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.stage.Stage;
-import metiers.Caisse;
 import metiers.Passager;
 import outils.Outils;
 
@@ -24,7 +23,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-import DataBase.CaisseDAO;
+
 import DataBase.DAOfactory;
 import DataBase.PassagerDAO;
 import javafx.collections.FXCollections;
@@ -496,9 +495,9 @@ public class BilletController implements Initializable {
 		ResultSet Rs=passagerDAO.findAll();
 		//ResultSet Rs=passagerDAO.findPassagerByDate("2024-01-31");
 		if(Rs!=null) {
-			//néttoyer le tableau d'abord avant de procéder au chargement
-			ListePassager.clear();
 			try {
+				//néttoyer le tableau d'abord avant de procéder au chargement
+				ListePassager.clear();
 				while(Rs.next()) {
 					Long id=Rs.getLong("ID_Passager");
 					ListePassager.add(passagerDAO.find(id));
@@ -530,8 +529,7 @@ public class BilletController implements Initializable {
 				ListeReservation.clear();
 				while(RsR.next()) {
 					Long id=RsR.getLong("ID_Passager");
-					ListeReservation.add(passagerDAO.find(id));
-					
+					ListeReservation.add(passagerDAO.find(id));					
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

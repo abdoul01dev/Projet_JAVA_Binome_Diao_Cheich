@@ -30,4 +30,7 @@ public class DAOfactory {
 	public LigneDAO getLigneDAO() {
 		return new LigneDAO();
 	}
+	public RecuDAO getRecuDAO() {
+		return new RecuDAO();
+	}
 }

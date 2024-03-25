@@ -187,10 +187,10 @@ public class ColisFormController implements Initializable {
 		comboDest.setItems(destination);
 		comboDest.getSelectionModel().selectFirst();
 		
-		telDest.setTextFormatter(Outils.formater());
+		/*telDest.setTextFormatter(Outils.formater());
 		TelExp.setTextFormatter(Outils.formater());
 		valeur.setTextFormatter(Outils.Tranformateur(new DoubleStringConverter()));
-		frais.setTextFormatter(Outils.Tranformateur(new DoubleStringConverter()));
+		frais.setTextFormatter(Outils.Tranformateur(new DoubleStringConverter()));*/
 		
 	}
 	

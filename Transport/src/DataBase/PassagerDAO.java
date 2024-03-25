@@ -52,10 +52,11 @@ public class PassagerDAO extends DAO<Passager>{
 		Passager passager=null;
 		try {
 			Statement statement=this.connection.createStatement();
-			ResultSet result=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
-					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
-					+ " INNER JOIN villledestinations ON departs.ID_Ligne=villledestinations.ID_Ligne "
-					+ "WHERE ID_Passager="+id+";");
+			ResultSet result=statement.executeQuery("SELECT * FROM passagers \r\n"
+					+ "                INNER JOIN billet ON passagers.ID_billet=billet.ID_Billet \r\n"
+					+ "                INNER JOIN departs ON passagers.ID_Depart=departs.ID_Depart \r\n"
+					+ "                INNER JOIN villledestinations ON villledestinations.ID_Destination=passagers.ID_Destination "
+					+ "                WHERE ID_Passager="+id+";");
 			if(result.next()) {
 				passager=new Passager(id, result.getString("Nom_Passager"), 
 						result.getString("prenom_Passager"),result.getString("Sexe_Passager"),
@@ -140,9 +141,7 @@ public class PassagerDAO extends DAO<Passager>{
 		ResultSet Rs=null;
 		try {
 			Statement statement=this.connection.createStatement();
-			Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
-					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
-					+ " INNER JOIN villledestinations ON departs.ID_Ligne=villledestinations.ID_Ligne"
+			Rs=statement.executeQuery("SELECT * FROM passagers "
 					+ " WHERE passagers.Type_Passager=1 ;");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -155,9 +154,7 @@ public class PassagerDAO extends DAO<Passager>{
 		ResultSet Rs=null;
 		try {
 			Statement statement=this.connection.createStatement();
-			Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
-					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
-					+ " INNER JOIN villledestinations ON departs.ID_Ligne=villledestinations.ID_Ligne"
+			Rs=statement.executeQuery("SELECT * FROM passagers"
 					+ " WHERE passagers.Type_Passager=1 AND passagers.Date_voy="+"'"+date+"'"+";");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -171,9 +168,7 @@ public class PassagerDAO extends DAO<Passager>{
 		ResultSet Rs=null;
 		try {
 			Statement statement=this.connection.createStatement();
-			Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
-					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
-					+ " INNER JOIN villledestinations ON departs.ID_Ligne=villledestinations.ID_Ligne"
+			Rs=statement.executeQuery("SELECT * FROM passagers "
 					+ " WHERE passagers.Type_Passager=2 ;");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -186,9 +181,7 @@ public class PassagerDAO extends DAO<Passager>{
 		ResultSet Rs=null;
 		try {
 			Statement statement=this.connection.createStatement();
-			Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
-					+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart"
-					+ " INNER JOIN villledestinations ON departs.ID_Ligne=villledestinations.ID_Ligne"
+			Rs=statement.executeQuery("SELECT * FROM passagers "
 					+ " WHERE passagers.Type_Passager=2 AND passagers.Date_voy="+"'"+date+"'"+";");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -251,13 +244,15 @@ public class PassagerDAO extends DAO<Passager>{
 				ResultSet Rs=null;
 				try {
 					Statement statement=this.connection.createStatement();
-					Rs=statement.executeQuery("SELECT * FROM passagers LEFT JOIN billet ON passagers.ID_billet=billet.ID_Billet "
-							+ "LEFT JOIN departs ON passagers.ID_Depart=departs.ID_Depart "
-							+ "INNER JOIN villledestinations ON departs.ID_Ligne=villledestinations.ID_Ligne "
-							+ "JOIN ligne ON villledestinations.ID_Ligne=ligne.ID_Ligne"
-							+ " WHERE passagers.etat=1 AND passagers.Date_voy="+"'"+date+"'"
-							+" AND ligne.ID_ligne="+idLigne 
-							+" AND departs.ID_Depart="+idDepart);
+					Rs=statement.executeQuery("SELECT * FROM passagers \r\n"
+							+ "                INNER JOIN billet ON passagers.ID_billet=billet.ID_Billet \r\n"
+							+ "                INNER JOIN departs ON passagers.ID_Depart=departs.ID_Depart \r\n"
+							+ "                INNER JOIN villledestinations ON villledestinations.ID_Destination=passagers.ID_Destination "
+							+ "				   INNER JOIN ligne ON ligne.ID_ligne=villledestinations.ID_ligne"
+							+ " WHERE passagers.etat=1 "
+							+ " AND passagers.Date_voy="+"'"+date+"'"
+							+ " AND ligne.ID_ligne="+idLigne 
+							+ " AND departs.ID_Depart="+idDepart);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -267,7 +262,17 @@ public class PassagerDAO extends DAO<Passager>{
 			}
 			
 			
-			
+			public ResultSet findPassagerByDateGroupByDateE() {
+			    ResultSet rs = null;
+			    try {
+			        Statement statement = this.connection.createStatement();
+			        String query = "SELECT Date_enreg, COUNT(*) AS nbPassagers FROM passagers WHERE Type_Passager=1 GROUP BY Date_enreg ";
+			        rs = statement.executeQuery(query);
+			    } catch (SQLException e) {
+			        e.printStackTrace();
+			    }
+			    return rs;
+			}
 			
 	}
 	

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RecuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RecuController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,12 +26,12 @@
                   </TableView>
                   <Button fx:id="btnModif" layoutX="577.0" layoutY="53.0" mnemonicParsing="false" onAction="#modif" prefHeight="25.0" prefWidth="72.0" style="-fx-background-color: #2a3a4a;" text="Modifier" textFill="WHITE" />
                   <Button fx:id="btnSupprime" layoutX="577.0" layoutY="94.0" mnemonicParsing="false" onAction="#supprime" style="-fx-background-color: darkred;" text="Supprimer" textFill="WHITE" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="244.0" layoutY="14.0" text="Nos tarifs" textFill="#2a3a4a" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="14.0" prefHeight="33.0" prefWidth="528.0" style="-fx-background-color: #0978f6;" text="Nos tarifs" textFill="WHITE" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="137.0">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="20.0" />
                      </font>
                   </Label>
-                  <AnchorPane layoutX="31.0" layoutY="285.0" prefHeight="138.0" prefWidth="523.0" style="-fx-background-color: #CFE9F7; -fx-border-color: darkblue; -fx-border-radius: 20;" AnchorPane.leftAnchor="40.0">
+                  <AnchorPane layoutX="43.0" layoutY="320.0" prefHeight="138.0" prefWidth="523.0" style="-fx-background-color: #CFE9F7; -fx-border-radius: 20;" AnchorPane.leftAnchor="43.0">
                      <children>
                         <Button fx:id="btnValide" layoutX="445.0" layoutY="63.0" mnemonicParsing="false" onAction="#valide" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: darkgreen;" text="Valider" textFill="WHITE" />
                         <Button fx:id="btnAnnule" layoutX="445.0" layoutY="102.0" mnemonicParsing="false" onAction="#Annuler" style="-fx-background-color: darkred;" text="Annuler" textFill="WHITE" />
@@ -41,6 +41,12 @@
                      </children>
                   </AnchorPane>
                   <Button fx:id="btnFerme" layoutX="641.0" layoutY="433.0" mnemonicParsing="false" onAction="#fermer" style="-fx-background-color: red;" text="Fermer" textFill="WHITE" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="41.0" layoutY="291.0" prefHeight="29.0" prefWidth="528.0" style="-fx-background-color: darkblue;" text="Nouveau" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnTarC" layoutX="214.0" layoutY="455.0" mnemonicParsing="false" onAction="#tarC" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #0978f6;" text="Voir tarif courrier" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

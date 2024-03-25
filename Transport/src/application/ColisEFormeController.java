@@ -194,9 +194,9 @@ public class ColisEFormeController implements Initializable{
 		comboProvenance.getSelectionModel().selectFirst();
 		
 		
-		telDest.setTextFormatter(Outils.Tranformateur( new IntegerStringConverter()));
+		/*telDest.setTextFormatter(Outils.Tranformateur( new IntegerStringConverter()));
 		TelExp.setTextFormatter(Outils.formater());
-		valeur.setTextFormatter(Outils.Tranformateur( new DoubleStringConverter()));
+		valeur.setTextFormatter(Outils.Tranformateur( new DoubleStringConverter()));*/
 	}
 		
 	
